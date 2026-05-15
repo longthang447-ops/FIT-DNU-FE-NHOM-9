@@ -1,0 +1,747 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>🏨 Quản lý Rooms & Bookings</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@5/dist/sweetalert2.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        margin: 0;
+        background: linear-gradient(
+          135deg,
+          #667eea 0%,
+          #764ba2 50%,
+          #f093fb 100%
+        );
+        min-height: 100vh;
+        padding: 20px;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: auto;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        padding: 40px;
+        border-radius: 25px;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        position: relative;
+        z-index: 2;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .page-header {
+        text-align: center;
+        margin-bottom: 40px;
+        position: relative;
+      }
+
+      .page-header h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin: 0;
+        text-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+      }
+
+      .section {
+        margin-bottom: 50px;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 3px solid #667eea;
+      }
+
+      .section-header i {
+        font-size: 1.8rem;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .section-header h2 {
+        margin: 0;
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: #2c3e50;
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-bottom: 20px;
+        padding: 25px;
+        background: linear-gradient(135deg, #f8f9ff, #e8ecff);
+        border-radius: 20px;
+        border: 1px solid rgba(102, 126, 234, 0.2);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.1);
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form-group label {
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: #5a67d8;
+        margin-bottom: 5px;
+      }
+
+      input,
+      select {
+        padding: 12px 16px;
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        background: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      input:focus,
+      select:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        transform: translateY(-1px);
+      }
+
+      .btn {
+        padding: 12px 24px;
+        border-radius: 12px;
+        border: none;
+        cursor: pointer;
+        font-size: 0.95rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+      }
+
+      .btn-success {
+        background: linear-gradient(135deg, #48bb78, #38a169);
+        color: white;
+      }
+
+      .btn-warning {
+        background: linear-gradient(135deg, #ed8936, #dd6b20);
+        color: white;
+      }
+
+      .btn-danger {
+        background: linear-gradient(135deg, #f56565, #e53e3e);
+        color: white;
+      }
+
+      .btn-secondary {
+        background: linear-gradient(135deg, #a0aec0, #718096);
+        color: white;
+      }
+
+      .load-btn {
+        margin-bottom: 25px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin-top: 20px;
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      }
+
+      th {
+        padding: 20px 15px;
+        text-align: center;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+      }
+
+      th:hover {
+        background: linear-gradient(135deg, #5a67d8, #6b46c1);
+        transform: scale(1.02);
+      }
+
+      td {
+        padding: 18px 15px;
+        text-align: center;
+        border-bottom: 1px solid #f1f5f9;
+        transition: all 0.3s ease;
+      }
+
+      tr {
+        transition: all 0.3s ease;
+      }
+
+      tr:hover {
+        background: linear-gradient(135deg, #f7fafc, #edf2f7);
+        transform: scale(1.01);
+      }
+
+      .price {
+        color: #38a169;
+        font-weight: 700;
+        font-size: 1.1rem;
+      }
+
+      .status {
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .status.pending {
+        background: #fed7d7;
+        color: #c53030;
+      }
+      .status.confirmed {
+        background: #c6f6d5;
+        color: #22543d;
+      }
+      .status.cancelled {
+        background: #e2e8f0;
+        color: #4a5568;
+      }
+
+      .sort-icon {
+        margin-left: 5px;
+        font-size: 0.8rem;
+        opacity: 0.8;
+      }
+
+      .card-empty {
+        text-align: center;
+        padding: 60px 20px;
+        color: #a0aec0;
+      }
+
+      .card-empty i {
+        font-size: 4rem;
+        margin-bottom: 20px;
+        opacity: 0.5;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .container {
+        animation: fadeInUp 0.8s ease-out;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 20px;
+          margin: 10px;
+        }
+
+        .form-grid {
+          grid-template-columns: 1fr;
+          padding: 20px;
+        }
+
+        .page-header h1 {
+          font-size: 2rem;
+        }
+
+        table {
+          font-size: 0.9rem;
+        }
+
+        th,
+        td {
+          padding: 12px 8px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="page-header">
+        <h1><i class="fas fa-hotel"></i> Quản lý Rooms & Bookings</h1>
+      </div>
+
+      <!-- ROOMS SECTION -->
+      <div class="section">
+        <div class="section-header">
+          <i class="fas fa-bed"></i>
+          <h2>Quản lý Phòng</h2>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label><i class="fas fa-tag"></i> Tên phòng</label>
+            <input id="name" placeholder="VD: Phòng Deluxe 101" />
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-dollar-sign"></i> Giá (VNĐ)</label>
+            <input id="price" type="number" placeholder="Tự động" />
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-users"></i> Số khách</label>
+            <input id="guests" type="number" placeholder="2-4" />
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-star"></i> Loại phòng</label>
+            <select id="type" onchange="autoPrice()">
+              <option value="standard">Standard</option>
+              <option value="superior">Superior</option>
+              <option value="deluxe">Deluxe</option>
+              <option value="executive">Executive</option>
+            </select>
+          </div>
+          <div class="form-group" style="grid-column: span 2">
+            <button class="btn btn-success" onclick="addRoom()">
+              <i class="fas fa-plus"></i> Thêm Phòng
+            </button>
+            <button class="btn btn-warning" onclick="updateRoom()">
+              <i class="fas fa-edit"></i> Cập nhật
+            </button>
+          </div>
+        </div>
+
+        <button class="btn btn-primary load-btn" onclick="loadRooms()">
+          <i class="fas fa-sync-alt"></i> Tải danh sách
+        </button>
+
+        <table>
+          <thead>
+            <tr>
+              <th><i class="fas fa-hashtag"></i> STT</th>
+              <th><i class="fas fa-tag"></i> Số phòng</th>
+              <th><i class="fas fa-dollar-sign"></i> Giá</th>
+              <th onclick="sortGuests()">
+                <i class="fas fa-users"></i> Khách
+                <i class="fas fa-sort sort-icon" id="sortIcon"></i>
+              </th>
+              <th><i class="fas fa-star"></i> Loại</th>
+              <th><i class="fas fa-cogs"></i> Hành động</th>
+            </tr>
+          </thead>
+          <tbody id="rooms">
+            <tr>
+              <td colspan="6" class="card-empty">
+                <i class="fas fa-bed"></i>
+                <div>Chưa có dữ liệu phòng</div>
+                <small>Nhấn "Tải danh sách" để xem</small>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- BOOKINGS SECTION -->
+      <div class="section">
+        <div class="section-header">
+          <i class="fas fa-calendar-check"></i>
+          <h2>Đặt Phòng</h2>
+        </div>
+
+        <button class="btn btn-primary load-btn" onclick="loadBookings()">
+          <i class="fas fa-sync-alt"></i> Tải danh sách
+        </button>
+
+        <table>
+          <thead>
+            <tr>
+              <th><i class="fas fa-hashtag"></i> STT</th>
+              <th><i class="fas fa-bed"></i> Phòng</th>
+              <th><i class="fas fa-user"></i> Khách</th>
+              <th><i class="fas fa-phone"></i> SĐT</th>
+              <th><i class="fas fa-calendar"></i> Ngày</th>
+              <th><i class="fas fa-info-circle"></i> Trạng thái</th>
+            </tr>
+          </thead>
+          <tbody id="bookings">
+            <tr>
+              <td colspan="6" class="card-empty">
+                <i class="fas fa-calendar-check"></i>
+                <div>Chưa có dữ liệu đặt phòng</div>
+                <small>Nhấn "Tải danh sách" để xem</small>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      const API_ROOMS =
+        "https://69fc3868fce564e2591782fe.mockapi.io/api/v1/room";
+      const API_BOOKINGS =
+        "https://69fc3868fce564e2591782fe.mockapi.io/api/v1/booking";
+
+      let selectedId = null;
+      let asc = true;
+
+      // ===== FORMAT =====
+      function formatPrice(price) {
+        return Number(price).toLocaleString("vi-VN") + " ₫";
+      }
+
+      // ===== DISPLAY ID theo thứ tự =====
+      function displaySequentialId(data, index) {
+        return index + 1;
+      }
+
+      // ===== ALERT =====
+      function showAlert(title, message, icon = "success") {
+        Swal.fire({
+          title,
+          text: message,
+          icon,
+          confirmButtonText: "OK",
+          confirmButtonColor: "#667eea",
+          timer: 3000,
+          timerProgressBar: true,
+        });
+      }
+
+      // ===== RANDOM GIÁ =====
+      function getPriceByType(type) {
+        const prices = {
+          standard: 500000,
+          superior: 900000,
+          deluxe: 1400000,
+          executive: 2700000,
+        };
+        return prices[type] || 500000;
+      }
+
+      // ===== AUTO PRICE =====
+      function autoPrice() {
+        let type = $("#type").val();
+        $("#price").val(getPriceByType(type));
+      }
+
+      // ===== LOAD ROOMS =====
+      function loadRooms() {
+        $.get(API_ROOMS, (data) => {
+          if (data.length === 0) {
+            $("#rooms").html(`
+                <tr>
+                    <td colspan="6" class="card-empty">
+                        <i class="fas fa-bed"></i>
+                        <div>Chưa có phòng nào</div>
+                        <small>Thêm phòng đầu tiên của bạn!</small>
+                    </td>
+                </tr>
+            `);
+            return;
+          }
+          data.sort((a, b) => a.guests - b.guests);
+          renderRooms(data);
+        }).fail(() => {
+          showAlert("Lỗi!", "Không thể tải dữ liệu phòng", "error");
+        });
+      }
+
+      // ===== RENDER ROOMS =====
+      function renderRooms(data) {
+        $("#rooms").empty();
+        data.forEach((r, index) => {
+          let displayId = displaySequentialId(data, index);
+          $("#rooms").append(`
+            <tr>
+                <td><span class="badge">${displayId}</span></td>
+                <td>${r.name}</td>
+                <td class="price">💰 ${formatPrice(r.price)}</td>
+                <td><i class="fas fa-user-friends"></i> ${r.guests}</td>
+                <td>
+                    <span class="type-badge type-${r.type}">
+                        ${r.type.charAt(0).toUpperCase() + r.type.slice(1)}
+                    </span>
+                </td>
+                <td>
+                    <button class="btn btn-warning btn-sm" onclick="editRoom('${r.id}','${r.name}',${r.price},${r.guests},'${r.type}')">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-danger btn-sm" onclick="deleteRoom('${r.id}')">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        `);
+        });
+      }
+
+      // ===== ADD ROOM =====
+      function addRoom() {
+        let name = $("#name").val().trim();
+        if (!name)
+          return showAlert("Lỗi!", "Vui lòng nhập tên phòng", "warning");
+
+        let type = $("#type").val();
+        let price = $("#price").val() || getPriceByType(type);
+
+        $.ajax({
+          url: API_ROOMS,
+          method: "POST",
+          contentType: "application/json",
+          data: JSON.stringify({
+            name: name,
+            price: Number(price),
+            guests: Number($("#guests").val() || 2),
+            type: type,
+          }),
+          success: () => {
+            showAlert("Thành công!", "Thêm phòng mới thành công!");
+            clearForm();
+            loadRooms();
+          },
+          error: () => showAlert("Lỗi!", "Không thể thêm phòng", "error"),
+        });
+      }
+
+      // ===== EDIT ROOM =====
+      function editRoom(id, name, price, guests, type) {
+        selectedId = id;
+        $("#name").val(name);
+        $("#price").val(price);
+        $("#guests").val(guests);
+        $("#type").val(type);
+        showAlert(
+          "Chọn phòng",
+          `Đã chọn phòng <strong>${name}</strong>. Nhấn "Cập nhật" để lưu thay đổi.`,
+          "info",
+        );
+      }
+
+      // ===== UPDATE ROOM =====
+      function updateRoom() {
+        if (!selectedId)
+          return showAlert(
+            "Lỗi!",
+            "Vui lòng chọn phòng để cập nhật!",
+            "warning",
+          );
+
+        $.ajax({
+          url: API_ROOMS + "/" + selectedId,
+          method: "PUT",
+          contentType: "application/json",
+          data: JSON.stringify({
+            name: $("#name").val(),
+            price: Number($("#price").val()),
+            guests: Number($("#guests").val()),
+            type: $("#type").val(),
+          }),
+          success: () => {
+            showAlert("Thành công!", "Cập nhật phòng thành công!");
+            clearForm();
+            loadRooms();
+            selectedId = null;
+          },
+          error: () => showAlert("Lỗi!", "Không thể cập nhật phòng", "error"),
+        });
+      }
+
+      // ===== DELETE ROOM =====
+      function deleteRoom(id) {
+        Swal.fire({
+          title: "Xóa phòng?",
+          text: "Bạn có chắc chắn muốn xóa phòng này?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonText: "Xóa",
+          cancelButtonText: "Hủy",
+          confirmButtonColor: "#f56565",
+          cancelButtonColor: "#a0aec0",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            $.ajax({
+              url: API_ROOMS + "/" + id,
+              method: "DELETE",
+              success: () => {
+                showAlert("Thành công!", "Đã xóa phòng!", "success");
+                loadRooms();
+              },
+            });
+          }
+        });
+      }
+
+      // ===== SORT =====
+      function sortGuests() {
+        $.get(API_ROOMS, (data) => {
+          data.sort((a, b) =>
+            asc ? a.guests - b.guests : b.guests - a.guests,
+          );
+          asc = !asc;
+          $("#sortIcon")
+            .removeClass("fa-sort fa-sort-up fa-sort-down")
+            .addClass(asc ? "fa-sort-up" : "fa-sort-down");
+          renderRooms(data);
+        });
+      }
+
+      // ===== CLEAR FORM =====
+      function clearForm() {
+        $("#name, #price, #guests").val("");
+        selectedId = null;
+      }
+
+      // ===== LOAD BOOKINGS =====
+      function loadBookings() {
+        $.get(API_BOOKINGS, (data) => {
+          $("#bookings").empty();
+          if (data.length === 0) {
+            $("#bookings").html(`
+                <tr>
+                    <td colspan="6" class="card-empty">
+                        <i class="fas fa-calendar-check"></i>
+                        <div>Chưa có booking nào</div>
+                        <small>Dữ liệu sẽ xuất hiện ở đây</small>
+                    </td>
+                </tr>
+            `);
+            return;
+          }
+          data.forEach((b, index) => {
+            let displayId = displaySequentialId(data, index);
+            $("#bookings").append(`
+                <tr>
+                    <td><span class="badge">${displayId}</span></td>
+                    <td>${b.roomId}</td>
+                    <td>${b.customerName}</td>
+                    <td><i class="fas fa-phone"></i> ${b.phone}</td>
+                    <td>${b.checkIn} <i class="fas fa-arrow-right"></i> ${b.checkOut}</td>
+                    <td><span class="status status-${b.status}">${b.status}</span></td>
+                </tr>
+            `);
+          });
+        }).fail(() => {
+          showAlert("Lỗi!", "Không thể tải dữ liệu booking", "error");
+        });
+      }
+
+      // ===== INIT =====
+      $(document).ready(function () {
+        loadRooms();
+        loadBookings();
+      });
+    </script>
+
+    <style>
+      .badge {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .type-badge {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: capitalize;
+      }
+
+      .type-standard {
+        background: #e2e8f0;
+        color: #4a5568;
+      }
+      .type-superior {
+        background: #c6f6d5;
+        color: #22543d;
+      }
+      .type-deluxe {
+        background: #fed7d7;
+        color: #c53030;
+      }
+      .type-executive {
+        background: #bee3f8;
+        color: #2b6cb0;
+      }
+
+      .btn-sm {
+        padding: 8px 12px !important;
+        font-size: 0.8rem !important;
+        margin: 0 2px;
+      }
+    </style>
+  </body>
+</html>
