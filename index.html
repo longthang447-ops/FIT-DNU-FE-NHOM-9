@@ -1,0 +1,2450 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StayEassy– Khám phá Hà Nội theo cách của bạn</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <!-- ── NAV ── -->
+    <nav id="mainNav">
+      <div class="nav-logo">Stay<span>Eassy</span></div>
+      <ul class="nav-links">
+        <li><a href="#hotels">Khách sạn</a></li>
+        <li><a href="#villas">Biệt thự</a></li>
+        <li><a href="#offers">Tour</a></li>
+        <li><a href="#about">Về chúng tôi</a></li>
+      </ul>
+      <div
+        style="display: flex; align-items: center; gap: 0.75rem"
+        id="navAuthArea"
+      >
+        <button
+          class="nav-cta"
+          onclick="openAuth('login')"
+          style="
+            background: transparent;
+            border: 1.5px solid rgba(200, 169, 110, 0.5);
+            color: var(--gold);
+          "
+        >
+          Đăng nhập
+        </button>
+        <button class="nav-cta" onclick="openAuth('register')">Đăng ký</button>
+      </div>
+      <div id="navUserArea" style="display: none; position: relative">
+        <button
+          onclick="toggleUserMenu()"
+          style="
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(200, 169, 110, 0.12);
+            border: 1px solid rgba(200, 169, 110, 0.3);
+            border-radius: 2rem;
+            padding: 0.4rem 0.9rem 0.4rem 0.4rem;
+            cursor: pointer;
+            transition: background 0.2s;
+          "
+          onmouseover="this.style.background = 'rgba(200,169,110,0.2)'"
+          onmouseout="this.style.background = 'rgba(200,169,110,0.12)'"
+        >
+          <div
+            id="navAvatar"
+            style="
+              width: 28px;
+              height: 28px;
+              border-radius: 50%;
+              background: linear-gradient(
+                135deg,
+                var(--gold),
+                var(--gold-dark)
+              );
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 0.75rem;
+              font-weight: 700;
+              color: var(--ink);
+            "
+          >
+            A
+          </div>
+          <span
+            id="navUserName"
+            style="color: var(--white); font-size: 0.85rem; font-weight: 500"
+            >Người dùng</span
+          >
+          <span style="color: var(--gold); font-size: 0.7rem">▾</span>
+        </button>
+        <div
+          id="userMenu"
+          style="
+            display: none;
+            position: absolute;
+            top: calc(100% + 0.75rem);
+            right: 0;
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
+            width: 220px;
+            overflow: hidden;
+            border: 1px solid var(--parchment);
+            z-index: 200;
+          "
+        >
+          <div
+            style="
+              padding: 1rem 1.25rem;
+              border-bottom: 1px solid var(--parchment);
+              background: var(--parchment);
+            "
+          >
+            <div
+              id="menuUserName"
+              style="font-weight: 600; font-size: 0.9rem; color: var(--ink)"
+            >
+              Người dùng
+            </div>
+            <div
+              id="menuUserEmail"
+              style="font-size: 0.78rem; color: var(--mist)"
+            >
+              email@example.com
+            </div>
+          </div>
+          <div style="padding: 0.5rem 0">
+            <button
+              onclick="openMyBookings()"
+              style="
+                width: 100%;
+                text-align: left;
+                padding: 0.65rem 1.25rem;
+                border: none;
+                background: transparent;
+                font-size: 0.875rem;
+                color: var(--ink);
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                gap: 0.6rem;
+                transition: background 0.15s;
+              "
+              onmouseover="this.style.background = 'var(--parchment)'"
+              onmouseout="this.style.background = 'transparent'"
+            >
+              🏨 Đặt phòng của tôi
+            </button>
+            <button
+              onclick="showToast('❤️ Danh sách yêu thích!')"
+              style="
+                width: 100%;
+                text-align: left;
+                padding: 0.65rem 1.25rem;
+                border: none;
+                background: transparent;
+                font-size: 0.875rem;
+                color: var(--ink);
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                gap: 0.6rem;
+                transition: background 0.15s;
+              "
+              onmouseover="this.style.background = 'var(--parchment)'"
+              onmouseout="this.style.background = 'transparent'"
+            >
+              ❤️ Yêu thích
+            </button>
+            <button
+              onclick="showToast('🎁 Điểm thưởng của tôi!')"
+              style="
+                width: 100%;
+                text-align: left;
+                padding: 0.65rem 1.25rem;
+                border: none;
+                background: transparent;
+                font-size: 0.875rem;
+                color: var(--ink);
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                gap: 0.6rem;
+                transition: background 0.15s;
+              "
+              onmouseover="this.style.background = 'var(--parchment)'"
+              onmouseout="this.style.background = 'transparent'"
+            >
+              🎁 Điểm thưởng
+            </button>
+            <div
+              style="
+                height: 1px;
+                background: var(--parchment);
+                margin: 0.25rem 0;
+              "
+            ></div>
+            <button
+              onclick="logout()"
+              style="
+                width: 100%;
+                text-align: left;
+                padding: 0.65rem 1.25rem;
+                border: none;
+                background: transparent;
+                font-size: 0.875rem;
+                color: var(--red-viet);
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                gap: 0.6rem;
+                font-weight: 500;
+              "
+              onmouseover="this.style.background = '#FFF0F0'"
+              onmouseout="this.style.background = 'transparent'"
+            >
+              🚪 Đăng xuất
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ── HERO ── -->
+    <div class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-pattern"></div>
+      <div class="hero-content">
+        <div class="hero-badge">Hà Nội · Thủ đô nghìn năm văn hiến</div>
+        <h1 class="hero-title">Khám phá <em>vẻ đẹp</em><br />của Hà Nội</h1>
+        <p class="hero-sub">
+          Tìm kiếm và đặt khách sạn tốt nhất tại Hà Nội với giá ưu đãi độc quyền
+          mỗi ngày
+        </p>
+      </div>
+      <div class="search-card">
+        <div class="search-tabs">
+          <button class="search-tab active">🏨 Khách sạn</button>
+          <button
+            class="search-tab"
+            onclick="
+              this.closest('.search-tabs')
+                .querySelectorAll('.search-tab')
+                .forEach((b) => b.classList.remove('active'));
+              this.classList.add('active');
+              setTimeout(
+                () =>
+                  document
+                    .getElementById('villas')
+                    .scrollIntoView({ behavior: 'smooth' }),
+                200,
+              );
+            "
+          >
+            🏠 Biệt thự
+          </button>
+          <button
+            class="search-tab"
+            onclick="
+              this.closest('.search-tabs')
+                .querySelectorAll('.search-tab')
+                .forEach((b) => b.classList.remove('active'));
+              this.classList.add('active');
+            "
+          >
+            🏡 Căn hộ
+          </button>
+          <button
+            class="search-tab"
+            onclick="
+              this.closest('.search-tabs')
+                .querySelectorAll('.search-tab')
+                .forEach((b) => b.classList.remove('active'));
+              this.classList.add('active');
+            "
+          >
+            🎪 Tour
+          </button>
+        </div>
+        <div class="search-grid">
+          <div class="search-field">
+            <label class="search-label">Điểm đến</label>
+            <div class="search-input-wrap">
+              <span class="search-icon">📍</span>
+              <input
+                type="text"
+                placeholder="Hà Nội, Việt Nam"
+                value="Hà Nội, Việt Nam"
+              />
+            </div>
+          </div>
+          <div class="search-field">
+            <label class="search-label">Nhận phòng</label>
+            <div class="search-input-wrap">
+              <span class="search-icon">📅</span>
+              <input type="date" id="checkin" />
+            </div>
+          </div>
+          <div class="search-field">
+            <label class="search-label">Trả phòng</label>
+            <div class="search-input-wrap">
+              <span class="search-icon">📅</span>
+              <input type="date" id="checkout" />
+            </div>
+          </div>
+          <button
+            class="search-btn"
+            onclick="showToast('🔍 Đang tìm kiếm khách sạn tốt nhất...')"
+          >
+            🔍 Tìm kiếm
+          </button>
+        </div>
+        <div
+          style="
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--parchment);
+            align-items: center;
+            flex-wrap: wrap;
+          "
+        >
+          <div style="display: flex; align-items: center; gap: 0.5rem">
+            <span style="font-size: 0.8rem; color: var(--mist)"
+              >Khách & Phòng:</span
+            >
+            <div class="search-input-wrap" style="padding: 0.4rem 0.8rem">
+              <select
+                style="
+                  font-size: 0.8rem;
+                  color: var(--ink-soft);
+                  background: transparent;
+                  border: none;
+                  outline: none;
+                  font-family: &quot;DM Sans&quot;, sans-serif;
+                "
+              >
+                <option>2 người · 1 phòng</option>
+                <option>4 người · 2 phòng</option>
+                <option>6 người · 3 phòng</option>
+              </select>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.5rem">
+            <span style="font-size: 0.8rem; color: var(--mist)"
+              >Hạng phòng:</span
+            >
+            <div class="search-input-wrap" style="padding: 0.4rem 0.8rem">
+              <select
+                style="
+                  font-size: 0.8rem;
+                  color: var(--ink-soft);
+                  background: transparent;
+                  border: none;
+                  outline: none;
+                  font-family: &quot;DM Sans&quot;, sans-serif;
+                "
+              >
+                <option>Tất cả hạng</option>
+                <option>⭐⭐⭐ 3 sao</option>
+                <option>⭐⭐⭐⭐ 4 sao</option>
+                <option>⭐⭐⭐⭐⭐ 5 sao</option>
+              </select>
+            </div>
+          </div>
+          <div
+            style="
+              margin-left: auto;
+              display: flex;
+              align-items: center;
+              gap: 0.4rem;
+              font-size: 0.8rem;
+              color: var(--jade);
+            "
+          >
+            ✅ Giá tốt nhất đảm bảo
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── STATS ── -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-num" id="cntHotels">0</div>
+        <div class="stat-label">Khách sạn tại Hà Nội</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" id="cntReviews">0</div>
+        <div class="stat-label">Đánh giá thực</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" id="cntGuests">0</div>
+        <div class="stat-label">Khách đã đặt</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Hỗ trợ khách hàng</div>
+      </div>
+    </div>
+
+    <!-- ── HOTELS SECTION ── -->
+    <section id="hotels">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">✦ Lựa chọn hàng đầu</div>
+        <h2 class="section-title">Khách sạn <em>nổi bật</em> tại Hà Nội</h2>
+      </div>
+      <div class="filter-pills reveal">
+        <button class="pill active" onclick="filterHotels(this, 'all')">
+          Tất cả
+        </button>
+        <button class="pill" onclick="filterHotels(this, 'luxury')">
+          ✨ Sang trọng
+        </button>
+        <button class="pill" onclick="filterHotels(this, 'boutique')">
+          🌸 Boutique
+        </button>
+        <button class="pill" onclick="filterHotels(this, 'budget')">
+          💰 Tiết kiệm
+        </button>
+        <button class="pill" onclick="filterHotels(this, 'lake')">
+          🏖️ Gần Hồ Tây
+        </button>
+        <button class="pill" onclick="filterHotels(this, 'oldquarter')">
+          🏯 Phố cổ
+        </button>
+      </div>
+      <div class="hotel-grid" id="hotelGrid"></div>
+    </section>
+
+    <!-- ── HIGHLIGHT ── -->
+    <div class="highlight-section">
+      <div class="highlight-inner">
+        <div class="highlight-text reveal">
+          <div class="section-eyebrow">✦ Vì sao chọn StayEassy</div>
+          <h2 class="section-title" style="text-align: left">
+            Trải nghiệm <em>đẳng cấp</em><br />mỗi chuyến đi
+          </h2>
+          <p class="highlight-desc">
+            Chúng tôi hợp tác với hơn 800 khách sạn hàng đầu tại Hà Nội để mang
+            đến cho bạn những lựa chọn tốt nhất, giá cả cạnh tranh và dịch vụ
+            hoàn hảo.
+          </p>
+          <div class="highlight-features">
+            <div class="hf-item">
+              <div class="hf-icon">🔒</div>
+              Đặt phòng an toàn
+            </div>
+            <div class="hf-item">
+              <div class="hf-icon">💳</div>
+              Thanh toán linh hoạt
+            </div>
+            <div class="hf-item">
+              <div class="hf-icon">🎁</div>
+              Ưu đãi độc quyền
+            </div>
+            <div class="hf-item">
+              <div class="hf-icon">⭐</div>
+              Đánh giá thực tế
+            </div>
+            <div class="hf-item">
+              <div class="hf-icon">🚗</div>
+              Đưa đón miễn phí
+            </div>
+            <div class="hf-item">
+              <div class="hf-icon">📞</div>
+              Hỗ trợ 24/7
+            </div>
+          </div>
+          <a href="#hotels" class="btn-primary">Khám phá ngay →</a>
+        </div>
+        <div class="highlight-img-grid reveal">
+          <div class="himg">
+            <img
+              src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=700&q=80"
+              alt="Hotel lobby Hà Nội"
+              loading="lazy"
+            />
+          </div>
+          <div class="himg">
+            <img
+              src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=500&q=80"
+              alt="Hotel room"
+              loading="lazy"
+            />
+          </div>
+          <div class="himg">
+            <img
+              src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=500&q=80"
+              alt="Spa"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── NEIGHBORHOODS ── -->
+    <section>
+      <div class="section-header reveal">
+        <div class="section-eyebrow">✦ Khu vực</div>
+        <h2 class="section-title">Khám phá theo <em>khu vực</em></h2>
+      </div>
+      <div class="nbr-grid reveal">
+        <div class="nbr-card" onclick="showToast('🏯 Đang lọc: Phố cổ Hà Nội')">
+          <img
+            src="https://images.unsplash.com/photo-1509030450996-dd1a26dda07a?w=900&q=80"
+            alt="Phố cổ Hà Nội"
+            loading="lazy"
+          />
+          <div class="nbr-overlay"></div>
+          <div class="nbr-info">
+            <div class="nbr-name">Phố cổ</div>
+            <div class="nbr-count">142 khách sạn</div>
+          </div>
+        </div>
+        <div class="nbr-card" onclick="showToast('🌊 Đang lọc: Hồ Tây')">
+          <img
+            src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=600&q=80"
+            alt="Hồ Tây"
+            loading="lazy"
+          />
+          <div class="nbr-overlay"></div>
+          <div class="nbr-info">
+            <div class="nbr-name">Hồ Tây</div>
+            <div class="nbr-count">89 khách sạn</div>
+          </div>
+        </div>
+        <div class="nbr-card" onclick="showToast('🏙️ Đang lọc: Ba Đình')">
+          <img
+            src="https://images.unsplash.com/photo-1599707367072-cd6ada2bc375?w=600&q=80"
+            alt="Ba Đình"
+            loading="lazy"
+          />
+          <div class="nbr-overlay"></div>
+          <div class="nbr-info">
+            <div class="nbr-name">Ba Đình</div>
+            <div class="nbr-count">67 khách sạn</div>
+          </div>
+        </div>
+        <div class="nbr-card" onclick="showToast('🛍️ Đang lọc: Hoàn Kiếm')">
+          <img
+            src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80"
+            alt="Hoàn Kiếm"
+            loading="lazy"
+          />
+          <div class="nbr-overlay"></div>
+          <div class="nbr-info">
+            <div class="nbr-name">Hoàn Kiếm</div>
+            <div class="nbr-count">203 khách sạn</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── VILLA SECTION ── -->
+    <section
+      id="villas"
+      style="background: var(--parchment); padding: 5rem 2.5rem"
+    >
+      <div class="section-header reveal">
+        <div class="section-eyebrow">✦ Độc quyền & Sang trọng</div>
+        <h2 class="section-title">Biệt thự <em>cao cấp</em> tại Hà Nội</h2>
+      </div>
+      <div
+        style="
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+          gap: 1.75rem;
+          max-width: 1280px;
+          margin: 0 auto;
+        "
+        class="reveal"
+      >
+        <!-- Villa 1 -->
+        <div
+          class="hotel-card"
+          onclick="showToast('🏡 Biệt Thự Hồ Tây – Liên hệ để đặt!')"
+        >
+          <div class="hotel-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1613977257363-707ba9348227?w=700&q=85"
+              alt="Villa Hồ Tây"
+              loading="lazy"
+            />
+            <div
+              class="hotel-badge"
+              style="background: var(--gold); color: var(--ink)"
+            >
+              ★ Biệt Thự
+            </div>
+            <button
+              class="hotel-fav"
+              onclick="
+                event.stopPropagation();
+                this.textContent = this.textContent === '🤍' ? '❤️' : '🤍';
+              "
+            >
+              🤍
+            </button>
+          </div>
+          <div class="hotel-body">
+            <div class="hotel-stars">⭐⭐⭐⭐⭐</div>
+            <div class="hotel-name">The Lakeside Villa Tây Hồ</div>
+            <div class="hotel-location">📍 Đặng Thai Mai, Tây Hồ, Hà Nội</div>
+            <div class="hotel-amenities">
+              <span class="amenity-tag">Hồ bơi riêng</span>
+              <span class="amenity-tag">5 phòng ngủ</span>
+              <span class="amenity-tag">View Hồ Tây</span>
+              <span class="amenity-tag">Đầu bếp riêng</span>
+            </div>
+            <div class="hotel-footer">
+              <div>
+                <div class="hotel-price-label">Từ</div>
+                <div class="hotel-price">8.500.000₫ <span>/đêm</span></div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.6rem">
+                <div class="hotel-rating">★ 9.7</div>
+                <button
+                  class="book-btn"
+                  onclick="
+                    event.stopPropagation();
+                    openBookingForm('The Lakeside Villa Tây Hồ');
+                  "
+                >
+                  Đặt ngay
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Villa 2 -->
+        <div
+          class="hotel-card"
+          onclick="showToast('🏡 Biệt Thự Ciputra – Liên hệ để đặt!')"
+        >
+          <div class="hotel-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=700&q=85"
+              alt="Villa Ciputra"
+              loading="lazy"
+            />
+            <div
+              class="hotel-badge"
+              style="background: var(--gold); color: var(--ink)"
+            >
+              ★ Biệt Thự
+            </div>
+            <button
+              class="hotel-fav"
+              onclick="
+                event.stopPropagation();
+                this.textContent = this.textContent === '🤍' ? '❤️' : '🤍';
+              "
+            >
+              🤍
+            </button>
+          </div>
+          <div class="hotel-body">
+            <div class="hotel-stars">⭐⭐⭐⭐⭐</div>
+            <div class="hotel-name">Ciputra Garden Estate</div>
+            <div class="hotel-location">
+              📍 Khu đô thị Ciputra, Tây Hồ, Hà Nội
+            </div>
+            <div class="hotel-amenities">
+              <span class="amenity-tag">Vườn rộng</span>
+              <span class="amenity-tag">4 phòng ngủ</span>
+              <span class="amenity-tag">BBQ ngoài trời</span>
+              <span class="amenity-tag">Garage 2 xe</span>
+            </div>
+            <div class="hotel-footer">
+              <div>
+                <div class="hotel-price-label">Từ</div>
+                <div class="hotel-price">6.200.000₫ <span>/đêm</span></div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.6rem">
+                <div class="hotel-rating">★ 9.5</div>
+                <button
+                  class="book-btn"
+                  onclick="
+                    event.stopPropagation();
+                    openBookingForm('Ciputra Garden Estate');
+                  "
+                >
+                  Đặt ngay
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Villa 3 -->
+        <div
+          class="hotel-card"
+          onclick="showToast('🏡 Biệt Thự Ecopark – Liên hệ để đặt!')"
+        >
+          <div class="hotel-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=700&q=85"
+              alt="Villa Ecopark"
+              loading="lazy"
+            />
+            <div
+              class="hotel-badge"
+              style="background: var(--jade); color: #fff"
+            >
+              🌿 Eco Villa
+            </div>
+            <button
+              class="hotel-fav"
+              onclick="
+                event.stopPropagation();
+                this.textContent = this.textContent === '🤍' ? '❤️' : '🤍';
+              "
+            >
+              🤍
+            </button>
+          </div>
+          <div class="hotel-body">
+            <div class="hotel-stars">⭐⭐⭐⭐⭐</div>
+            <div class="hotel-name">Ecopark Riverside Villa</div>
+            <div class="hotel-location">
+              📍 Khu đô thị Ecopark, Văn Giang, cách HN 18km
+            </div>
+            <div class="hotel-amenities">
+              <span class="amenity-tag">Bên sông</span>
+              <span class="amenity-tag">3 phòng ngủ</span>
+              <span class="amenity-tag">Sân vườn</span>
+              <span class="amenity-tag">Miễn phí xe đưa đón</span>
+            </div>
+            <div class="hotel-footer">
+              <div>
+                <div class="hotel-price-label">Từ</div>
+                <div class="hotel-price">4.800.000₫ <span>/đêm</span></div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.6rem">
+                <div class="hotel-rating">★ 9.3</div>
+                <button
+                  class="book-btn"
+                  onclick="
+                    event.stopPropagation();
+                    openBookingForm('Ecopark Riverside Villa');
+                  "
+                >
+                  Đặt ngay
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PROMO ── -->
+    <div class="promo-section reveal">
+      <div class="promo-banner">
+        <div class="promo-text">
+          <h2>Giảm đến 30% cho lần đặt đầu tiên</h2>
+          <p>
+            Áp dụng cho tất cả khách sạn 4-5 sao tại Hà Nội. Số lượng có hạn!
+          </p>
+        </div>
+        <div class="promo-code">
+          <div class="promo-label">Mã khuyến mãi</div>
+          <div
+            class="promo-tag"
+            onclick="showToast('✅ Đã sao chép mã FIRSTHANOI!')"
+          >
+            FIRSTHANOI
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── OFFERS ── -->
+    <div class="offers-section" id="offers">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">✦ Ưu đãi hôm nay</div>
+        <h2 class="section-title">Đặt vé & <em>gói du lịch</em> giá tốt</h2>
+      </div>
+      <div class="offers-grid reveal">
+        <div class="offer-card">
+          <div class="offer-img">
+            <img
+              src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80"
+              alt="Flash sale"
+              loading="lazy"
+            />
+            <div class="offer-tag">⚡ Flash Sale</div>
+          </div>
+          <div class="offer-body">
+            <div class="offer-title">Sofitel Metropole – Phòng Deluxe</div>
+            <div class="offer-desc">
+              Bao gồm bữa sáng buffet, đưa đón sân bay và ưu tiên check-in sớm
+            </div>
+            <div class="offer-footer">
+              <div>
+                <div
+                  style="
+                    font-size: 0.75rem;
+                    color: var(--mist);
+                    text-decoration: line-through;
+                  "
+                >
+                  5.500K ₫
+                </div>
+                <div class="offer-discount">3.850K ₫/đêm</div>
+              </div>
+              <button
+                class="offer-btn"
+                onclick="showToast('🏨 Đang chuyển đến trang đặt phòng...')"
+              >
+                Đặt ngay
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="offer-card">
+          <div class="offer-img">
+            <img
+              src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80"
+              alt="Weekend Deal"
+              loading="lazy"
+            />
+            <div class="offer-tag">🏖️ Weekend Deal</div>
+          </div>
+          <div class="offer-body">
+            <div class="offer-title">InterContinental Westlake – View Hồ</div>
+            <div class="offer-desc">
+              Hồ bơi vô cực nhìn ra Hồ Tây, spa miễn phí và bữa tối lãng mạn
+            </div>
+            <div class="offer-footer">
+              <div>
+                <div
+                  style="
+                    font-size: 0.75rem;
+                    color: var(--mist);
+                    text-decoration: line-through;
+                  "
+                >
+                  4.200K ₫
+                </div>
+                <div class="offer-discount">3.200K ₫/đêm</div>
+              </div>
+              <button
+                class="offer-btn"
+                onclick="showToast('🏨 Đang chuyển đến trang đặt phòng...')"
+              >
+                Đặt ngay
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="offer-card">
+          <div class="offer-img">
+            <img
+              src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=600&q=80"
+              alt="Last Minute"
+              loading="lazy"
+            />
+            <div class="offer-tag">🌸 Last Minute</div>
+          </div>
+          <div class="offer-body">
+            <div class="offer-title">La Siesta Premium – Boutique Suite</div>
+            <div class="offer-desc">
+              Rooftop bar độc quyền, vị trí trung tâm phố cổ, miễn phí hủy 24h
+            </div>
+            <div class="offer-footer">
+              <div>
+                <div
+                  style="
+                    font-size: 0.75rem;
+                    color: var(--mist);
+                    text-decoration: line-through;
+                  "
+                >
+                  2.200K ₫
+                </div>
+                <div class="offer-discount">1.650K ₫/đêm</div>
+              </div>
+              <button
+                class="offer-btn"
+                onclick="showToast('🏨 Đang chuyển đến trang đặt phòng...')"
+              >
+                Đặt ngay
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ABOUT US SECTION ── -->
+    <section id="about" style="padding: 6rem 2.5rem; background: var(--white)">
+      <div style="max-width: 1280px; margin: 0 auto">
+        <!-- Header -->
+        <div class="section-header reveal">
+          <div class="section-eyebrow">✦ Về chúng tôi</div>
+          <h2 class="section-title">
+            StayEassy — <em>Đặt phòng</em> tin cậy số 1 Hà Nội
+          </h2>
+          <p
+            style="
+              max-width: 620px;
+              margin: 1rem auto 0;
+              color: var(--mist);
+              font-size: 0.95rem;
+              line-height: 1.75;
+            "
+          >
+            Được thành lập năm 2021 bởi nhóm sinh viên FIT – ĐH Đà Nẵng,
+            StayEassy ra đời với sứ mệnh đơn giản hóa việc tìm kiếm và đặt phòng
+            khách sạn tại Hà Nội — nhanh chóng, minh bạch và đáng tin cậy.
+          </p>
+        </div>
+
+        <!-- Story + Image -->
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 5rem;
+          "
+          class="reveal"
+        >
+          <div>
+            <div
+              style="
+                font-size: 0.75rem;
+                font-weight: 600;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                color: var(--gold);
+                margin-bottom: 0.75rem;
+              "
+            >
+              ✦ Câu chuyện của chúng tôi
+            </div>
+            <h3
+              style="
+                font-family: &quot;Cormorant Garamond&quot;, serif;
+                font-size: 2rem;
+                font-weight: 700;
+                color: var(--ink);
+                line-height: 1.2;
+                margin-bottom: 1.25rem;
+              "
+            >
+              Từ dự án nhỏ đến
+              <em style="color: var(--gold-dark)">nền tảng</em> được tin yêu
+            </h3>
+            <p
+              style="
+                color: var(--mist);
+                font-size: 0.92rem;
+                line-height: 1.8;
+                margin-bottom: 1rem;
+              "
+            >
+              Khởi đầu từ môn học Phát triển Web tại FIT–DNU, chúng tôi nhận ra
+              rằng người dùng Việt Nam cần một nền tảng đặt phòng đơn giản, bản
+              địa hóa và không rườm rà. StayEassy được xây dựng hoàn toàn bằng
+              HTML/CSS/JS thuần — không framework nặng nề, tối ưu tốc độ tải
+              trên mọi thiết bị.
+            </p>
+            <p
+              style="
+                color: var(--mist);
+                font-size: 0.92rem;
+                line-height: 1.8;
+                margin-bottom: 1.75rem;
+              "
+            >
+              Hệ thống tích hợp API khách sạn thời gian thực, cho phép bạn tra
+              cứu phòng trống, giá cả và đặt phòng chỉ trong vài chạm. Mọi giao
+              dịch đều được mã hóa và lưu trữ an toàn trên hệ thống đám mây.
+            </p>
+            <!-- Mini stats -->
+            <div style="display: flex; gap: 2rem">
+              <div>
+                <div
+                  style="
+                    font-family: &quot;Cormorant Garamond&quot;, serif;
+                    font-size: 2rem;
+                    font-weight: 700;
+                    color: var(--gold);
+                  "
+                >
+                  3+
+                </div>
+                <div style="font-size: 0.75rem; color: var(--mist)">
+                  Năm hoạt động
+                </div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-family: &quot;Cormorant Garamond&quot;, serif;
+                    font-size: 2rem;
+                    font-weight: 700;
+                    color: var(--gold);
+                  "
+                >
+                  800+
+                </div>
+                <div style="font-size: 0.75rem; color: var(--mist)">
+                  Đối tác khách sạn
+                </div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-family: &quot;Cormorant Garamond&quot;, serif;
+                    font-size: 2rem;
+                    font-weight: 700;
+                    color: var(--gold);
+                  "
+                >
+                  99.8%
+                </div>
+                <div style="font-size: 0.75rem; color: var(--mist)">
+                  Uptime hệ thống
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem">
+            <div style="border-radius: 20px; overflow: hidden; height: 200px">
+              <img
+                src="https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=500&q=80"
+                alt="Hà Nội"
+                style="width: 100%; height: 100%; object-fit: cover"
+              />
+            </div>
+            <div
+              style="
+                border-radius: 20px;
+                overflow: hidden;
+                height: 200px;
+                margin-top: 1.5rem;
+              "
+            >
+              <img
+                src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&q=80"
+                alt="Hotel"
+                style="width: 100%; height: 100%; object-fit: cover"
+              />
+            </div>
+            <div style="border-radius: 20px; overflow: hidden; height: 160px">
+              <img
+                src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=500&q=80"
+                alt="Room"
+                style="width: 100%; height: 100%; object-fit: cover"
+              />
+            </div>
+            <div
+              style="
+                border-radius: 20px;
+                overflow: hidden;
+                height: 160px;
+                margin-top: -1.5rem;
+              "
+            >
+              <img
+                src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&q=80"
+                alt="Pool"
+                style="width: 100%; height: 100%; object-fit: cover"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Trust Badges / Certifications -->
+        <div class="reveal" style="margin-bottom: 5rem">
+          <div style="text-align: center; margin-bottom: 2.5rem">
+            <div class="section-eyebrow">✦ Chứng nhận & Uy tín</div>
+            <h3
+              style="
+                font-family: &quot;Cormorant Garamond&quot;, serif;
+                font-size: 1.8rem;
+                font-weight: 700;
+                color: var(--ink);
+              "
+            >
+              Được công nhận bởi các <em>tổ chức uy tín</em>
+            </h3>
+          </div>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(4, 1fr);
+              gap: 1.25rem;
+            "
+          >
+            <div
+              style="
+                background: var(--parchment);
+                border-radius: 20px;
+                padding: 1.75rem 1.25rem;
+                text-align: center;
+                border: 1px solid rgba(200, 169, 110, 0.2);
+                transition:
+                  transform 0.3s,
+                  box-shadow 0.3s;
+              "
+              onmouseover="
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 16px 40px rgba(26,22,20,0.1)';
+              "
+              onmouseout="
+                this.style.transform = '';
+                this.style.boxShadow = '';
+              "
+            >
+              <div
+                style="
+                  width: 56px;
+                  height: 56px;
+                  background: linear-gradient(135deg, #1a6fe8, #0d4fb5);
+                  border-radius: 14px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-size: 1.6rem;
+                  margin: 0 auto 1rem;
+                "
+              >
+                🔒
+              </div>
+              <div
+                style="
+                  font-family: &quot;Cormorant Garamond&quot;, serif;
+                  font-size: 1rem;
+                  font-weight: 700;
+                  color: var(--ink);
+                  margin-bottom: 0.4rem;
+                "
+              >
+                SSL Secured
+              </div>
+              <div
+                style="font-size: 0.75rem; color: var(--mist); line-height: 1.5"
+              >
+                Mã hóa 256-bit toàn bộ giao dịch & dữ liệu người dùng
+              </div>
+              <div
+                style="
+                  margin-top: 0.75rem;
+                  display: inline-block;
+                  padding: 0.25rem 0.75rem;
+                  background: #e8f0fe;
+                  border-radius: 2rem;
+                  font-size: 0.68rem;
+                  font-weight: 600;
+                  color: #1a6fe8;
+                "
+              >
+                ✓ Xác nhận
+              </div>
+            </div>
+
+            <div
+              style="
+                background: var(--parchment);
+                border-radius: 20px;
+                padding: 1.75rem 1.25rem;
+                text-align: center;
+                border: 1px solid rgba(200, 169, 110, 0.2);
+                transition:
+                  transform 0.3s,
+                  box-shadow 0.3s;
+              "
+              onmouseover="
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 16px 40px rgba(26,22,20,0.1)';
+              "
+              onmouseout="
+                this.style.transform = '';
+                this.style.boxShadow = '';
+              "
+            >
+              <div
+                style="
+                  width: 56px;
+                  height: 56px;
+                  background: linear-gradient(135deg, #d4a017, #a87900);
+                  border-radius: 14px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-size: 1.6rem;
+                  margin: 0 auto 1rem;
+                "
+              >
+                🏆
+              </div>
+              <div
+                style="
+                  font-family: &quot;Cormorant Garamond&quot;, serif;
+                  font-size: 1rem;
+                  font-weight: 700;
+                  color: var(--ink);
+                  margin-bottom: 0.4rem;
+                "
+              >
+                Top 10 Travel Tech
+              </div>
+              <div
+                style="font-size: 0.75rem; color: var(--mist); line-height: 1.5"
+              >
+                Vietnam Travel Awards 2024 – Hạng mục Nền tảng đặt phòng xuất
+                sắc
+              </div>
+              <div
+                style="
+                  margin-top: 0.75rem;
+                  display: inline-block;
+                  padding: 0.25rem 0.75rem;
+                  background: #fff8e1;
+                  border-radius: 2rem;
+                  font-size: 0.68rem;
+                  font-weight: 600;
+                  color: #a87900;
+                "
+              >
+                ✓ 2024
+              </div>
+            </div>
+
+            <div
+              style="
+                background: var(--parchment);
+                border-radius: 20px;
+                padding: 1.75rem 1.25rem;
+                text-align: center;
+                border: 1px solid rgba(200, 169, 110, 0.2);
+                transition:
+                  transform 0.3s,
+                  box-shadow 0.3s;
+              "
+              onmouseover="
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 16px 40px rgba(26,22,20,0.1)';
+              "
+              onmouseout="
+                this.style.transform = '';
+                this.style.boxShadow = '';
+              "
+            >
+              <div
+                style="
+                  width: 56px;
+                  height: 56px;
+                  background: linear-gradient(135deg, #2d7a5f, #1a5c46);
+                  border-radius: 14px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-size: 1.6rem;
+                  margin: 0 auto 1rem;
+                "
+              >
+                🇻🇳
+              </div>
+              <div
+                style="
+                  font-family: &quot;Cormorant Garamond&quot;, serif;
+                  font-size: 1rem;
+                  font-weight: 700;
+                  color: var(--ink);
+                  margin-bottom: 0.4rem;
+                "
+              >
+                Bộ VHTT&DL
+              </div>
+              <div
+                style="font-size: 0.75rem; color: var(--mist); line-height: 1.5"
+              >
+                Được cấp phép kinh doanh dịch vụ du lịch trực tuyến bởi Bộ Văn
+                hóa
+              </div>
+              <div
+                style="
+                  margin-top: 0.75rem;
+                  display: inline-block;
+                  padding: 0.25rem 0.75rem;
+                  background: #e8f5f0;
+                  border-radius: 2rem;
+                  font-size: 0.68rem;
+                  font-weight: 600;
+                  color: #2d7a5f;
+                "
+              >
+                ✓ Hợp lệ
+              </div>
+            </div>
+
+            <div
+              style="
+                background: var(--parchment);
+                border-radius: 20px;
+                padding: 1.75rem 1.25rem;
+                text-align: center;
+                border: 1px solid rgba(200, 169, 110, 0.2);
+                transition:
+                  transform 0.3s,
+                  box-shadow 0.3s;
+              "
+              onmouseover="
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 16px 40px rgba(26,22,20,0.1)';
+              "
+              onmouseout="
+                this.style.transform = '';
+                this.style.boxShadow = '';
+              "
+            >
+              <div
+                style="
+                  width: 56px;
+                  height: 56px;
+                  background: linear-gradient(135deg, #c0392b, #922b21);
+                  border-radius: 14px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-size: 1.6rem;
+                  margin: 0 auto 1rem;
+                "
+              >
+                ⭐
+              </div>
+              <div
+                style="
+                  font-family: &quot;Cormorant Garamond&quot;, serif;
+                  font-size: 1rem;
+                  font-weight: 700;
+                  color: var(--ink);
+                  margin-bottom: 0.4rem;
+                "
+              >
+                4.9 / 5 Sao
+              </div>
+              <div
+                style="font-size: 0.75rem; color: var(--mist); line-height: 1.5"
+              >
+                Xếp hạng trung bình từ 48.000+ đánh giá thực của khách hàng
+              </div>
+              <div
+                style="
+                  margin-top: 0.75rem;
+                  display: inline-block;
+                  padding: 0.25rem 0.75rem;
+                  background: #fef0ee;
+                  border-radius: 2rem;
+                  font-size: 0.68rem;
+                  font-weight: 600;
+                  color: #c0392b;
+                "
+              >
+                ★★★★★
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team -->
+        <div class="reveal" style="margin-bottom: 4rem">
+          <div style="text-align: center; margin-bottom: 2.5rem">
+            <div class="section-eyebrow">✦ Đội ngũ phát triển</div>
+            <h3
+              style="
+                font-family: &quot;Cormorant Garamond&quot;, serif;
+                font-size: 1.8rem;
+                font-weight: 700;
+                color: var(--ink);
+              "
+            >
+              Những <em>con người</em> đằng sau StayEassy
+            </h3>
+          </div>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 1.5rem;
+              max-width: 800px;
+              margin: 0 auto;
+            "
+          >
+            <div
+              style="
+                background: var(--parchment);
+                border-radius: 20px;
+                padding: 2rem 1.25rem;
+                text-align: center;
+                border: 1px solid rgba(200, 169, 110, 0.15);
+              "
+            >
+              <div
+                style="
+                  width: 72px;
+                  height: 72px;
+                  background: linear-gradient(
+                    135deg,
+                    var(--gold),
+                    var(--gold-dark)
+                  );
+                  border-radius: 50%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-family: &quot;Cormorant Garamond&quot;, serif;
+                  font-size: 1.6rem;
+                  font-weight: 700;
+                  color: var(--ink);
+                  margin: 0 auto 1rem;
+                "
+              >
+                HV
+              </div>
+              <div
+                style="
+                  font-family: &quot;Cormorant Garamond&quot;, serif;
+                  font-size: 1.05rem;
+                  font-weight: 700;
+                  color: var(--ink);
+                "
+              >
+                Nguyễn Văn Huy
+              </div>
+              <div
+                style="
+                  font-size: 0.72rem;
+                  color: var(--gold-dark);
+                  font-weight: 600;
+                  margin: 0.3rem 0 0.6rem;
+                  letter-spacing: 0.05em;
+                  text-transform: uppercase;
+                "
+              >
+                Lead Developer
+              </div>
+              <div
+                style="font-size: 0.75rem; color: var(--mist); line-height: 1.5"
+              >
+                MSSV: 197102021 8
+              </div>
+              <div
+                style="
+                  margin-top: 0.75rem;
+                  display: flex;
+                  gap: 0.4rem;
+                  justify-content: center;
+                  flex-wrap: wrap;
+                "
+              >
+                <span
+                  style="
+                    background: rgba(200, 169, 110, 0.15);
+                    color: var(--gold-dark);
+                    font-size: 0.65rem;
+                    padding: 0.2rem 0.6rem;
+                    border-radius: 2rem;
+                    font-weight: 600;
+                  "
+                  >Frontend</span
+                >
+                <span
+                  style="
+                    background: rgba(200, 169, 110, 0.15);
+                    color: var(--gold-dark);
+                    font-size: 0.65rem;
+                    padding: 0.2rem 0.6rem;
+                    border-radius: 2rem;
+                    font-weight: 600;
+                  "
+                  >API</span
+                >
+              </div>
+            </div>
+
+            <div
+              style="
+                background: var(--parchment);
+                border-radius: 20px;
+                padding: 2rem 1.25rem;
+                text-align: center;
+                border: 1px solid rgba(200, 169, 110, 0.15);
+              "
+            >
+              <div
+                style="
+                  width: 72px;
+                  height: 72px;
+                  background: linear-gradient(135deg, var(--jade), #1a5c46);
+                  border-radius: 50%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-family: &quot;Cormorant Garamond&quot;, serif;
+                  font-size: 1.6rem;
+                  font-weight: 700;
+                  color: #fff;
+                  margin: 0 auto 1rem;
+                "
+              >
+                TL
+              </div>
+              <div
+                style="
+                  font-family: &quot;Cormorant Garamond&quot;, serif;
+                  font-size: 1.05rem;
+                  font-weight: 700;
+                  color: var(--ink);
+                "
+              >
+                Nguyễn Thắng Long
+              </div>
+              <div
+                style="
+                  font-size: 0.72rem;
+                  color: var(--jade);
+                  font-weight: 600;
+                  margin: 0.3rem 0 0.6rem;
+                  letter-spacing: 0.05em;
+                  text-transform: uppercase;
+                "
+              >
+                UI/UX Designer
+              </div>
+              <div
+                style="font-size: 0.75rem; color: var(--mist); line-height: 1.5"
+              >
+                MSSV: 197102028 3
+              </div>
+              <div
+                style="
+                  margin-top: 0.75rem;
+                  display: flex;
+                  gap: 0.4rem;
+                  justify-content: center;
+                  flex-wrap: wrap;
+                "
+              >
+                <span
+                  style="
+                    background: rgba(45, 122, 95, 0.1);
+                    color: var(--jade);
+                    font-size: 0.65rem;
+                    padding: 0.2rem 0.6rem;
+                    border-radius: 2rem;
+                    font-weight: 600;
+                  "
+                  >Design</span
+                >
+                <span
+                  style="
+                    background: rgba(45, 122, 95, 0.1);
+                    color: var(--jade);
+                    font-size: 0.65rem;
+                    padding: 0.2rem 0.6rem;
+                    border-radius: 2rem;
+                    font-weight: 600;
+                  "
+                  >CSS</span
+                >
+              </div>
+            </div>
+
+            <div
+              style="
+                background: var(--parchment);
+                border-radius: 20px;
+                padding: 2rem 1.25rem;
+                text-align: center;
+                border: 1px solid rgba(200, 169, 110, 0.15);
+              "
+            >
+              <div
+                style="
+                  width: 72px;
+                  height: 72px;
+                  background: linear-gradient(135deg, var(--red-viet), #922b21);
+                  border-radius: 50%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-family: &quot;Cormorant Garamond&quot;, serif;
+                  font-size: 1.6rem;
+                  font-weight: 700;
+                  color: #fff;
+                  margin: 0 auto 1rem;
+                "
+              >
+                MQ
+              </div>
+              <div
+                style="
+                  font-family: &quot;Cormorant Garamond&quot;, serif;
+                  font-size: 1.05rem;
+                  font-weight: 700;
+                  color: var(--ink);
+                "
+              >
+                Trần Minh Quân
+              </div>
+              <div
+                style="
+                  font-size: 0.72rem;
+                  color: var(--red-viet);
+                  font-weight: 600;
+                  margin: 0.3rem 0 0.6rem;
+                  letter-spacing: 0.05em;
+                  text-transform: uppercase;
+                "
+              >
+                Backend / API
+              </div>
+              <div
+                style="font-size: 0.75rem; color: var(--mist); line-height: 1.5"
+              >
+                MSSV: 197102038 8
+              </div>
+              <div
+                style="
+                  margin-top: 0.75rem;
+                  display: flex;
+                  gap: 0.4rem;
+                  justify-content: center;
+                  flex-wrap: wrap;
+                "
+              >
+                <span
+                  style="
+                    background: rgba(192, 57, 43, 0.1);
+                    color: var(--red-viet);
+                    font-size: 0.65rem;
+                    padding: 0.2rem 0.6rem;
+                    border-radius: 2rem;
+                    font-weight: 600;
+                  "
+                  >MockAPI</span
+                >
+                <span
+                  style="
+                    background: rgba(192, 57, 43, 0.1);
+                    color: var(--red-viet);
+                    font-size: 0.65rem;
+                    padding: 0.2rem 0.6rem;
+                    border-radius: 2rem;
+                    font-weight: 600;
+                  "
+                  >JS Logic</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Values -->
+        <div class="reveal">
+          <div
+            style="
+              background: var(--ink);
+              border-radius: 28px;
+              padding: 3.5rem;
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 2rem;
+              border: 1px solid rgba(200, 169, 110, 0.15);
+              position: relative;
+              overflow: hidden;
+            "
+          >
+            <div
+              style="
+                position: absolute;
+                top: -60px;
+                right: -60px;
+                width: 300px;
+                height: 300px;
+                border-radius: 50%;
+                background: radial-gradient(
+                  circle,
+                  rgba(200, 169, 110, 0.08),
+                  transparent 70%
+                );
+                pointer-events: none;
+              "
+            ></div>
+            <div>
+              <div style="font-size: 2rem; margin-bottom: 0.75rem">🤝</div>
+              <div
+                style="
+                  font-family: &quot;Cormorant Garamond&quot;, serif;
+                  font-size: 1.15rem;
+                  font-weight: 700;
+                  color: var(--gold);
+                  margin-bottom: 0.5rem;
+                "
+              >
+                Minh bạch 100%
+              </div>
+              <div
+                style="
+                  font-size: 0.82rem;
+                  color: rgba(255, 255, 255, 0.5);
+                  line-height: 1.7;
+                "
+              >
+                Không phí ẩn, không bẫy giá. Giá hiển thị là giá thanh toán cuối
+                cùng của bạn.
+              </div>
+            </div>
+            <div>
+              <div style="font-size: 2rem; margin-bottom: 0.75rem">⚡</div>
+              <div
+                style="
+                  font-family: &quot;Cormorant Garamond&quot;, serif;
+                  font-size: 1.15rem;
+                  font-weight: 700;
+                  color: var(--gold);
+                  margin-bottom: 0.5rem;
+                "
+              >
+                Đặt phòng tức thì
+              </div>
+              <div
+                style="
+                  font-size: 0.82rem;
+                  color: rgba(255, 255, 255, 0.5);
+                  line-height: 1.7;
+                "
+              >
+                Xác nhận đặt phòng ngay lập tức qua hệ thống API thời gian thực,
+                không cần chờ đợi.
+              </div>
+            </div>
+            <div>
+              <div style="font-size: 2rem; margin-bottom: 0.75rem">📞</div>
+              <div
+                style="
+                  font-family: &quot;Cormorant Garamond&quot;, serif;
+                  font-size: 1.15rem;
+                  font-weight: 700;
+                  color: var(--gold);
+                  margin-bottom: 0.5rem;
+                "
+              >
+                Hỗ trợ 24/7
+              </div>
+              <div
+                style="
+                  font-size: 0.82rem;
+                  color: rgba(255, 255, 255, 0.5);
+                  line-height: 1.7;
+                "
+              >
+                Đội ngũ hỗ trợ sẵn sàng 24/7 qua chat, email và điện thoại để
+                giải quyết mọi vấn đề.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer>
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="nav-logo">Stay<span>Eassy</span></div>
+          <p>
+            Nền tảng đặt phòng khách sạn hàng đầu tại Hà Nội. Tìm kiếm, so sánh
+            và đặt phòng trong vài giây.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Khám phá</h4>
+          <ul>
+            <li><a href="#">Khách sạn 5 sao</a></li>
+            <li><a href="#">Boutique Hotel</a></li>
+            <li><a href="#">Phố cổ Hà Nội</a></li>
+            <li><a href="#villas">🏡 Biệt thự</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Hỗ trợ</h4>
+          <ul>
+            <li><a href="#">Trung tâm trợ giúp</a></li>
+            <li><a href="#">Chính sách hủy phòng</a></li>
+            <li><a href="#">Liên hệ</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Công ty</h4>
+          <ul>
+            <li><a href="#about">Về chúng tôi</a></li>
+            <li><a href="#">Tuyển dụng</a></li>
+            <li><a href="#">Đối tác</a></li>
+            <li><a href="#">Blog du lịch</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 StayEassy. Bảo lưu mọi quyền.</span>
+        <span>🇻🇳 Việt Nam · VNĐ · Tiếng Việt</span>
+      </div>
+    </footer>
+
+    <!-- ── AUTH MODAL ── -->
+    <div id="authOverlay" onclick="if (event.target === this) closeAuth();">
+      <div id="authModal">
+        <div class="auth-header">
+          <div class="auth-hero-img"></div>
+          <div class="auth-header-content">
+            <button class="auth-close" onclick="closeAuth()">✕</button>
+            <div class="auth-logo">Stay<span>Eassy</span></div>
+            <div class="auth-tabs">
+              <button
+                id="tabLogin"
+                class="auth-tab active"
+                onclick="switchAuthTab('login')"
+              >
+                Đăng nhập
+              </button>
+              <button
+                id="tabRegister"
+                class="auth-tab"
+                onclick="switchAuthTab('register')"
+              >
+                Đăng ký
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="auth-body">
+          <!-- SOCIAL -->
+          <button class="social-btn google" onclick="socialLogin('Google')">
+            <svg width="18" height="18" viewBox="0 0 24 24">
+              <path
+                fill="#DB4437"
+                d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+              />
+              <path
+                fill="#4285F4"
+                d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+              />
+              <path
+                fill="#FBBC05"
+                d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+              />
+              <path
+                fill="#34A853"
+                d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+              />
+            </svg>
+            Tiếp tục với Google
+          </button>
+          <button class="social-btn facebook" onclick="socialLogin('Facebook')">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#1877F2">
+              <path
+                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+              />
+            </svg>
+            Tiếp tục với Facebook
+          </button>
+          <div class="divider"><span>hoặc</span></div>
+
+          <!-- LOGIN FORM -->
+          <div id="loginForm">
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input
+                id="loginEmail"
+                class="form-input"
+                type="email"
+                placeholder="your@email.com"
+              />
+            </div>
+            <div class="form-group">
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  margin-bottom: 0.4rem;
+                "
+              >
+                <label class="form-label">Mật khẩu</label>
+                <button
+                  onclick="showToast('📧 Link đặt lại mật khẩu đã được gửi!')"
+                  style="
+                    font-size: 0.75rem;
+                    color: var(--gold-dark);
+                    border: none;
+                    background: none;
+                    cursor: pointer;
+                    font-family: &quot;DM Sans&quot;, sans-serif;
+                  "
+                >
+                  Quên mật khẩu?
+                </button>
+              </div>
+              <div class="form-input-wrap">
+                <input
+                  id="loginPass"
+                  class="form-input"
+                  type="password"
+                  placeholder="••••••••"
+                />
+                <button
+                  class="toggle-pass"
+                  onclick="togglePass('loginPass', this)"
+                >
+                  👁
+                </button>
+              </div>
+            </div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                margin-bottom: 1.25rem;
+              "
+            >
+              <input
+                type="checkbox"
+                id="rememberMe"
+                style="
+                  width: 16px;
+                  height: 16px;
+                  accent-color: var(--gold);
+                  cursor: pointer;
+                "
+              />
+              <label
+                for="rememberMe"
+                style="font-size: 0.82rem; color: var(--mist); cursor: pointer"
+                >Ghi nhớ đăng nhập</label
+              >
+            </div>
+            <button onclick="doLogin()" id="loginBtn" class="submit-btn">
+              Đăng nhập
+            </button>
+            <p class="switch-link">
+              Chưa có tài khoản?
+              <button onclick="switchAuthTab('register')">Đăng ký ngay</button>
+            </p>
+          </div>
+
+          <!-- REGISTER FORM -->
+          <div id="registerForm" style="display: none">
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 0.75rem;
+                margin-bottom: 1rem;
+              "
+            >
+              <div class="form-group" style="margin-bottom: 0">
+                <label class="form-label">Họ</label>
+                <input
+                  id="regLast"
+                  class="form-input"
+                  type="text"
+                  placeholder="Nguyễn"
+                />
+              </div>
+              <div class="form-group" style="margin-bottom: 0">
+                <label class="form-label">Tên</label>
+                <input
+                  id="regFirst"
+                  class="form-input"
+                  type="text"
+                  placeholder="Văn An"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input
+                id="regEmail"
+                class="form-input"
+                type="email"
+                placeholder="your@email.com"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Số điện thoại</label>
+              <div style="display: flex; gap: 0.5rem">
+                <div
+                  style="
+                    background: var(--parchment);
+                    border-radius: 12px;
+                    padding: 0.75rem 1rem;
+                    font-size: 0.875rem;
+                    color: var(--ink-soft);
+                    white-space: nowrap;
+                    border: 1.5px solid transparent;
+                  "
+                >
+                  🇻🇳 +84
+                </div>
+                <input
+                  id="regPhone"
+                  class="form-input"
+                  type="tel"
+                  placeholder="09xxxxxxxx"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Mật khẩu</label>
+              <div class="form-input-wrap">
+                <input
+                  id="regPass"
+                  class="form-input"
+                  type="password"
+                  placeholder="Tối thiểu 8 ký tự"
+                  oninput="checkStrength(this.value)"
+                />
+                <button
+                  class="toggle-pass"
+                  onclick="togglePass('regPass', this)"
+                >
+                  👁
+                </button>
+              </div>
+              <div class="strength-bar" id="strengthBar">
+                <div class="sb"></div>
+                <div class="sb"></div>
+                <div class="sb"></div>
+                <div class="sb"></div>
+              </div>
+              <div
+                id="strengthLabel"
+                style="
+                  font-size: 0.72rem;
+                  color: var(--mist);
+                  margin-top: 0.25rem;
+                "
+              ></div>
+            </div>
+            <div
+              style="
+                display: flex;
+                align-items: flex-start;
+                gap: 0.6rem;
+                margin-bottom: 1.25rem;
+              "
+            >
+              <input
+                type="checkbox"
+                id="agreeTerms"
+                style="
+                  width: 16px;
+                  height: 16px;
+                  margin-top: 2px;
+                  accent-color: var(--gold);
+                  cursor: pointer;
+                  flex-shrink: 0;
+                "
+              />
+              <label
+                for="agreeTerms"
+                style="
+                  font-size: 0.8rem;
+                  color: var(--mist);
+                  cursor: pointer;
+                  line-height: 1.5;
+                "
+                >Tôi đồng ý với
+                <button
+                  onclick="showToast('📄 Điều khoản sử dụng')"
+                  style="
+                    border: none;
+                    background: none;
+                    color: var(--gold-dark);
+                    font-weight: 600;
+                    cursor: pointer;
+                    font-size: 0.8rem;
+                  "
+                >
+                  Điều khoản dịch vụ
+                </button>
+                và
+                <button
+                  onclick="showToast('🔒 Chính sách bảo mật')"
+                  style="
+                    border: none;
+                    background: none;
+                    color: var(--gold-dark);
+                    font-weight: 600;
+                    cursor: pointer;
+                    font-size: 0.8rem;
+                  "
+                >
+                  Chính sách bảo mật
+                </button></label
+              >
+            </div>
+            <button onclick="doRegister()" class="submit-btn">
+              Tạo tài khoản
+            </button>
+            <p class="switch-link">
+              Đã có tài khoản?
+              <button onclick="switchAuthTab('login')">Đăng nhập</button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── MY BOOKINGS MODAL ── -->
+    <div
+      id="bookingsOverlay"
+      onclick="if (event.target === this) closeBookings();"
+      style="
+        position: fixed;
+        inset: 0;
+        z-index: 500;
+        background: rgba(26, 22, 20, 0.8);
+        backdrop-filter: blur(16px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      "
+    >
+      <div
+        id="bookingsModal"
+        style="
+          background: var(--white);
+          border-radius: 28px;
+          width: min(600px, 96vw);
+          max-height: 85vh;
+          overflow: hidden;
+          transform: scale(0.92) translateY(20px);
+          transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+          box-shadow: 0 32px 80px rgba(0, 0, 0, 0.3);
+          display: flex;
+          flex-direction: column;
+        "
+      >
+        <div
+          style="
+            background: var(--ink);
+            padding: 1.75rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+          "
+        >
+          <div>
+            <div
+              style="
+                font-family: &quot;Cormorant Garamond&quot;, serif;
+                font-size: 1.4rem;
+                font-weight: 700;
+                color: var(--gold);
+              "
+            >
+              🏨 Đặt phòng của tôi
+            </div>
+            <div
+              id="bookingSubtitle"
+              style="
+                font-size: 0.78rem;
+                color: rgba(255, 255, 255, 0.5);
+                margin-top: 0.2rem;
+              "
+            >
+              Đang tải dữ liệu...
+            </div>
+          </div>
+          <button
+            onclick="closeBookings()"
+            style="
+              width: 34px;
+              height: 34px;
+              border-radius: 50%;
+              border: 1px solid rgba(255, 255, 255, 0.2);
+              background: rgba(255, 255, 255, 0.08);
+              color: rgba(255, 255, 255, 0.7);
+              font-size: 1rem;
+              cursor: pointer;
+            "
+          >
+            ✕
+          </button>
+        </div>
+        <div
+          id="bookingsList"
+          style="overflow-y: auto; padding: 1.5rem; flex: 1"
+        >
+          <div
+            style="text-align: center; padding: 3rem 1rem; color: var(--mist)"
+          >
+            ⏳ Đang tải đặt phòng...
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── BOOKING FORM MODAL ── -->
+    <div
+      id="bookFormOverlay"
+      onclick="if (event.target === this) closeBookForm();"
+      style="
+        position: fixed;
+        inset: 0;
+        z-index: 600;
+        background: rgba(26, 22, 20, 0.85);
+        backdrop-filter: blur(16px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      "
+    >
+      <div
+        id="bookFormModal"
+        style="
+          background: var(--white);
+          border-radius: 28px;
+          width: min(480px, 96vw);
+          overflow: hidden;
+          transform: scale(0.92) translateY(20px);
+          transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+          box-shadow: 0 32px 80px rgba(0, 0, 0, 0.3);
+        "
+      >
+        <div
+          style="
+            background: var(--ink);
+            padding: 1.75rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          "
+        >
+          <div>
+            <div
+              style="
+                font-family: &quot;Cormorant Garamond&quot;, serif;
+                font-size: 1.4rem;
+                font-weight: 700;
+                color: var(--gold);
+              "
+            >
+              Đặt phòng
+            </div>
+            <div
+              id="bookFormHotelName"
+              style="
+                font-size: 0.82rem;
+                color: rgba(255, 255, 255, 0.6);
+                margin-top: 0.2rem;
+              "
+            ></div>
+          </div>
+          <button
+            onclick="closeBookForm()"
+            style="
+              width: 34px;
+              height: 34px;
+              border-radius: 50%;
+              border: 1px solid rgba(255, 255, 255, 0.2);
+              background: rgba(255, 255, 255, 0.08);
+              color: rgba(255, 255, 255, 0.7);
+              font-size: 1rem;
+              cursor: pointer;
+            "
+          >
+            ✕
+          </button>
+        </div>
+        <div style="padding: 1.75rem 2rem">
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 1rem;
+              margin-bottom: 1rem;
+            "
+          >
+            <div>
+              <label
+                class="form-label"
+                style="display: block; margin-bottom: 0.4rem"
+                >Nhận phòng</label
+              >
+              <input
+                id="bfCheckin"
+                class="form-input"
+                type="date"
+                style="
+                  width: 100%;
+                  padding: 0.75rem 1rem;
+                  background: var(--parchment);
+                  border: 1.5px solid transparent;
+                  border-radius: 12px;
+                  font-family: &quot;DM Sans&quot;, sans-serif;
+                  font-size: 0.9rem;
+                  color: var(--ink);
+                  outline: none;
+                "
+                onfocus="this.style.borderColor = 'var(--gold)'"
+                onblur="this.style.borderColor = 'transparent'"
+              />
+            </div>
+            <div>
+              <label
+                class="form-label"
+                style="display: block; margin-bottom: 0.4rem"
+                >Trả phòng</label
+              >
+              <input
+                id="bfCheckout"
+                class="form-input"
+                type="date"
+                style="
+                  width: 100%;
+                  padding: 0.75rem 1rem;
+                  background: var(--parchment);
+                  border: 1.5px solid transparent;
+                  border-radius: 12px;
+                  font-family: &quot;DM Sans&quot;, sans-serif;
+                  font-size: 0.9rem;
+                  color: var(--ink);
+                  outline: none;
+                "
+                onfocus="this.style.borderColor = 'var(--gold)'"
+                onblur="this.style.borderColor = 'transparent'"
+              />
+            </div>
+          </div>
+          <div style="margin-bottom: 1rem">
+            <label
+              class="form-label"
+              style="display: block; margin-bottom: 0.4rem"
+              >Số khách</label
+            >
+            <select
+              id="bfGuests"
+              style="
+                width: 100%;
+                padding: 0.75rem 1rem;
+                background: var(--parchment);
+                border: 1.5px solid transparent;
+                border-radius: 12px;
+                font-family: &quot;DM Sans&quot;, sans-serif;
+                font-size: 0.9rem;
+                color: var(--ink);
+                outline: none;
+                cursor: pointer;
+              "
+            >
+              <option value="1">1 khách</option>
+              <option value="2" selected>2 khách</option>
+              <option value="3">3 khách</option>
+              <option value="4">4 khách</option>
+              <option value="5">5+ khách</option>
+            </select>
+          </div>
+          <div style="margin-bottom: 1.5rem">
+            <label
+              class="form-label"
+              style="display: block; margin-bottom: 0.4rem"
+              >Ghi chú (tuỳ chọn)</label
+            >
+            <textarea
+              id="bfNote"
+              placeholder="Yêu cầu đặc biệt, giờ đến dự kiến..."
+              style="
+                width: 100%;
+                padding: 0.75rem 1rem;
+                background: var(--parchment);
+                border: 1.5px solid transparent;
+                border-radius: 12px;
+                font-family: &quot;DM Sans&quot;, sans-serif;
+                font-size: 0.9rem;
+                color: var(--ink);
+                outline: none;
+                resize: vertical;
+                min-height: 80px;
+              "
+              onfocus="this.style.borderColor = 'var(--gold)'"
+              onblur="this.style.borderColor = 'transparent'"
+            ></textarea>
+          </div>
+          <button
+            id="bfSubmitBtn"
+            onclick="submitBookingForm()"
+            style="
+              width: 100%;
+              padding: 0.9rem;
+              background: linear-gradient(
+                135deg,
+                var(--gold),
+                var(--gold-dark)
+              );
+              border: none;
+              border-radius: 14px;
+              font-family: &quot;DM Sans&quot;, sans-serif;
+              font-size: 0.95rem;
+              font-weight: 600;
+              color: var(--ink);
+              cursor: pointer;
+              transition:
+                transform 0.15s,
+                box-shadow 0.15s;
+            "
+            onmouseover="
+              this.style.transform = 'translateY(-2px)';
+              this.style.boxShadow = '0 8px 20px rgba(200,169,110,0.4)';
+            "
+            onmouseout="
+              this.style.transform = '';
+              this.style.boxShadow = '';
+            "
+          >
+            Xác nhận đặt phòng →
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── TOAST ── -->
+    <div class="toast" id="toast">
+      <span class="toast-icon">✦</span>
+      <span id="toastMsg">Thông báo</span>
+    </div>
+
+    <script src="./js/data.js"></script>
+    <script src="./js/ui.js"></script>
+    <script src="./js/auth.js"></script>
+    <script src="./js/booking.js"></script>
+  </body>
+</html>
