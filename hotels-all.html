@@ -1,0 +1,2234 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Tất cả 800+ khách sạn tại Hà Nội – StayEassy. Lọc theo hạng sao, khu vực, giá tiền. Đặt phòng tức thì."
+    />
+    <title>Tất cả khách sạn – StayEassy Hà Nội</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #1a1614;
+        --ink-soft: #3d3530;
+        --mist: #8a7d74;
+        --white: #faf9f7;
+        --parchment: #f0ebe3;
+        --gold: #c8a96e;
+        --gold-dark: #a8823a;
+        --jade: #2d7a5f;
+        --red-viet: #c0392b;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--white);
+        color: var(--ink);
+        min-height: 100vh;
+      }
+
+      /* NAV */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(26, 22, 20, 0.96);
+        backdrop-filter: blur(16px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.9rem 2.5rem;
+        border-bottom: 1px solid rgba(200, 169, 110, 0.15);
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .nav-logo {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.55rem;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: 0.02em;
+      }
+      .nav-logo span {
+        color: var(--gold);
+      }
+      .nav-links-sub {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+      }
+      .nav-links-sub a {
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 0.85rem;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .nav-links-sub a:hover {
+        color: var(--gold);
+      }
+      .nav-links-sub a.active {
+        color: var(--gold);
+        font-weight: 600;
+      }
+      .nav-back {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 0.85rem;
+        text-decoration: none;
+        padding: 0.45rem 0.9rem;
+        border-radius: 2rem;
+        border: 1px solid rgba(200, 169, 110, 0.25);
+        transition: all 0.2s;
+      }
+      .nav-back:hover {
+        color: var(--gold);
+        border-color: var(--gold);
+        background: rgba(200, 169, 110, 0.08);
+      }
+      .nav-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 40px;
+        height: 40px;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+      }
+      .nav-toggle span {
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: var(--gold);
+        border-radius: 2px;
+      }
+
+      /* HERO */
+      .page-hero {
+        background: linear-gradient(
+          135deg,
+          #1a1614 0%,
+          #2d1f0e 50%,
+          #1a1614 100%
+        );
+        padding: 4rem 2.5rem 3rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .page-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 80% 60% at 60% 50%,
+          rgba(200, 169, 110, 0.12) 0%,
+          transparent 70%
+        );
+      }
+      .page-hero::after {
+        content: "🏨";
+        position: absolute;
+        right: 5%;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: clamp(5rem, 12vw, 9rem);
+        opacity: 0.07;
+        pointer-events: none;
+      }
+      .page-hero-inner {
+        max-width: 1280px;
+        margin: 0 auto;
+        position: relative;
+      }
+      .page-eyebrow {
+        font-size: 0.72rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--gold);
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+      }
+      .page-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.15;
+        margin-bottom: 0.75rem;
+      }
+      .page-title em {
+        font-style: italic;
+        color: var(--gold);
+      }
+      .page-sub {
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 0.95rem;
+        max-width: 520px;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+      }
+      .hero-stats {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+      .hero-stat {
+        display: flex;
+        flex-direction: column;
+      }
+      .hero-stat-num {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--gold);
+        line-height: 1;
+      }
+      .hero-stat-label {
+        font-size: 0.72rem;
+        color: rgba(255, 255, 255, 0.45);
+        margin-top: 0.15rem;
+      }
+
+      /* FILTER BAR */
+      .filter-bar {
+        background: #fff;
+        border-bottom: 1px solid var(--parchment);
+        padding: 1rem 2.5rem;
+        position: sticky;
+        top: 65px;
+        z-index: 80;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      }
+      .filter-bar-label {
+        font-size: 0.78rem;
+        color: var(--mist);
+        font-weight: 500;
+        white-space: nowrap;
+      }
+      .pills {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        flex: 1;
+      }
+      .pill {
+        padding: 0.38rem 0.95rem;
+        border-radius: 2rem;
+        border: 1.5px solid var(--parchment);
+        background: #fff;
+        font-size: 0.8rem;
+        color: var(--ink-soft);
+        cursor: pointer;
+        transition: all 0.2s;
+        font-family: "DM Sans", sans-serif;
+        white-space: nowrap;
+      }
+      .pill:hover {
+        border-color: var(--gold);
+        color: var(--gold);
+      }
+      .pill.active {
+        background: var(--ink);
+        color: var(--gold);
+        border-color: var(--ink);
+      }
+      .sort-select {
+        padding: 0.38rem 0.8rem;
+        border-radius: 10px;
+        border: 1.5px solid var(--parchment);
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.8rem;
+        color: var(--ink-soft);
+        background: #fff;
+        cursor: pointer;
+        outline: none;
+      }
+      .result-count {
+        font-size: 0.8rem;
+        color: var(--mist);
+        white-space: nowrap;
+        font-weight: 600;
+      }
+
+      /* GRID */
+      .hotels-wrapper {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 2.5rem 2.5rem 4rem;
+      }
+      .hotel-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.75rem;
+      }
+
+      /* HOTEL CARD */
+      .hotel-card {
+        border-radius: 20px;
+        overflow: hidden;
+        background: #fff;
+        border: 1px solid var(--parchment);
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s;
+        cursor: pointer;
+      }
+      .hotel-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      }
+      .hotel-img-wrap {
+        position: relative;
+        height: 210px;
+        overflow: hidden;
+      }
+      .hotel-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+      .hotel-card:hover .hotel-img-wrap img {
+        transform: scale(1.06);
+      }
+      .hotel-badge {
+        position: absolute;
+        top: 0.85rem;
+        left: 0.85rem;
+        background: var(--ink);
+        color: var(--gold);
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        padding: 0.25rem 0.75rem;
+        border-radius: 2rem;
+      }
+      .hotel-fav {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        background: rgba(255, 255, 255, 0.18);
+        border: none;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        backdrop-filter: blur(8px);
+        transition: background 0.2s;
+      }
+      .hotel-fav:hover {
+        background: rgba(255, 255, 255, 0.32);
+      }
+      .hotel-body {
+        padding: 1.25rem;
+      }
+      .hotel-stars {
+        font-size: 0.75rem;
+        margin-bottom: 0.4rem;
+      }
+      .hotel-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--ink);
+        margin-bottom: 0.3rem;
+      }
+      .hotel-location {
+        font-size: 0.75rem;
+        color: var(--mist);
+        margin-bottom: 0.75rem;
+      }
+      .hotel-amenities {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        margin-bottom: 0.9rem;
+      }
+      .amenity-tag {
+        font-size: 0.65rem;
+        background: var(--parchment);
+        color: var(--ink-soft);
+        padding: 0.2rem 0.6rem;
+        border-radius: 2rem;
+      }
+      .hotel-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .hotel-price-label {
+        font-size: 0.65rem;
+        color: var(--mist);
+      }
+      .hotel-price {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .hotel-price span {
+        font-size: 0.72rem;
+        font-weight: 400;
+        color: var(--mist);
+      }
+      .hotel-rating {
+        background: var(--jade);
+        color: #fff;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 0.2rem 0.6rem;
+        border-radius: 6px;
+      }
+      .book-btn {
+        padding: 0.5rem 1.1rem;
+        background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+        border: none;
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 0.78rem;
+        color: var(--ink);
+        cursor: pointer;
+        transition: opacity 0.2s;
+        font-family: "DM Sans", sans-serif;
+      }
+      .book-btn:hover {
+        opacity: 0.88;
+      }
+
+      /* SECTION DIVIDER */
+      .section-divider {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin: 3rem 0 1.75rem;
+      }
+      .section-divider h3 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      .section-divider h3 em {
+        font-style: italic;
+        color: var(--gold);
+      }
+      .section-divider-line {
+        flex: 1;
+        height: 1px;
+        background: var(--parchment);
+      }
+
+      /* SEARCH ROW */
+      .search-row {
+        display: flex;
+        gap: 0.75rem;
+        align-items: center;
+        background: var(--parchment);
+        border-radius: 14px;
+        padding: 0.6rem 1rem;
+        margin-bottom: 1.75rem;
+      }
+      .search-row input {
+        flex: 1;
+        border: none;
+        background: transparent;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.9rem;
+        color: var(--ink);
+        outline: none;
+      }
+      .search-row input::placeholder {
+        color: var(--mist);
+      }
+
+      /* PRICE RANGE */
+      .price-filter {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .price-filter select {
+        padding: 0.38rem 0.7rem;
+        border-radius: 10px;
+        border: 1.5px solid var(--parchment);
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.78rem;
+        color: var(--ink-soft);
+        background: #fff;
+        cursor: pointer;
+        outline: none;
+      }
+
+      /* EMPTY STATE */
+      .empty-state {
+        grid-column: 1/-1;
+        text-align: center;
+        padding: 4rem 1rem;
+      }
+      .empty-state .emoji {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+      .empty-state p {
+        color: var(--mist);
+        font-size: 0.9rem;
+      }
+
+      /* TOAST */
+      #toast {
+        position: fixed;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%) translateY(1rem);
+        background: var(--ink);
+        color: #fff;
+        padding: 0.75rem 1.5rem;
+        border-radius: 2rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        z-index: 9999;
+        opacity: 0;
+        transition:
+          opacity 0.3s,
+          transform 0.3s;
+        pointer-events: none;
+        border: 1px solid rgba(200, 169, 110, 0.3);
+        white-space: nowrap;
+      }
+      #toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      /* OVERLAY & MODAL */
+      .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(26, 22, 20, 0.75);
+        backdrop-filter: blur(8px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 500;
+        opacity: 0;
+        transition: opacity 0.3s;
+        padding: 1rem;
+        pointer-events: none;
+      }
+      .modal {
+        background: var(--white);
+        border-radius: 24px;
+        width: 100%;
+        max-width: 480px;
+        box-shadow: 0 32px 80px rgba(0, 0, 0, 0.3);
+        transform: scale(0.92) translateY(20px);
+        transition: transform 0.3s;
+        overflow: hidden;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+      .modal-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.5rem 1.75rem;
+        border-bottom: 1px solid var(--parchment);
+        position: sticky;
+        top: 0;
+        background: var(--white);
+        z-index: 2;
+      }
+      .modal-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.35rem;
+        font-weight: 700;
+      }
+      .modal-close {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        border: 1.5px solid var(--parchment);
+        background: transparent;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .modal-close:hover {
+        background: #fff0f0;
+        border-color: #fca5a5;
+      }
+      .modal-body {
+        padding: 1.5rem 1.75rem;
+      }
+      .form-group {
+        margin-bottom: 1rem;
+      }
+      .form-label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--ink);
+        display: block;
+        margin-bottom: 0.4rem;
+      }
+      .form-input {
+        width: 100%;
+        padding: 0.65rem 1rem;
+        border: 1.5px solid var(--parchment);
+        border-radius: 12px;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.875rem;
+        color: var(--ink);
+        background: #fff;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+      .form-input:focus {
+        border-color: var(--gold);
+      }
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+      }
+      .submit-btn {
+        width: 100%;
+        padding: 0.9rem;
+        margin-top: 1.25rem;
+        background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+        border: none;
+        border-radius: 14px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: var(--ink);
+        cursor: pointer;
+        font-family: "DM Sans", sans-serif;
+        transition: opacity 0.2s;
+      }
+      .submit-btn:hover {
+        opacity: 0.88;
+      }
+
+      /* BACK TO TOP */
+      #backTop {
+        position: fixed;
+        bottom: 5rem;
+        right: 1.5rem;
+        width: 40px;
+        height: 40px;
+        background: var(--ink);
+        border: 1px solid rgba(200, 169, 110, 0.3);
+        border-radius: 50%;
+        color: var(--gold);
+        font-size: 1rem;
+        cursor: pointer;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 200;
+        transition: all 0.2s;
+      }
+      #backTop:hover {
+        background: rgba(200, 169, 110, 0.2);
+      }
+      #backTop.show {
+        display: flex;
+      }
+
+      @media (max-width: 640px) {
+        nav {
+          padding: 0.75rem 1.25rem;
+        }
+        .page-hero {
+          padding: 3rem 1.25rem 2rem;
+        }
+        .filter-bar {
+          padding: 0.75rem 1.25rem;
+          top: 58px;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          flex-wrap: nowrap;
+        }
+        .filter-bar-label {
+          flex-shrink: 0;
+        }
+        .pills {
+          flex-wrap: nowrap;
+        }
+        .pill {
+          flex-shrink: 0;
+        }
+        .hotels-wrapper {
+          padding: 1.5rem 1.25rem 3rem;
+        }
+        .hotel-grid {
+          grid-template-columns: 1fr;
+        }
+        .nav-toggle {
+          display: flex;
+        }
+        .nav-back span.nb-text {
+          display: none;
+        }
+        .nav-links-sub {
+          display: flex;
+          flex-direction: column;
+          position: fixed;
+          top: 0;
+          right: 0;
+          height: 100dvh;
+          width: min(280px, 80vw);
+          background: var(--ink);
+          padding: 5.5rem 1.75rem 2rem;
+          gap: 0;
+          box-shadow: -12px 0 40px rgba(0, 0, 0, 0.35);
+          transform: translateX(100%);
+          transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+          z-index: 200;
+          overflow-y: auto;
+        }
+        .nav-links-sub.open {
+          transform: translateX(0);
+        }
+        .nav-links-sub a {
+          padding: 1rem 0;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+          font-size: 0.95rem;
+        }
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+        .search-row {
+          flex-wrap: wrap;
+        }
+        .price-filter {
+          width: 100%;
+        }
+        .price-filter select {
+          flex: 1;
+        }
+        .modal {
+          border-radius: 24px 24px 0 0;
+          max-height: 92vh;
+        }
+        .overlay {
+          align-items: flex-end;
+          padding: 0;
+        }
+        .hotel-footer {
+          flex-wrap: wrap;
+          gap: 0.5rem;
+        }
+      }
+      .mobile-nav-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 199;
+        background: rgba(26, 22, 20, 0.55);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+      .mobile-nav-overlay.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <div class="nav-logo">Stay<span>Eassy</span></div>
+      <div class="nav-links-sub" id="navLinksSub">
+        <a href="index.html">Trang chủ</a>
+        <a href="hotels-all.html" class="active">🏨 Khách sạn</a>
+        <a href="index.html#villas">Biệt thự</a>
+        <a href="tours.html">🎪 Tour</a>
+        <a href="promotions.html">🎁 Khuyến mãi</a>
+      </div>
+      <a href="index.html" class="nav-back"
+        >← <span class="nb-text">Về trang chủ</span></a
+      >
+      <button
+        class="nav-toggle"
+        id="navToggleBtn"
+        onclick="toggleMobileNav()"
+        aria-label="Menu"
+      >
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <div
+      class="mobile-nav-overlay"
+      id="mobileNavOverlay"
+      onclick="toggleMobileNav(false)"
+    ></div>
+
+    <!-- HERO -->
+    <div class="page-hero">
+      <div class="page-hero-inner">
+        <div class="page-eyebrow">✦ Khám phá toàn bộ · 58+ khách sạn</div>
+        <h1 class="page-title">Tất cả <em>khách sạn</em><br />tại Hà Nội</h1>
+        <p class="page-sub">
+          Từ hostel tiết kiệm đến 5 sao hạng sang — lọc theo sở thích, đặt ngay
+          hôm nay với giá tốt nhất đảm bảo.
+        </p>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-num">58+</span
+            ><span class="hero-stat-label">Khách sạn</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">9.1</span
+            ><span class="hero-stat-label">Điểm TB</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">195K–4.2M</span
+            ><span class="hero-stat-label">Giá/đêm</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">24/7</span
+            ><span class="hero-stat-label">Hỗ trợ</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FILTER BAR -->
+    <div class="filter-bar">
+      <span class="filter-bar-label">Lọc:</span>
+      <div class="pills">
+        <button class="pill active" onclick="applyFilter(this, 'all')">
+          Tất cả
+        </button>
+        <button class="pill" onclick="applyFilter(this, 'luxury')">
+          ✨ Sang trọng
+        </button>
+        <button class="pill" onclick="applyFilter(this, 'boutique')">
+          🌸 Boutique
+        </button>
+        <button class="pill" onclick="applyFilter(this, 'budget')">
+          💰 Tiết kiệm
+        </button>
+        <button class="pill" onclick="applyFilter(this, 'lake')">
+          🏖️ Hồ Tây
+        </button>
+        <button class="pill" onclick="applyFilter(this, 'oldquarter')">
+          🏯 Phố cổ
+        </button>
+        <button class="pill" onclick="applyFilter(this, 'business')">
+          💼 Business
+        </button>
+        <button class="pill" onclick="applyFilter(this, 'resort')">
+          🌴 Resort
+        </button>
+        <button class="pill" onclick="applyFilter(this, 'capsule')">
+          💊 Capsule
+        </button>
+        <button class="pill" onclick="applyFilter(this, 'newopen')">
+          🆕 Mới 2025
+        </button>
+      </div>
+      <div class="price-filter">
+        <select onchange="applyPrice(this.value)" id="priceFilter">
+          <option value="all">Mọi giá</option>
+          <option value="budget">Dưới 1 triệu</option>
+          <option value="mid">1–2 triệu</option>
+          <option value="high">2–4 triệu</option>
+          <option value="premium">4 triệu+</option>
+        </select>
+      </div>
+      <select
+        class="sort-select"
+        onchange="applySort(this.value)"
+        id="sortSelect"
+      >
+        <option value="default">Sắp xếp: Nổi bật</option>
+        <option value="price-asc">Giá tăng dần</option>
+        <option value="price-desc">Giá giảm dần</option>
+        <option value="rating">Đánh giá cao nhất</option>
+        <option value="reviews">Nhiều đánh giá nhất</option>
+      </select>
+      <span class="result-count" id="resultCount">58 khách sạn</span>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="hotels-wrapper">
+      <div class="search-row">
+        <span>🔍</span>
+        <input
+          type="text"
+          placeholder="Tìm theo tên khách sạn, khu vực..."
+          id="searchInput"
+          oninput="onSearch(this.value)"
+        />
+        <button
+          onclick="
+            document.getElementById('searchInput').value = '';
+            onSearch('');
+          "
+          style="
+            border: none;
+            background: none;
+            cursor: pointer;
+            color: var(--mist);
+            font-size: 0.85rem;
+          "
+        >
+          ✕
+        </button>
+      </div>
+
+      <!-- Section-based layout (default) -->
+      <div id="sectionView">
+        <div class="section-divider">
+          <h3>⭐ Khách sạn <em>5 sao</em></h3>
+          <div class="section-divider-line"></div>
+          <span
+            style="font-size: 0.75rem; color: var(--mist); white-space: nowrap"
+            id="cnt5"
+          ></span>
+        </div>
+        <div class="hotel-grid" id="grid5star"></div>
+
+        <div class="section-divider" style="margin-top: 3.5rem">
+          <h3>🌟 Khách sạn <em>4 sao</em></h3>
+          <div class="section-divider-line"></div>
+          <span
+            style="font-size: 0.75rem; color: var(--mist); white-space: nowrap"
+            id="cnt4"
+          ></span>
+        </div>
+        <div class="hotel-grid" id="grid4star"></div>
+
+        <div class="section-divider" style="margin-top: 3.5rem">
+          <h3>💰 Khách sạn <em>3 sao & Tiết kiệm</em></h3>
+          <div class="section-divider-line"></div>
+          <span
+            style="font-size: 0.75rem; color: var(--mist); white-space: nowrap"
+            id="cnt3"
+          ></span>
+        </div>
+        <div class="hotel-grid" id="grid3star"></div>
+
+        <div class="section-divider" style="margin-top: 3.5rem">
+          <h3>🆕 <em>Mới & Đặc biệt</em></h3>
+          <div class="section-divider-line"></div>
+          <span
+            style="font-size: 0.75rem; color: var(--mist); white-space: nowrap"
+            id="cntOther"
+          ></span>
+        </div>
+        <div class="hotel-grid" id="gridOther"></div>
+      </div>
+
+      <!-- Flat grid when filter/search active -->
+      <div class="hotel-grid" id="gridAll" style="display: none"></div>
+    </div>
+
+    <!-- BOOKING FORM OVERLAY -->
+    <div class="overlay" id="bookFormOverlay">
+      <div class="modal" id="bookFormModal">
+        <div class="modal-head">
+          <div class="modal-title">
+            Đặt phòng —
+            <span id="bfHotelName" style="color: var(--gold)"></span>
+          </div>
+          <button class="modal-close" onclick="closeBook()">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">📅 Nhận phòng</label>
+              <input type="date" id="bfCheckin" class="form-input" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">📅 Trả phòng</label>
+              <input type="date" id="bfCheckout" class="form-input" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">👤 Họ và tên</label>
+            <input
+              type="text"
+              id="bfName"
+              class="form-input"
+              placeholder="Nguyễn Văn A"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label">📱 Số điện thoại</label>
+            <input
+              type="tel"
+              id="bfPhone"
+              class="form-input"
+              placeholder="0912 345 678"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label">👥 Số khách</label>
+            <select id="bfGuests" class="form-input">
+              <option>1 người</option>
+              <option selected>2 người</option>
+              <option>3 người</option>
+              <option>4 người</option>
+              <option>5+ người</option>
+            </select>
+          </div>
+          <div
+            style="
+              background: var(--parchment);
+              border-radius: 12px;
+              padding: 1rem;
+              font-size: 0.82rem;
+              color: var(--mist);
+              line-height: 1.65;
+              margin-top: 0.5rem;
+            "
+          >
+            ✅ Giá tốt nhất đảm bảo · 🔒 Đặt cọc an toàn · ❌ Hủy miễn phí trước
+            24h
+          </div>
+          <button class="submit-btn" id="bfSubmit" onclick="submitBook()">
+            Xác nhận đặt phòng →
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOAST -->
+    <div id="toast"><span id="toastMsg"></span></div>
+
+    <!-- BACK TO TOP -->
+    <button
+      id="backTop"
+      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+    >
+      ↑
+    </button>
+
+    <script>
+      // ── MOBILE NAV ──────────────────────────────────────────────────────────
+      function toggleMobileNav(force) {
+        const btn = document.getElementById("navToggleBtn");
+        const links = document.getElementById("navLinksSub");
+        const overlay = document.getElementById("mobileNavOverlay");
+        if (!btn || !links || !overlay) return;
+        const open =
+          typeof force === "boolean"
+            ? force
+            : !links.classList.contains("open");
+        links.classList.toggle("open", open);
+        overlay.classList.toggle("open", open);
+        document.body.style.overflow = open ? "hidden" : "";
+      }
+      document.addEventListener("click", function (e) {
+        const links = document.getElementById("navLinksSub");
+        if (
+          links &&
+          links.classList.contains("open") &&
+          e.target.closest("#navLinksSub a")
+        ) {
+          toggleMobileNav(false);
+        }
+      });
+      // ── DATA: Toàn bộ 58 khách sạn ────────────────────────────────────────────
+      const allHotels = [
+        {
+          id: 1,
+          name: "Sofitel Legend Metropole",
+          stars: 5,
+          type: "luxury",
+          location: "15 Ngô Quyền, Hoàn Kiếm",
+          price: 3850000,
+          priceStr: "3.850.000",
+          rating: 9.6,
+          reviews: 2847,
+          img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=700&q=85",
+          amenities: ["Hồ bơi", "Spa", "Nhà hàng", "Bar", "WiFi"],
+          badge: "Biểu tượng",
+        },
+        {
+          id: 2,
+          name: "JW Marriott Hanoi",
+          stars: 5,
+          type: "luxury",
+          location: "8 Đỗ Đức Dục, Mỹ Đình",
+          price: 2950000,
+          priceStr: "2.950.000",
+          rating: 9.4,
+          reviews: 1923,
+          img: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=700&q=85",
+          amenities: ["Hồ bơi", "Gym", "Spa", "Lounge"],
+          badge: "5 sao",
+        },
+        {
+          id: 3,
+          name: "La Siesta Premium Hang Be",
+          stars: 4,
+          type: "boutique",
+          location: "94 Hàng Bè, Hoàn Kiếm",
+          price: 1250000,
+          priceStr: "1.250.000",
+          rating: 9.2,
+          reviews: 1456,
+          img: "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=700&q=85",
+          amenities: ["Rooftop Bar", "WiFi", "Bữa sáng"],
+          badge: "Boutique",
+        },
+        {
+          id: 4,
+          name: "InterContinental Westlake",
+          stars: 5,
+          type: "lake",
+          location: "5 Từ Hoa, Tây Hồ",
+          price: 3200000,
+          priceStr: "3.200.000",
+          rating: 9.5,
+          reviews: 2134,
+          img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=700&q=85",
+          amenities: ["View Hồ Tây", "Hồ bơi vô cực", "Spa", "Fine Dining"],
+          badge: "View đẹp",
+        },
+        {
+          id: 5,
+          name: "Hanoi La Castela Hotel",
+          stars: 3,
+          type: "budget",
+          location: "56 Hàng Gai, Hoàn Kiếm",
+          price: 680000,
+          priceStr: "680.000",
+          rating: 8.8,
+          reviews: 987,
+          img: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=700&q=85",
+          amenities: ["WiFi", "Bữa sáng", "Lễ tân 24h"],
+          badge: "Giá tốt",
+        },
+        {
+          id: 6,
+          name: "Essence Palace Hotel",
+          stars: 4,
+          type: "oldquarter",
+          location: "22 Tạ Hiện, Hoàn Kiếm",
+          price: 1450000,
+          priceStr: "1.450.000",
+          rating: 9.0,
+          reviews: 1678,
+          img: "https://cdn2.vietnambooking.com/wp-content/uploads/hotel_pro/hotel_346219/94aaaf21731f2616ce3a4ef64c91224a.jpg",
+          amenities: ["Trung tâm phố cổ", "Rooftop", "Bữa sáng", "Spa"],
+          badge: "Phố cổ",
+        },
+        {
+          id: 7,
+          name: "Lotte Hotel Hanoi",
+          stars: 5,
+          type: "luxury",
+          location: "54 Liễu Giai, Ba Đình",
+          price: 2750000,
+          priceStr: "2.750.000",
+          rating: 9.3,
+          reviews: 1789,
+          img: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2a/81/92/80/caption.jpg?w=1400&h=-1&s=1",
+          amenities: ["Sky Bar", "Hồ bơi", "Spa", "Gym", "Nhà hàng"],
+          badge: "Sky lounge",
+        },
+        {
+          id: 8,
+          name: "Pan Pacific Hanoi",
+          stars: 5,
+          type: "lake",
+          location: "1 Thanh Niên, Tây Hồ",
+          price: 2400000,
+          priceStr: "2.400.000",
+          rating: 9.1,
+          reviews: 1345,
+          img: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=700&q=85",
+          amenities: ["View hồ", "Hồ bơi", "Spa", "Bar"],
+          badge: "Hồ Tây",
+        },
+        {
+          id: 9,
+          name: "Hanoi Boutique Hotel & Spa",
+          stars: 4,
+          type: "boutique",
+          location: "29 Hàng Mành, Hoàn Kiếm",
+          price: 980000,
+          priceStr: "980.000",
+          rating: 8.9,
+          reviews: 812,
+          img: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=700&q=85",
+          amenities: ["Spa", "WiFi", "Bữa sáng", "Bể tắm"],
+          badge: "Boutique",
+        },
+        {
+          id: 10,
+          name: "Hilton Hanoi Opera",
+          stars: 5,
+          type: "luxury",
+          location: "1 Lê Thánh Tông, Hoàn Kiếm",
+          price: 3100000,
+          priceStr: "3.100.000",
+          rating: 9.3,
+          reviews: 2211,
+          img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=700&q=85",
+          amenities: ["Hồ bơi", "Gym", "Spa", "Bar", "Nhà hàng"],
+          badge: "Opera",
+        },
+        {
+          id: 11,
+          name: "Mövenpick Hotel Hanoi",
+          stars: 5,
+          type: "luxury",
+          location: "83A Lý Thường Kiệt, Hoàn Kiếm",
+          price: 2650000,
+          priceStr: "2.650.000",
+          rating: 9.2,
+          reviews: 1634,
+          img: "https://images.unsplash.com/photo-1455587734955-081b22074882?w=700&q=85",
+          amenities: ["Hồ bơi", "Spa", "Gym", "Lounge"],
+          badge: "Premium",
+        },
+        {
+          id: 12,
+          name: "Novotel Hanoi City Centre",
+          stars: 4,
+          type: "business",
+          location: "34 Trần Phú, Hoàn Kiếm",
+          price: 1650000,
+          priceStr: "1.650.000",
+          rating: 8.9,
+          reviews: 1102,
+          img: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=700&q=85",
+          amenities: ["Hồ bơi", "Gym", "Nhà hàng", "WiFi"],
+          badge: "Business",
+        },
+        {
+          id: 13,
+          name: "Silk Path Grand Hotel",
+          stars: 5,
+          type: "luxury",
+          location: "17 Tràng Thi, Hoàn Kiếm",
+          price: 2200000,
+          priceStr: "2.200.000",
+          rating: 9.0,
+          reviews: 934,
+          img: "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=700&q=85",
+          amenities: ["Rooftop Pool", "Spa", "Bar", "WiFi"],
+          badge: "Grand",
+        },
+        {
+          id: 14,
+          name: "Hanoi Legacy Hotel Hoan Kiem",
+          stars: 4,
+          type: "oldquarter",
+          location: "8 Hàng Tre, Hoàn Kiếm",
+          price: 1150000,
+          priceStr: "1.150.000",
+          rating: 8.7,
+          reviews: 876,
+          img: "https://images.unsplash.com/photo-1600011689032-8b628b8a8747?w=700&q=85",
+          amenities: ["Bữa sáng", "WiFi", "Rooftop", "Bar"],
+          badge: "Phố cổ",
+        },
+        {
+          id: 15,
+          name: "Somerset Grand Hanoi",
+          stars: 4,
+          type: "business",
+          location: "49 Hai Bà Trưng, Hoàn Kiếm",
+          price: 1380000,
+          priceStr: "1.380.000",
+          rating: 8.8,
+          reviews: 743,
+          img: "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=700&q=85",
+          amenities: ["Bếp riêng", "Hồ bơi", "Gym", "WiFi"],
+          badge: "Serviced",
+        },
+        {
+          id: 16,
+          name: "Mai Gallery Hotel",
+          stars: 3,
+          type: "budget",
+          location: "41 Hàng Chiếu, Hoàn Kiếm",
+          price: 520000,
+          priceStr: "520.000",
+          rating: 8.5,
+          reviews: 654,
+          img: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=700&q=85",
+          amenities: ["WiFi", "Bữa sáng", "Lễ tân 24h"],
+          badge: "Giá tốt",
+        },
+        {
+          id: 17,
+          name: "Golden Lotus Luxury Hotel",
+          stars: 4,
+          type: "oldquarter",
+          location: "39 Hàng Buồm, Hoàn Kiếm",
+          price: 1300000,
+          priceStr: "1.300.000",
+          rating: 8.9,
+          reviews: 1023,
+          img: "https://images.unsplash.com/photo-1578645510447-e20b4311e3ce?w=700&q=85",
+          amenities: ["Rooftop Bar", "Spa", "Bữa sáng", "WiFi"],
+          badge: "Phố cổ",
+        },
+        {
+          id: 18,
+          name: "Sheraton Hanoi Hotel",
+          stars: 5,
+          type: "lake",
+          location: "11K Xuân Diệu, Tây Hồ",
+          price: 2900000,
+          priceStr: "2.900.000",
+          rating: 9.2,
+          reviews: 1867,
+          img: "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=700&q=85",
+          amenities: ["View Hồ Tây", "Hồ bơi", "Spa", "Gym", "Bar"],
+          badge: "Hồ Tây",
+        },
+        {
+          id: 19,
+          name: "Hanoi Posh Hotel",
+          stars: 3,
+          type: "budget",
+          location: "12 Nguyễn Hữu Huân, Hoàn Kiếm",
+          price: 620000,
+          priceStr: "620.000",
+          rating: 8.6,
+          reviews: 448,
+          img: "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=700&q=85",
+          amenities: ["WiFi", "Bữa sáng", "Bar"],
+          badge: "Giá tốt",
+        },
+        {
+          id: 20,
+          name: "The Zei Hanoi",
+          stars: 4,
+          type: "business",
+          location: "8 Mỹ Đình, Nam Từ Liêm",
+          price: 1100000,
+          priceStr: "1.100.000",
+          rating: 8.7,
+          reviews: 589,
+          img: "https://go2joy.s3.ap-southeast-1.amazonaws.com/blog/wp-content/uploads/2023/06/23144804/khach-san-hotel-du-lac-ha-noi-4-sao.jpg",
+          amenities: ["Gym", "Hồ bơi", "Nhà hàng", "WiFi"],
+          badge: "Business",
+        },
+        {
+          id: 21,
+          name: "Hanoi Serenity Hotel",
+          stars: 4,
+          type: "boutique",
+          location: "16 Hàng Muối, Hoàn Kiếm",
+          price: 1050000,
+          priceStr: "1.050.000",
+          rating: 9.0,
+          reviews: 721,
+          img: "https://images.unsplash.com/photo-1631049552057-403cdb8f0658?w=700&q=85",
+          amenities: ["Spa", "Bữa sáng", "WiFi", "Rooftop"],
+          badge: "Boutique",
+        },
+        {
+          id: 22,
+          name: "Apricot Hotel",
+          stars: 5,
+          type: "luxury",
+          location: "136 Hàng Trống, Hoàn Kiếm",
+          price: 3500000,
+          priceStr: "3.500.000",
+          rating: 9.5,
+          reviews: 2103,
+          img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=700&q=85",
+          amenities: ["Bể bơi", "Spa", "Fine Dining", "Bar", "WiFi"],
+          badge: "Luxury",
+        },
+        {
+          id: 23,
+          name: "Hanoi D' Capital Hotel",
+          stars: 4,
+          type: "business",
+          location: "119 Trần Duy Hưng, Cầu Giấy",
+          price: 1200000,
+          priceStr: "1.200.000",
+          rating: 8.8,
+          reviews: 534,
+          img: "https://images.unsplash.com/photo-1568495248636-6432b97bd949?w=700&q=85",
+          amenities: ["Gym", "Nhà hàng", "Hội nghị", "WiFi"],
+          badge: "Business",
+        },
+        {
+          id: 24,
+          name: "West Lake Home Hotel",
+          stars: 3,
+          type: "lake",
+          location: "66 Quảng Khánh, Tây Hồ",
+          price: 750000,
+          priceStr: "750.000",
+          rating: 8.6,
+          reviews: 389,
+          img: "https://images.unsplash.com/photo-1570213489059-0aac6626cade?w=700&q=85",
+          amenities: ["View hồ", "Bữa sáng", "WiFi"],
+          badge: "Hồ Tây",
+        },
+        {
+          id: 25,
+          name: "Peridot Grand Luxury Boutique",
+          stars: 4,
+          type: "boutique",
+          location: "9 Ấu Triệu, Hoàn Kiếm",
+          price: 1450000,
+          priceStr: "1.450.000",
+          rating: 9.1,
+          reviews: 867,
+          img: "https://media-cdn.tripadvisor.com/media/photo-s/2c/3d/76/29/rooftop-jacuzzi.jpg",
+          amenities: ["Rooftop Bar", "Spa", "Bữa sáng", "WiFi"],
+          badge: "Boutique",
+        },
+        {
+          id: 26,
+          name: "Hanoian Central Hotel",
+          stars: 3,
+          type: "budget",
+          location: "45 Lý Quốc Sư, Hoàn Kiếm",
+          price: 490000,
+          priceStr: "490.000",
+          rating: 8.4,
+          reviews: 312,
+          img: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?w=700&q=85",
+          amenities: ["WiFi", "Bữa sáng", "Lễ tân 24h"],
+          badge: "Giá tốt",
+        },
+        {
+          id: 27,
+          name: "Capella Hanoi",
+          stars: 5,
+          type: "luxury",
+          location: "11 Lê Phụng Hiểu, Hoàn Kiếm",
+          price: 4200000,
+          priceStr: "4.200.000",
+          rating: 9.7,
+          reviews: 1456,
+          img: "https://images.unsplash.com/photo-1606402179428-a57976d71fa4?w=700&q=85",
+          amenities: [
+            "Spa hạng nhất",
+            "Hồ bơi",
+            "Fine Dining",
+            "Bar",
+            "Concierge",
+          ],
+          badge: "Ultra Luxury",
+        },
+        {
+          id: 28,
+          name: "Hanoi Impressive Hotel",
+          stars: 3,
+          type: "oldquarter",
+          location: "72 Hàng Gai, Hoàn Kiếm",
+          price: 580000,
+          priceStr: "580.000",
+          rating: 8.5,
+          reviews: 423,
+          img: "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=700&q=85",
+          amenities: ["WiFi", "Bữa sáng", "Rooftop"],
+          badge: "Phố cổ",
+        },
+        {
+          id: 29,
+          name: "Crowne Plaza West Hanoi",
+          stars: 5,
+          type: "business",
+          location: "36 Lê Đức Thọ, Nam Từ Liêm",
+          price: 2350000,
+          priceStr: "2.350.000",
+          rating: 9.0,
+          reviews: 1234,
+          img: "https://images.unsplash.com/photo-1519449556851-5720b33024e7?w=700&q=85",
+          amenities: ["Hồ bơi", "Gym", "Spa", "Hội nghị", "WiFi"],
+          badge: "Business",
+        },
+        {
+          id: 30,
+          name: "Hanoi Tirant Hotel",
+          stars: 4,
+          type: "oldquarter",
+          location: "34 Gia Ngư, Hoàn Kiếm",
+          price: 1180000,
+          priceStr: "1.180.000",
+          rating: 8.9,
+          reviews: 756,
+          img: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/59/4c/d3/hanoi-la-siesta-hotel.jpg?w=1200&h=-1&s=1",
+          amenities: ["Rooftop Bar", "Bữa sáng", "WiFi", "Spa"],
+          badge: "Phố cổ",
+        },
+        {
+          id: 31,
+          name: "La Bella Hanoi Hotel",
+          stars: 3,
+          type: "budget",
+          location: "7 Nguyễn Quang Bích, Hoàn Kiếm",
+          price: 550000,
+          priceStr: "550.000",
+          rating: 8.3,
+          reviews: 287,
+          img: "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=700&q=85",
+          amenities: ["WiFi", "Bữa sáng"],
+          badge: "Giá tốt",
+        },
+        {
+          id: 32,
+          name: "Nikko Hanoi Hotel",
+          stars: 5,
+          type: "luxury",
+          location: "84 Trần Nhân Tông, Hai Bà Trưng",
+          price: 2800000,
+          priceStr: "2.800.000",
+          rating: 9.1,
+          reviews: 1589,
+          img: "https://images.unsplash.com/photo-1601628828688-632f38a5a7d0?w=700&q=85",
+          amenities: ["Hồ bơi", "Spa", "Gym", "Nhà hàng Nhật", "Bar"],
+          badge: "Japanese",
+        },
+        {
+          id: 33,
+          name: "Hanoi Garden Hotel",
+          stars: 3,
+          type: "budget",
+          location: "36 Hàng Điếu, Hoàn Kiếm",
+          price: 640000,
+          priceStr: "640.000",
+          rating: 8.5,
+          reviews: 378,
+          img: "https://images.unsplash.com/photo-1586611292717-f828b167408c?w=700&q=85",
+          amenities: ["Bữa sáng", "WiFi", "Sân vườn"],
+          badge: "Giá tốt",
+        },
+        {
+          id: 34,
+          name: "The Oriental Jade Hotel",
+          stars: 4,
+          type: "boutique",
+          location: "9 Đào Duy Từ, Hoàn Kiếm",
+          price: 1350000,
+          priceStr: "1.350.000",
+          rating: 9.0,
+          reviews: 892,
+          img: "https://images.unsplash.com/photo-1615460549969-36fa19521a4f?w=700&q=85",
+          amenities: ["Spa", "Rooftop", "Bữa sáng", "WiFi"],
+          badge: "Boutique",
+        },
+        {
+          id: 35,
+          name: "Meliá Hanoi",
+          stars: 5,
+          type: "business",
+          location: "44B Lý Thường Kiệt, Hoàn Kiếm",
+          price: 2500000,
+          priceStr: "2.500.000",
+          rating: 9.2,
+          reviews: 1743,
+          img: "https://images.unsplash.com/photo-1562790351-d273a961e0e9?w=700&q=85",
+          amenities: ["Hồ bơi", "Gym", "Spa", "Hội nghị", "Nhà hàng"],
+          badge: "Business",
+        },
+        {
+          id: 36,
+          name: "Hanoi Graceful Hotel",
+          stars: 3,
+          type: "oldquarter",
+          location: "27 Hàng Bồ, Hoàn Kiếm",
+          price: 510000,
+          priceStr: "510.000",
+          rating: 8.4,
+          reviews: 265,
+          img: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=700&q=85",
+          amenities: ["WiFi", "Bữa sáng"],
+          badge: "Phố cổ",
+        },
+        {
+          id: 37,
+          name: "Pullman Hanoi",
+          stars: 5,
+          type: "luxury",
+          location: "40 Cát Linh, Đống Đa",
+          price: 2700000,
+          priceStr: "2.700.000",
+          rating: 9.1,
+          reviews: 1432,
+          img: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=700&q=85",
+          amenities: ["Hồ bơi", "Spa", "Gym", "Bar", "Nhà hàng"],
+          badge: "Luxury",
+        },
+        {
+          id: 38,
+          name: "Hanoi Backpackers Hostel",
+          stars: 2,
+          type: "capsule",
+          location: "9 Ngõ Huyện, Hoàn Kiếm",
+          price: 200000,
+          priceStr: "200.000",
+          rating: 8.2,
+          reviews: 1876,
+          img: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=700&q=85",
+          amenities: ["WiFi", "Bar", "Tour miễn phí"],
+          badge: "Hostel",
+        },
+        {
+          id: 39,
+          name: "Lakeview Hotel & Spa",
+          stars: 4,
+          type: "lake",
+          location: "28 Từ Hoa, Tây Hồ",
+          price: 1650000,
+          priceStr: "1.650.000",
+          rating: 8.9,
+          reviews: 687,
+          img: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=700&q=85",
+          amenities: ["View Hồ Tây", "Spa", "Bữa sáng", "WiFi"],
+          badge: "Hồ Tây",
+        },
+        {
+          id: 40,
+          name: "Hanoi Daewoo Hotel",
+          stars: 5,
+          type: "luxury",
+          location: "360 Kim Mã, Ba Đình",
+          price: 2450000,
+          priceStr: "2.450.000",
+          rating: 9.0,
+          reviews: 1398,
+          img: "https://images.unsplash.com/photo-1606046604972-77cc76aee944?w=700&q=85",
+          amenities: ["Hồ bơi", "Gym", "Spa", "Tennis", "Nhà hàng"],
+          badge: "Classic",
+        },
+        {
+          id: 41,
+          name: "Silk Queen Grand Hotel",
+          stars: 4,
+          type: "oldquarter",
+          location: "7 Hàng Bạc, Hoàn Kiếm",
+          price: 1480000,
+          priceStr: "1.480.000",
+          rating: 9.1,
+          reviews: 934,
+          img: "https://images.unsplash.com/photo-1587985064135-0366536eab42?w=700&q=85",
+          amenities: ["Rooftop Pool", "Spa", "Bữa sáng", "WiFi"],
+          badge: "Phố cổ",
+        },
+        {
+          id: 42,
+          name: "Thang Long Opera Hotel",
+          stars: 4,
+          type: "business",
+          location: "1 Tràng Tiền, Hoàn Kiếm",
+          price: 1750000,
+          priceStr: "1.750.000",
+          rating: 8.8,
+          reviews: 1023,
+          img: "https://images.unsplash.com/photo-1576354302919-96748cb8299e?w=700&q=85",
+          amenities: ["View Opera", "Nhà hàng", "Bar", "WiFi"],
+          badge: "Opera View",
+        },
+        {
+          id: 43,
+          name: "Hanoi Cozy Waters Hotel",
+          stars: 3,
+          type: "lake",
+          location: "17 Nghi Tàm, Tây Hồ",
+          price: 720000,
+          priceStr: "720.000",
+          rating: 8.5,
+          reviews: 342,
+          img: "https://images.unsplash.com/photo-1553653924-39b70295f8da?w=700&q=85",
+          amenities: ["View hồ", "Bữa sáng", "WiFi"],
+          badge: "Hồ Tây",
+        },
+        {
+          id: 44,
+          name: "The Hanoi Boutique Hotel & Spa",
+          stars: 4,
+          type: "boutique",
+          location: "78 Mã Mây, Hoàn Kiếm",
+          price: 1250000,
+          priceStr: "1.250.000",
+          rating: 9.0,
+          reviews: 788,
+          img: "https://images.unsplash.com/photo-1562778612-e1e0cda9915c?w=700&q=85",
+          amenities: ["Spa", "Bữa sáng", "Rooftop", "WiFi"],
+          badge: "Boutique",
+        },
+        {
+          id: 45,
+          name: "Hanoi Imperial Hotel",
+          stars: 4,
+          type: "oldquarter",
+          location: "18 Hàng Tre, Hoàn Kiếm",
+          price: 1350000,
+          priceStr: "1.350.000",
+          rating: 8.8,
+          reviews: 654,
+          img: "https://images.unsplash.com/photo-1573052905904-34ad8c27f0cc?w=700&q=85",
+          amenities: ["Rooftop Bar", "Spa", "WiFi", "Bữa sáng"],
+          badge: "Phố cổ",
+        },
+        {
+          id: 46,
+          name: "Sofitel Plaza Hanoi",
+          stars: 5,
+          type: "lake",
+          location: "1 Thanh Niên, Ba Đình",
+          price: 3300000,
+          priceStr: "3.300.000",
+          rating: 9.4,
+          reviews: 2034,
+          img: "https://images.unsplash.com/photo-1549294413-26f195200c16?w=700&q=85",
+          amenities: ["View Hồ Tây", "Hồ bơi", "Spa", "Fine Dining", "Bar"],
+          badge: "Sofitel",
+        },
+        {
+          id: 47,
+          name: "Hanoi Golden Sun Suites",
+          stars: 3,
+          type: "budget",
+          location: "54 Hàng Bông, Hoàn Kiếm",
+          price: 560000,
+          priceStr: "560.000",
+          rating: 8.5,
+          reviews: 412,
+          img: "https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=700&q=85",
+          amenities: ["WiFi", "Bữa sáng", "Lễ tân 24h"],
+          badge: "Giá tốt",
+        },
+        {
+          id: 48,
+          name: "Hanoi Paradiso Hotel",
+          stars: 4,
+          type: "boutique",
+          location: "53 Hàng Bông, Hoàn Kiếm",
+          price: 1100000,
+          priceStr: "1.100.000",
+          rating: 8.9,
+          reviews: 598,
+          img: "https://halotravel.vn/wp-content/uploads/2021/05/solei-2.jpg?w=700&q=85",
+          amenities: ["Rooftop", "Spa", "Bữa sáng", "WiFi"],
+          badge: "Boutique",
+        },
+        {
+          id: 49,
+          name: "Vietnam Hotel & Conference Centre",
+          stars: 4,
+          type: "business",
+          location: "8 Giảng Võ, Ba Đình",
+          price: 1300000,
+          priceStr: "1.300.000",
+          rating: 8.6,
+          reviews: 543,
+          img: "https://ticotravel.com.vn/wp-content/uploads/2023/06/Thiet-ke-chua-co-ten-4.jpg",
+          amenities: ["Hội nghị", "Nhà hàng", "Gym", "WiFi"],
+          badge: "Conference",
+        },
+        {
+          id: 50,
+          name: "Metropole Inspired Boutique",
+          stars: 4,
+          type: "boutique",
+          location: "11 Phan Chu Trinh, Hoàn Kiếm",
+          price: 1550000,
+          priceStr: "1.550.000",
+          rating: 9.1,
+          reviews: 712,
+          img: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=700&q=85",
+          amenities: ["Bữa sáng", "Spa", "Bar", "WiFi"],
+          badge: "Boutique",
+        },
+        {
+          id: 51,
+          name: "Hanoi Charming 2 Hotel",
+          stars: 3,
+          type: "budget",
+          location: "2B Hàng Phèn, Hoàn Kiếm",
+          price: 480000,
+          priceStr: "480.000",
+          rating: 8.3,
+          reviews: 267,
+          img: "https://images.unsplash.com/photo-1631049552057-403cdb8f0658?w=700&q=85",
+          amenities: ["WiFi", "Bữa sáng"],
+          badge: "Giá tốt",
+        },
+        {
+          id: 52,
+          name: "The Palatine Hotel",
+          stars: 4,
+          type: "business",
+          location: "30 Phạm Đình Hổ, Hai Bà Trưng",
+          price: 1050000,
+          priceStr: "1.050.000",
+          rating: 8.7,
+          reviews: 489,
+          img: "https://www.vietnambooking.com/wp-content/uploads/2020/11/lake-side-hotel-hanoi.jpg",
+          amenities: ["Gym", "Nhà hàng", "Hội nghị", "WiFi"],
+          badge: "Business",
+        },
+        {
+          id: 53,
+          name: "Hanoi Lotus Hotel",
+          stars: 3,
+          type: "oldquarter",
+          location: "42 Hàng Cân, Hoàn Kiếm",
+          price: 590000,
+          priceStr: "590.000",
+          rating: 8.4,
+          reviews: 334,
+          img: "https://images.unsplash.com/photo-1592229505726-ca121723b8ef?w=700&q=85",
+          amenities: ["WiFi", "Bữa sáng", "Rooftop"],
+          badge: "Phố cổ",
+        },
+        {
+          id: 54,
+          name: "Hanoi Elegant Spring Hotel",
+          stars: 4,
+          type: "boutique",
+          location: "13 Ngô Thì Nhậm, Hai Bà Trưng",
+          price: 1180000,
+          priceStr: "1.180.000",
+          rating: 8.8,
+          reviews: 521,
+          img: "https://go2joy.s3.ap-southeast-1.amazonaws.com/blog/wp-content/uploads/2023/06/23144759/khach-san-hanoi-emerald-waters-valley-4-sao-ha-noi.jpg",
+          amenities: ["Spa", "Bữa sáng", "Rooftop Bar", "WiFi"],
+          badge: "Boutique",
+        },
+        {
+          id: 55,
+          name: "Hanoi Summit Hotel",
+          stars: 5,
+          type: "luxury",
+          location: "9 Phạm Ngọc Thạch, Đống Đa",
+          price: 2600000,
+          priceStr: "2.600.000",
+          rating: 9.2,
+          reviews: 1267,
+          img: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=700&q=85",
+          amenities: ["Hồ bơi vô cực", "Spa", "Sky Bar", "Gym", "Nhà hàng"],
+          badge: "Sky Bar",
+        },
+        {
+          id: 56,
+          name: "Hanoi La Jolie Hotel",
+          stars: 3,
+          type: "budget",
+          location: "60 Ngõ Huyện, Hoàn Kiếm",
+          price: 450000,
+          priceStr: "450.000",
+          rating: 8.2,
+          reviews: 198,
+          img: "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?w=700&q=85",
+          amenities: ["WiFi", "Bữa sáng"],
+          badge: "Giá tốt",
+        },
+        {
+          id: 57,
+          name: "Hanoi Lakeside Retreat",
+          stars: 4,
+          type: "lake",
+          location: "55 Xuân Diệu, Tây Hồ",
+          price: 1550000,
+          priceStr: "1.550.000",
+          rating: 9.0,
+          reviews: 634,
+          img: "https://images.unsplash.com/photo-1455587734955-081b22074882?w=700&q=85",
+          amenities: ["View Hồ Tây", "Spa", "Hồ bơi", "Bữa sáng"],
+          badge: "Hồ Tây",
+        },
+        {
+          id: 58,
+          name: "Hotel de l'Opera Hanoi",
+          stars: 5,
+          type: "luxury",
+          location: "29 Tràng Tiền, Hoàn Kiếm",
+          price: 3650000,
+          priceStr: "3.650.000",
+          rating: 9.5,
+          reviews: 1876,
+          img: "https://images.unsplash.com/photo-1551918120-9739cb430c6d?w=700&q=85",
+          amenities: ["Bể bơi", "Spa", "Fine Dining", "Bar", "Concierge"],
+          badge: "Opera",
+        },
+        // Extra special types
+        {
+          id: 101,
+          name: "Novotel Hanoi Centre",
+          stars: 4,
+          type: "newopen",
+          location: "34 Trần Phú, Ba Đình",
+          price: 1890000,
+          priceStr: "1.890.000",
+          rating: 9.1,
+          reviews: 845,
+          img: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=700&q=85",
+          amenities: ["Hồ bơi", "Gym", "Nhà hàng", "WiFi"],
+          badge: "🆕 Mới 2025",
+        },
+        {
+          id: 102,
+          name: "Wink Hotel Ba Dinh",
+          stars: 3,
+          type: "newopen",
+          location: "6 Đội Cấn, Ba Đình",
+          price: 850000,
+          priceStr: "850.000",
+          rating: 8.9,
+          reviews: 412,
+          img: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=700&q=85",
+          amenities: ["WiFi", "Bar", "Lễ tân 24h"],
+          badge: "🆕 Khai trương",
+        },
+        {
+          id: 103,
+          name: "Flamingo Đại Lải Resort",
+          stars: 5,
+          type: "resort",
+          location: "Đại Lải, Phúc Yên – 45km",
+          price: 2650000,
+          priceStr: "2.650.000",
+          rating: 9.4,
+          reviews: 1230,
+          img: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=700&q=85",
+          amenities: ["Hồ bơi", "Spa", "Golf", "View núi"],
+          badge: "🌴 Resort",
+        },
+        {
+          id: 104,
+          name: "Ba Vì Mountain Retreat",
+          stars: 4,
+          type: "resort",
+          location: "Ba Vì, Hà Nội – 60km",
+          price: 1450000,
+          priceStr: "1.450.000",
+          rating: 9.0,
+          reviews: 678,
+          img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=700&q=85",
+          amenities: ["Thiên nhiên", "Hiking", "Bữa ăn hữu cơ"],
+          badge: "⛰️ Núi rừng",
+        },
+        {
+          id: 105,
+          name: "The Myst Hostel & Bar",
+          stars: 2,
+          type: "capsule",
+          location: "18 Tạ Hiện, Hoàn Kiếm",
+          price: 280000,
+          priceStr: "280.000",
+          rating: 9.2,
+          reviews: 2145,
+          img: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=700&q=85",
+          amenities: ["Bar cộng đồng", "WiFi", "Bữa sáng"],
+          badge: "🛖 Hostel",
+        },
+        {
+          id: 106,
+          name: "Capsule Hanoi Old Quarter",
+          stars: 2,
+          type: "capsule",
+          location: "25 Hàng Buồm, Hoàn Kiếm",
+          price: 195000,
+          priceStr: "195.000",
+          rating: 8.7,
+          reviews: 956,
+          img: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=700&q=85",
+          amenities: ["Capsule bed", "Tủ khóa", "WiFi"],
+          badge: "💊 Capsule",
+        },
+      ];
+
+      // ── STATE ─────────────────────────────────────────────────────────────────
+      let currentFilter = "all",
+        currentSort = "default",
+        currentSearch = "",
+        currentPrice = "all";
+
+      // ── CARD HTML ─────────────────────────────────────────────────────────────
+      function cardHtml(h) {
+        const stars = "⭐".repeat(Math.min(h.stars, 5));
+        const amenTags = h.amenities
+          .map((a) => `<span class="amenity-tag">${a}</span>`)
+          .join("");
+        return `<div class="hotel-card">
+  <div class="hotel-img-wrap">
+    <img src="${h.img}" alt="${h.name}" loading="lazy" decoding="async"/>
+    <div class="hotel-badge">${h.badge}</div>
+    <button class="hotel-fav" onclick="event.stopPropagation();this.textContent=this.textContent==='🤍'?'❤️':'🤍'">🤍</button>
+  </div>
+  <div class="hotel-body">
+    <div class="hotel-stars">${stars}</div>
+    <div class="hotel-name">${h.name}</div>
+    <div class="hotel-location">📍 ${h.location}</div>
+    <div class="hotel-amenities">${amenTags}</div>
+    <div class="hotel-footer">
+      <div>
+        <div class="hotel-price-label">Từ</div>
+        <div class="hotel-price">${h.priceStr}₫ <span>/đêm</span></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:.5rem">
+        <div class="hotel-rating">★ ${h.rating}</div>
+        <button class="book-btn" onclick="event.stopPropagation();openBook('${h.name.replace(/'/g, "\\'")}',${h.id})">Đặt ngay</button>
+      </div>
+    </div>
+  </div>
+</div>`;
+      }
+
+      // ── SORT ──────────────────────────────────────────────────────────────────
+      function sorted(list) {
+        const l = [...list];
+        if (currentSort === "price-asc") l.sort((a, b) => a.price - b.price);
+        else if (currentSort === "price-desc")
+          l.sort((a, b) => b.price - a.price);
+        else if (currentSort === "rating")
+          l.sort((a, b) => b.rating - a.rating);
+        else if (currentSort === "reviews")
+          l.sort((a, b) => b.reviews - a.reviews);
+        else l.sort((a, b) => b.rating - a.rating); // default by rating
+        return l;
+      }
+
+      // ── RENDER ────────────────────────────────────────────────────────────────
+      function render() {
+        let list = allHotels;
+
+        // Search
+        if (currentSearch) {
+          const q = currentSearch.toLowerCase();
+          list = list.filter(
+            (h) =>
+              h.name.toLowerCase().includes(q) ||
+              h.location.toLowerCase().includes(q),
+          );
+        }
+
+        // Type filter
+        if (currentFilter !== "all")
+          list = list.filter((h) => h.type === currentFilter);
+
+        // Price filter
+        if (currentPrice === "budget")
+          list = list.filter((h) => h.price < 1000000);
+        else if (currentPrice === "mid")
+          list = list.filter((h) => h.price >= 1000000 && h.price < 2000000);
+        else if (currentPrice === "high")
+          list = list.filter((h) => h.price >= 2000000 && h.price < 4000000);
+        else if (currentPrice === "premium")
+          list = list.filter((h) => h.price >= 4000000);
+
+        list = sorted(list);
+
+        const isFiltered =
+          currentFilter !== "all" ||
+          currentSearch ||
+          currentSort !== "default" ||
+          currentPrice !== "all";
+        const sectionView = document.getElementById("sectionView");
+        const gridAll = document.getElementById("gridAll");
+
+        if (isFiltered) {
+          sectionView.style.display = "none";
+          gridAll.style.display = "grid";
+          gridAll.innerHTML = list.length
+            ? list.map(cardHtml).join("")
+            : `<div class="empty-state"><div class="emoji">😔</div><p>Không tìm thấy khách sạn phù hợp<br/><small>Thử thay đổi bộ lọc hoặc từ khóa tìm kiếm</small></p></div>`;
+        } else {
+          sectionView.style.display = "";
+          gridAll.style.display = "none";
+
+          const specialTypes = ["newopen", "resort", "capsule"];
+          const g5 = list.filter(
+            (h) => h.stars === 5 && !specialTypes.includes(h.type),
+          );
+          const g4 = list.filter(
+            (h) => h.stars === 4 && !specialTypes.includes(h.type),
+          );
+          const g3 = list.filter(
+            (h) => h.stars <= 3 && !specialTypes.includes(h.type),
+          );
+          const gO = list.filter((h) => specialTypes.includes(h.type));
+
+          const emptyMsg =
+            '<p style="color:var(--mist);font-size:.85rem;padding:.5rem 0">Không có kết quả.</p>';
+          document.getElementById("grid5star").innerHTML =
+            g5.map(cardHtml).join("") || emptyMsg;
+          document.getElementById("grid4star").innerHTML =
+            g4.map(cardHtml).join("") || emptyMsg;
+          document.getElementById("grid3star").innerHTML =
+            g3.map(cardHtml).join("") || emptyMsg;
+          document.getElementById("gridOther").innerHTML =
+            gO.map(cardHtml).join("") || emptyMsg;
+          document.getElementById("cnt5").textContent =
+            g5.length + " khách sạn";
+          document.getElementById("cnt4").textContent =
+            g4.length + " khách sạn";
+          document.getElementById("cnt3").textContent =
+            g3.length + " khách sạn";
+          document.getElementById("cntOther").textContent =
+            gO.length + " loại hình";
+        }
+
+        document.getElementById("resultCount").textContent =
+          list.length + " khách sạn";
+      }
+
+      function applyFilter(btn, type) {
+        document
+          .querySelectorAll(".pills .pill")
+          .forEach((p) => p.classList.remove("active"));
+        btn.classList.add("active");
+        currentFilter = type;
+        render();
+      }
+      function applySort(val) {
+        currentSort = val;
+        render();
+      }
+      function applyPrice(val) {
+        currentPrice = val;
+        render();
+      }
+      function onSearch(val) {
+        currentSearch = val;
+        render();
+      }
+
+      render();
+
+      // ── BOOKING ───────────────────────────────────────────────────────────────
+      const BOOKING_API =
+        "https://69fc3868fce564e2591782fe.mockapi.io/api/v1/booking";
+
+      function openBook(name, id) {
+        document.getElementById("bfHotelName").textContent = name;
+        window._bookingId = id;
+        const today = new Date(),
+          d2 = new Date(today),
+          d3 = new Date(today);
+        d2.setDate(d2.getDate() + 1);
+        d3.setDate(d3.getDate() + 3);
+        document.getElementById("bfCheckin").value = d2
+          .toISOString()
+          .split("T")[0];
+        document.getElementById("bfCheckout").value = d3
+          .toISOString()
+          .split("T")[0];
+        const ov = document.getElementById("bookFormOverlay"),
+          md = document.getElementById("bookFormModal");
+        ov.style.display = "flex";
+        ov.style.pointerEvents = "all";
+        requestAnimationFrame(() => {
+          ov.style.opacity = "1";
+          md.style.transform = "scale(1) translateY(0)";
+        });
+      }
+      function closeBook() {
+        const ov = document.getElementById("bookFormOverlay"),
+          md = document.getElementById("bookFormModal");
+        ov.style.opacity = "0";
+        md.style.transform = "scale(.92) translateY(20px)";
+        setTimeout(() => {
+          ov.style.display = "none";
+          ov.style.pointerEvents = "none";
+        }, 300);
+      }
+      function submitBook() {
+        const ci = document.getElementById("bfCheckin").value,
+          co = document.getElementById("bfCheckout").value;
+        const name = document.getElementById("bfName").value.trim(),
+          phone = document.getElementById("bfPhone").value.trim();
+        if (!ci || !co) {
+          showToast("⚠️ Vui lòng chọn ngày");
+          return;
+        }
+        if (ci >= co) {
+          showToast("⚠️ Ngày trả phòng phải sau ngày nhận");
+          return;
+        }
+        if (!name) {
+          showToast("⚠️ Vui lòng nhập họ tên");
+          return;
+        }
+        const btn = document.getElementById("bfSubmit");
+        btn.textContent = "⏳ Đang xử lý...";
+        btn.style.opacity = ".7";
+        btn.disabled = true;
+        fetch(BOOKING_API, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            roomId: String(window._bookingId || 1),
+            customerName: name,
+            phone: phone || name,
+            checkIn: ci,
+            checkOut: co,
+            guests: 2,
+            status: "confirmed",
+          }),
+        })
+          .then((r) => r.json())
+          .then((d) => {
+            closeBook();
+            showToast("✅ Đặt phòng thành công! Mã: #" + d.id);
+          })
+          .catch(() => showToast("❌ Có lỗi xảy ra, vui lòng thử lại"))
+          .finally(() => {
+            btn.textContent = "Xác nhận đặt phòng →";
+            btn.style.opacity = "1";
+            btn.disabled = false;
+          });
+      }
+
+      document
+        .getElementById("bookFormOverlay")
+        .addEventListener("click", function (e) {
+          if (e.target === this) closeBook();
+        });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeBook();
+      });
+
+      // ── TOAST ─────────────────────────────────────────────────────────────────
+      let _tt;
+      function showToast(msg) {
+        const t = document.getElementById("toast");
+        document.getElementById("toastMsg").textContent = msg;
+        t.classList.add("show");
+        clearTimeout(_tt);
+        _tt = setTimeout(() => t.classList.remove("show"), 3000);
+      }
+
+      // ── BACK TO TOP ───────────────────────────────────────────────────────────
+      window.addEventListener("scroll", () => {
+        document
+          .getElementById("backTop")
+          .classList.toggle("show", window.scrollY > 400);
+      });
+    </script>
+  </body>
+</html>

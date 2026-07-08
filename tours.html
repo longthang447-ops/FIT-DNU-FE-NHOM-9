@@ -1,0 +1,1298 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Tour du lịch Hà Nội – Khám phá Ninh Bình, Hạ Long, Sapa và nhiều điểm đến hấp dẫn. Gói Basic, Standard, Premium, Super từ StayEassy."
+    />
+    <title>Tour Du Lịch – StayEassy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #1a1614;
+        --ink-soft: #3d3530;
+        --gold: #c8a96e;
+        --gold-dark: #a07840;
+        --white: #faf9f7;
+        --parchment: #f0ebe3;
+        --mist: #9a8f87;
+        --jade: #2d7a5f;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--white);
+        color: var(--ink);
+      }
+
+      /* NAV */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(26, 22, 20, 0.96);
+        backdrop-filter: blur(12px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.9rem 2.5rem;
+        border-bottom: 1px solid rgba(200, 169, 110, 0.15);
+      }
+      .nav-logo {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.55rem;
+        font-weight: 700;
+        color: var(--white);
+        letter-spacing: -0.01em;
+      }
+      .nav-logo span {
+        color: var(--gold);
+      }
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+      .nav-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 0.88rem;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--gold);
+      }
+      .nav-back {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--gold);
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-decoration: none;
+        border: 1px solid rgba(200, 169, 110, 0.35);
+        border-radius: 2rem;
+        padding: 0.4rem 1rem;
+        transition: background 0.2s;
+      }
+      .nav-back:hover {
+        background: rgba(200, 169, 110, 0.1);
+      }
+      .nav-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 40px;
+        height: 40px;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+      }
+      .nav-toggle span {
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: var(--gold);
+        border-radius: 2px;
+      }
+      .mobile-nav-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 199;
+        background: rgba(26, 22, 20, 0.55);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+      .mobile-nav-overlay.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      /* HERO */
+      .tour-hero {
+        position: relative;
+        height: 380px;
+        overflow: hidden;
+        background: linear-gradient(135deg, #1a1614 0%, #0a1f18 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .tour-hero-bg {
+        position: absolute;
+        inset: 0;
+        background-image: url("https://images.unsplash.com/photo-1509030450996-dd1a26dda07a?w=1400&q=80");
+        background-size: cover;
+        background-position: center;
+        opacity: 0.25;
+        transition: transform 8s ease;
+      }
+      .tour-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(26, 22, 20, 0.3),
+          rgba(26, 22, 20, 0.7)
+        );
+      }
+      .tour-hero-content {
+        position: relative;
+        z-index: 1;
+      }
+      .tour-hero-badge {
+        display: inline-block;
+        border: 1px solid rgba(200, 169, 110, 0.5);
+        border-radius: 2rem;
+        padding: 0.35rem 1rem;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 1.25rem;
+      }
+      .tour-hero h1 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.15;
+        margin-bottom: 0.75rem;
+      }
+      .tour-hero h1 em {
+        color: var(--gold);
+        font-style: italic;
+      }
+      .tour-hero p {
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 0.95rem;
+        max-width: 520px;
+        margin: 0 auto;
+        line-height: 1.7;
+      }
+
+      /* TIER LEGEND */
+      .tier-legend {
+        display: flex;
+        gap: 1.25rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 1.5rem 2.5rem;
+        background: var(--parchment);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      }
+      .tier-dot {
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+        font-size: 0.8rem;
+        color: var(--mist);
+      }
+      .tier-dot span {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+      /* FILTER TABS */
+      .tour-filters {
+        display: flex;
+        gap: 0.75rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 2rem 2.5rem 1.5rem;
+        background: var(--white);
+      }
+      .filter-pill {
+        padding: 0.5rem 1.25rem;
+        border-radius: 2rem;
+        border: 1.5px solid var(--parchment);
+        background: transparent;
+        font-size: 0.82rem;
+        font-weight: 500;
+        color: var(--mist);
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .filter-pill:hover {
+        border-color: var(--gold);
+        color: var(--gold-dark);
+      }
+      .filter-pill.active {
+        background: var(--gold);
+        border-color: var(--gold);
+        color: var(--ink);
+        font-weight: 600;
+      }
+
+      /* TOUR GRID */
+      .tour-grid-wrap {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 1rem 2.5rem 5rem;
+      }
+      .tour-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.75rem;
+      }
+      .tour-card {
+        border-radius: 20px;
+        overflow: hidden;
+        background: var(--white);
+        border: 1px solid var(--parchment);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s;
+      }
+      .tour-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+      }
+      .tour-card.super {
+        background: linear-gradient(160deg, #1a0a2e, #120822);
+        border-color: rgba(232, 121, 249, 0.3);
+      }
+      .tour-card.super:hover {
+        box-shadow: 0 16px 40px rgba(232, 121, 249, 0.18);
+      }
+      .tour-card-img {
+        position: relative;
+        height: 210px;
+        overflow: hidden;
+      }
+      .tour-card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s;
+      }
+      .tour-card:hover .tour-card-img img {
+        transform: scale(1.06);
+      }
+      .tour-card.super .tour-card-img img {
+        opacity: 0.85;
+      }
+      .tour-top-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+      }
+      .tour-badges {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        display: flex;
+        gap: 0.4rem;
+      }
+      .tour-badge {
+        font-size: 0.62rem;
+        font-weight: 700;
+        padding: 0.25rem 0.75rem;
+        border-radius: 2rem;
+      }
+      .tour-fav {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(255, 255, 255, 0.15);
+        border: none;
+        border-radius: 50%;
+        width: 34px;
+        height: 34px;
+        cursor: pointer;
+        backdrop-filter: blur(6px);
+        font-size: 0.9rem;
+      }
+      .tour-body {
+        padding: 1.4rem;
+      }
+      .tour-cat {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-bottom: 0.35rem;
+      }
+      .tour-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--ink);
+        margin-bottom: 0.45rem;
+      }
+      .super .tour-name {
+        color: #fff;
+      }
+      .tour-desc {
+        font-size: 0.8rem;
+        color: var(--mist);
+        line-height: 1.65;
+        margin-bottom: 1rem;
+      }
+      .super .tour-desc {
+        color: rgba(255, 255, 255, 0.55);
+      }
+      .tour-tags {
+        display: flex;
+        gap: 0.45rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.1rem;
+      }
+      .tour-tag {
+        font-size: 0.68rem;
+        padding: 0.2rem 0.65rem;
+        border-radius: 2rem;
+      }
+      .tour-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .tour-price-label {
+        font-size: 0.7rem;
+        color: var(--mist);
+      }
+      .tour-price {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .super .tour-price {
+        color: #e879f9;
+      }
+      .tour-price span {
+        font-size: 0.8rem;
+        font-weight: 400;
+        color: var(--mist);
+      }
+      .tour-btn {
+        border: none;
+        border-radius: 12px;
+        padding: 0.6rem 1.3rem;
+        font-weight: 700;
+        font-size: 0.82rem;
+        cursor: pointer;
+        transition: opacity 0.2s;
+      }
+      .tour-btn:hover {
+        opacity: 0.85;
+      }
+
+      /* COMPARISON TABLE */
+      .compare-section {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 2.5rem 5rem;
+      }
+      .compare-box {
+        background: var(--parchment);
+        border-radius: 24px;
+        overflow: hidden;
+      }
+      .compare-head {
+        padding: 1.5rem 2rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      }
+      .compare-head h3 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .compare-scroll {
+        overflow-x: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 580px;
+      }
+      thead tr {
+        background: rgba(0, 0, 0, 0.04);
+      }
+      th {
+        padding: 0.9rem 1.25rem;
+        text-align: center;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      th:first-child {
+        text-align: left;
+      }
+      td {
+        padding: 0.85rem 1.25rem;
+        font-size: 0.83rem;
+        color: var(--ink);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        text-align: center;
+      }
+      td:first-child {
+        text-align: left;
+      }
+      tr:nth-child(even) {
+        background: rgba(0, 0, 0, 0.02);
+      }
+
+      /* CTA BANNER */
+      .cta-banner {
+        max-width: 1280px;
+        margin: 0 auto 5rem;
+        padding: 0 2.5rem;
+      }
+      .cta-inner {
+        background: linear-gradient(135deg, var(--ink), #1a1614);
+        border: 1px solid rgba(200, 169, 110, 0.18);
+        border-radius: 24px;
+        padding: 3rem 2.5rem;
+        text-align: center;
+      }
+      .cta-inner h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 0.75rem;
+      }
+      .cta-inner h2 em {
+        color: var(--gold);
+      }
+      .cta-inner p {
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 0.9rem;
+        margin-bottom: 2rem;
+      }
+      .cta-btns {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .cta-btn-primary {
+        padding: 0.85rem 2rem;
+        background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+        border: none;
+        border-radius: 2rem;
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: var(--ink);
+        cursor: pointer;
+        text-decoration: none;
+        transition: transform 0.2s;
+      }
+      .cta-btn-primary:hover {
+        transform: translateY(-2px);
+      }
+      .cta-btn-ghost {
+        padding: 0.85rem 2rem;
+        background: transparent;
+        border: 1.5px solid rgba(200, 169, 110, 0.4);
+        border-radius: 2rem;
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: var(--gold);
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.2s;
+      }
+      .cta-btn-ghost:hover {
+        background: rgba(200, 169, 110, 0.1);
+      }
+
+      /* FOOTER */
+      footer {
+        background: var(--ink);
+        padding: 2rem 2.5rem;
+        text-align: center;
+        border-top: 1px solid rgba(200, 169, 110, 0.1);
+      }
+      footer p {
+        color: rgba(255, 255, 255, 0.35);
+        font-size: 0.78rem;
+      }
+      footer a {
+        color: var(--gold);
+        text-decoration: none;
+      }
+
+      /* TOAST */
+      #toast {
+        position: fixed;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%) translateY(20px);
+        background: var(--ink);
+        color: #fff;
+        border: 1px solid rgba(200, 169, 110, 0.3);
+        padding: 0.75rem 1.5rem;
+        border-radius: 2rem;
+        font-size: 0.85rem;
+        opacity: 0;
+        transition: all 0.3s;
+        z-index: 1000;
+        white-space: nowrap;
+      }
+      #toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          padding: 0.9rem 1.25rem;
+        }
+        .nav-toggle {
+          display: flex;
+        }
+        .nav-back .nb-text {
+          display: none;
+        }
+        .nav-links {
+          display: flex !important;
+          flex-direction: column;
+          list-style: none;
+          position: fixed;
+          top: 0;
+          right: 0;
+          height: 100dvh;
+          width: min(280px, 80vw);
+          background: var(--ink);
+          padding: 5.5rem 1.75rem 2rem;
+          gap: 0;
+          box-shadow: -12px 0 40px rgba(0, 0, 0, 0.35);
+          transform: translateX(100%);
+          transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+          z-index: 200;
+          overflow-y: auto;
+        }
+        .nav-links.open {
+          transform: translateX(0);
+        }
+        .nav-links li {
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .nav-links a {
+          display: block;
+          padding: 1rem 0;
+          font-size: 0.95rem;
+        }
+        .tour-hero {
+          height: 280px;
+        }
+        .tour-grid-wrap,
+        .compare-section,
+        .cta-banner {
+          padding-left: 1.25rem;
+          padding-right: 1.25rem;
+        }
+        .tour-filters {
+          padding-left: 1.25rem;
+          padding-right: 1.25rem;
+          overflow-x: auto;
+          flex-wrap: nowrap;
+          justify-content: flex-start;
+          -webkit-overflow-scrolling: touch;
+        }
+        .filter-pill {
+          flex-shrink: 0;
+        }
+        .tier-legend {
+          padding: 1.25rem;
+          gap: 0.75rem;
+        }
+        .tour-grid {
+          grid-template-columns: 1fr;
+        }
+        .cta-inner {
+          padding: 2.25rem 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <div class="nav-logo">Stay<span>Eassy</span></div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><a href="hotels-all.html">Khách sạn</a></li>
+        <li>
+          <a href="tours.html" class="active" style="color: var(--gold)"
+            >Tour</a
+          >
+        </li>
+        <li><a href="promotions.html">🎁 Khuyến mãi</a></li>
+      </ul>
+      <a href="index.html" class="nav-back"
+        >← <span class="nb-text">Trang chủ</span></a
+      >
+      <button
+        class="nav-toggle"
+        id="navToggleBtn"
+        onclick="toggleMobileNav()"
+        aria-label="Menu"
+      >
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <div
+      class="mobile-nav-overlay"
+      id="mobileNavOverlay"
+      onclick="toggleMobileNav(false)"
+    ></div>
+
+    <!-- HERO -->
+    <div class="tour-hero">
+      <div class="tour-hero-bg" id="heroBg"></div>
+      <div class="tour-hero-content">
+        <div class="tour-hero-badge">🗺️ Trải nghiệm trọn vẹn</div>
+        <h1>Tour Du Lịch <em>Hà Nội</em></h1>
+        <p>
+          Từ tản bộ phố cổ bình dân đến hành trình VIP — chọn trải nghiệm phù
+          hợp sở thích và túi tiền của bạn.
+        </p>
+      </div>
+    </div>
+
+    <!-- TIER LEGEND -->
+    <div class="tier-legend">
+      <div class="tier-dot">
+        <span style="background: #4ade80"></span>Basic – Phù hợp mọi người
+      </div>
+      <div class="tier-dot">
+        <span style="background: #38bdf8"></span>Standard – Cân bằng & phổ thông
+      </div>
+      <div class="tier-dot">
+        <span style="background: #c8a96e"></span>Premium – Sang trọng trọn gói
+      </div>
+      <div class="tier-dot">
+        <span style="background: #e879f9"></span>Super – Đỉnh cao trải nghiệm
+      </div>
+    </div>
+
+    <!-- FILTER TABS -->
+    <div class="tour-filters">
+      <button class="filter-pill active" onclick="filterTours(this, 'all')">
+        🗺️ Tất cả
+      </button>
+      <button class="filter-pill" onclick="filterTours(this, 'basic')">
+        🟢 Basic
+      </button>
+      <button class="filter-pill" onclick="filterTours(this, 'standard')">
+        🔵 Standard
+      </button>
+      <button class="filter-pill" onclick="filterTours(this, 'premium')">
+        ⭐ Premium
+      </button>
+      <button class="filter-pill" onclick="filterTours(this, 'super')">
+        💎 Super
+      </button>
+    </div>
+
+    <!-- FEATURED TOURS STRIP -->
+    <div
+      style="
+        background: linear-gradient(135deg, #1a1614, #0d1a12);
+        padding: 3.5rem 2.5rem;
+        border-bottom: 1px solid rgba(200, 169, 110, 0.12);
+      "
+    >
+      <div style="max-width: 1280px; margin: 0 auto">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+          "
+        >
+          <div>
+            <div
+              style="
+                font-size: 0.7rem;
+                font-weight: 700;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+                color: var(--gold);
+                margin-bottom: 0.4rem;
+              "
+            >
+              🔥 Được đặt nhiều nhất tuần này
+            </div>
+            <h2
+              style="
+                font-family: &quot;Cormorant Garamond&quot;, serif;
+                font-size: 1.8rem;
+                font-weight: 700;
+                color: #fff;
+              "
+            >
+              Tour
+              <em style="color: var(--gold); font-style: italic">Nổi Bật</em>
+            </h2>
+          </div>
+          <a
+            href="#tourGrid"
+            onclick="
+              document
+                .getElementById('tourGrid')
+                .scrollIntoView({ behavior: 'smooth' });
+              return false;
+            "
+            style="
+              color: var(--gold);
+              font-size: 0.85rem;
+              font-weight: 600;
+              text-decoration: none;
+              border: 1px solid rgba(200, 169, 110, 0.35);
+              padding: 0.4rem 1.1rem;
+              border-radius: 2rem;
+              transition: background 0.2s;
+            "
+            onmouseover="this.style.background = 'rgba(200,169,110,.12)'"
+            onmouseout="this.style.background = ''"
+            >Xem tất cả →</a
+          >
+        </div>
+        <div
+          id="featuredStrip"
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.25rem;
+          "
+        ></div>
+      </div>
+    </div>
+
+    <!-- TOUR GRID -->
+    <div class="tour-grid-wrap">
+      <div class="tour-grid" id="tourGrid"></div>
+    </div>
+
+    <!-- COMPARISON TABLE -->
+    <div class="compare-section">
+      <div class="compare-box">
+        <div class="compare-head"><h3>So sánh các gói tour</h3></div>
+        <div class="compare-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th style="color: var(--mist)">Tính năng</th>
+                <th style="color: #16a34a">🟢 Basic</th>
+                <th style="color: #0284c7">🔵 Standard</th>
+                <th style="color: var(--gold-dark)">⭐ Premium</th>
+                <th style="color: #a855f7">💎 Super</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Xe đưa đón</td>
+                <td>—</td>
+                <td style="color: #0284c7">✓ Xe bus</td>
+                <td style="color: var(--gold-dark)">✓ Xe riêng</td>
+                <td style="color: #a855f7">✓ Máy bay</td>
+              </tr>
+              <tr>
+                <td>Bữa ăn</td>
+                <td>Ăn thử nhẹ</td>
+                <td style="color: #0284c7">✓ Trưa địa phương</td>
+                <td style="color: var(--gold-dark)">✓ Fine Dining</td>
+                <td style="color: #a855f7">✓ All Inclusive</td>
+              </tr>
+              <tr>
+                <td>Hướng dẫn viên</td>
+                <td style="color: #16a34a">✓ Nhóm</td>
+                <td style="color: #0284c7">✓ Nhóm nhỏ</td>
+                <td style="color: var(--gold-dark)">✓ Riêng</td>
+                <td style="color: #a855f7">✓ Butler 24/7</td>
+              </tr>
+              <tr>
+                <td>Lưu trú</td>
+                <td>—</td>
+                <td>Homestay</td>
+                <td style="color: var(--gold-dark)">✓ 4–5 sao</td>
+                <td style="color: #a855f7">✓ 5 sao độc quyền</td>
+              </tr>
+              <tr>
+                <td>Giá từ (người)</td>
+                <td style="color: #16a34a; font-weight: 700">250K₫</td>
+                <td style="color: #0284c7; font-weight: 700">780K₫</td>
+                <td style="color: var(--gold-dark); font-weight: 700">4.2M₫</td>
+                <td style="color: #a855f7; font-weight: 700">35M₫</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA BANNER -->
+    <div class="cta-banner">
+      <div class="cta-inner">
+        <h2>Chưa tìm được tour <em>ưng ý?</em></h2>
+        <p>
+          Tư vấn viên của chúng tôi sẵn sàng thiết kế hành trình riêng theo yêu
+          cầu của bạn — miễn phí.
+        </p>
+        <div class="cta-btns">
+          <a href="index.html#hotels" class="cta-btn-primary"
+            >🏨 Xem khách sạn</a
+          >
+          <a href="promotions.html" class="cta-btn-ghost">🎁 Xem ưu đãi</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>
+        © 2026 StayEassy · FIT–DNU · <a href="index.html">Trang chủ</a> ·
+        <a href="hotels-all.html">Khách sạn</a> ·
+        <a href="promotions.html">Khuyến mãi</a>
+      </p>
+    </footer>
+
+    <div id="toast"><span id="toastMsg"></span></div>
+
+    <script>
+      // ── MOBILE NAV ──────────────────────────────────────────────────────────
+      function toggleMobileNav(force) {
+        const links = document.getElementById("navLinks");
+        const overlay = document.getElementById("mobileNavOverlay");
+        if (!links || !overlay) return;
+        const open =
+          typeof force === "boolean"
+            ? force
+            : !links.classList.contains("open");
+        links.classList.toggle("open", open);
+        overlay.classList.toggle("open", open);
+        document.body.style.overflow = open ? "hidden" : "";
+      }
+      document.addEventListener("click", function (e) {
+        const links = document.getElementById("navLinks");
+        if (
+          links &&
+          links.classList.contains("open") &&
+          e.target.closest("#navLinks a")
+        ) {
+          toggleMobileNav(false);
+        }
+      });
+
+      const tours = [
+        {
+          tier: "basic",
+          tierLabel: "🟢 BASIC",
+          tierColor: "#16a34a",
+          duration: "3 giờ",
+          img: "https://images.unsplash.com/photo-1509030450996-dd1a26dda07a?w=600&q=80",
+          cat: "Tản bộ phố cổ",
+          catColor: "#16a34a",
+          name: "Hà Nội 36 Phố Phường",
+          desc: "Khám phá 36 phố phường lịch sử cùng hướng dẫn viên địa phương. Thử cà phê trứng và bánh mì trứ danh.",
+          tags: [
+            { t: "📍 Hoàn Kiếm", bg: "#f0fdf4", c: "#16a34a" },
+            { t: "👥 Tối đa 15 người", bg: "#f0fdf4", c: "#16a34a" },
+            { t: "🍜 Có ăn thử", bg: "#f0fdf4", c: "#16a34a" },
+          ],
+          price: "250.000₫",
+          priceColor: "var(--ink)",
+          btnBg: "linear-gradient(135deg,#16a34a,#15803d)",
+          btnColor: "#fff",
+          bookName: "Tour Hà Nội 36 Phố Phường",
+        },
+        {
+          tier: "basic",
+          tierLabel: "🟢 BASIC",
+          tierColor: "#16a34a",
+          duration: "4 giờ",
+          img: "https://sakos.vn/wp-content/uploads/2024/01/gt2-1.jpeg",
+          cat: "Xe đạp buổi sáng",
+          catColor: "#16a34a",
+          name: "Vòng Quanh Hồ Gươm & Ba Đình",
+          desc: "Đạp xe buổi sáng sớm qua Hồ Gươm, Lăng Bác, Văn Miếu — Hà Nội bình yên trước khi đông người.",
+          tags: [
+            { t: "🚲 Xe đạp đôi", bg: "#f0fdf4", c: "#16a34a" },
+            { t: "☀️ Buổi sáng sớm", bg: "#f0fdf4", c: "#16a34a" },
+          ],
+          price: "320.000₫",
+          priceColor: "var(--ink)",
+          btnBg: "linear-gradient(135deg,#16a34a,#15803d)",
+          btnColor: "#fff",
+          bookName: "Tour Xe Đạp Hồ Gươm",
+        },
+        {
+          tier: "standard",
+          tierLabel: "🔵 STANDARD",
+          tierColor: "#0284c7",
+          duration: "Cả ngày",
+          img: "https://cdn.tripspoint.com/uploads/photos/7687/ninh-binh-1-day-trip-bai-dinh-pagoda-trang-an-boating-mua-cave_nT6Xt.jpeg",
+          cat: "Daytrip từ Hà Nội",
+          catColor: "#0284c7",
+          name: "Ninh Bình – Tràng An – Bái Đính",
+          desc: "Xe đưa đón, thuyền hang động Tràng An, chùa Bái Đính lớn nhất Đông Nam Á và bữa trưa đặc sản địa phương.",
+          tags: [
+            { t: "🚌 Xe đưa đón", bg: "#e0f2fe", c: "#0284c7" },
+            { t: "🍱 Có bữa trưa", bg: "#e0f2fe", c: "#0284c7" },
+            { t: "🚣 Thuyền hang", bg: "#e0f2fe", c: "#0284c7" },
+          ],
+          price: "780.000₫",
+          priceColor: "var(--ink)",
+          btnBg: "linear-gradient(135deg,#0284c7,#0369a1)",
+          btnColor: "#fff",
+          bookName: "Tour Ninh Bình 1 Ngày",
+        },
+        {
+          tier: "standard",
+          tierLabel: "🔵 STANDARD",
+          tierColor: "#0284c7",
+          duration: "2 ngày 1 đêm",
+          img: "https://ticotravel.com.vn/wp-content/uploads/2022/05/Ruong-bac-thang-o-Sapa-4.jpg",
+          cat: "Trekking núi rừng",
+          catColor: "#0284c7",
+          name: "Sapa – Ruộng Bậc Thang Muộn Sương",
+          desc: "Tàu đêm lên Sapa, trekking qua bản làng H'mông, ngủ homestay với gia đình địa phương.",
+          tags: [
+            { t: "🚂 Tàu hỏa", bg: "#e0f2fe", c: "#0284c7" },
+            { t: "🏡 Homestay", bg: "#e0f2fe", c: "#0284c7" },
+            { t: "🥾 Trekking", bg: "#e0f2fe", c: "#0284c7" },
+          ],
+          price: "1.450.000₫",
+          priceColor: "var(--ink)",
+          btnBg: "linear-gradient(135deg,#0284c7,#0369a1)",
+          btnColor: "#fff",
+          bookName: "Tour Sapa 2N1Đ",
+        },
+        {
+          tier: "premium",
+          tierLabel: "⭐ PREMIUM",
+          tierColor: "var(--gold)",
+          topBar: "linear-gradient(90deg,var(--gold),var(--gold-dark))",
+          duration: "3 ngày 2 đêm",
+          img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80",
+          cat: "Du thuyền hạng sang",
+          catColor: "var(--gold-dark)",
+          name: "Vịnh Hạ Long – Du Thuyền 5 Sao",
+          desc: "Du thuyền cao cấp, phòng cabin view biển, bữa ăn fine dining trên vịnh, kayak, tham quan hang động Thiên Cung.",
+          tags: [
+            { t: "🛳️ Du thuyền 5⭐", bg: "#fef9c3", c: "#a16207" },
+            { t: "🍽️ Fine Dining", bg: "#fef9c3", c: "#a16207" },
+            { t: "🚁 Đưa đón HN", bg: "#fef9c3", c: "#a16207" },
+          ],
+          price: "4.200.000₫",
+          priceColor: "var(--gold-dark)",
+          btnBg: "linear-gradient(135deg,var(--gold),var(--gold-dark))",
+          btnColor: "var(--ink)",
+          bookName: "Tour Hạ Long Du Thuyền 5 Sao",
+          cardBorder: "rgba(200,169,110,.3)",
+        },
+        {
+          tier: "super",
+          tierLabel: "💎 SUPER",
+          tierColor: "#e879f9",
+          topBar: "linear-gradient(90deg,#e879f9,#a855f7,#e879f9)",
+          duration: "5 ngày 4 đêm",
+          img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80",
+          cat: "VIP Private Tour",
+          catColor: "#e879f9",
+          name: "Bắc Việt Nam Trọn Gói – Private Jet",
+          desc: "Hà Nội → Hạ Long → Sapa bằng máy bay hạng thương gia, khách sạn 5⭐, butler riêng 24/7, trải nghiệm văn hóa cao cấp.",
+          tags: [
+            {
+              t: "✈️ Máy bay riêng",
+              bg: "rgba(232,121,249,.12)",
+              c: "#e879f9",
+            },
+            { t: "🤵 Butler 24/7", bg: "rgba(232,121,249,.12)", c: "#e879f9" },
+            {
+              t: "🏆 All-inclusive",
+              bg: "rgba(232,121,249,.12)",
+              c: "#e879f9",
+            },
+          ],
+          price: "35.000.000₫",
+          priceColor: "#e879f9",
+          btnBg: "linear-gradient(135deg,#e879f9,#a855f7)",
+          btnColor: "#fff",
+          bookName: "Tour VIP Bắc Việt Nam Private",
+          isSuper: true,
+        },
+        // ── TOURS NỔI BẬT BỔ SUNG ──
+        {
+          tier: "basic",
+          tierLabel: "🟢 BASIC",
+          tierColor: "#16a34a",
+          duration: "5 giờ",
+          img: "https://hanoithelegendhotel.com/files/foodtourhanoi.jpg",
+          cat: "Ẩm thực đường phố",
+          catColor: "#16a34a",
+          name: "Food Tour Bún Chả & Phở Hà Nội",
+          desc: "Hành trình ẩm thực buổi tối qua các hàng ăn nổi tiếng — bún chả Obama, phở gia truyền Bát Đàn, cốm Làng Vòng và cà phê trứng Đinh Tiên Hoàng.",
+          tags: [
+            { t: "🍜 5 điểm ăn", bg: "#f0fdf4", c: "#16a34a" },
+            { t: "🌃 Buổi tối", bg: "#f0fdf4", c: "#16a34a" },
+            { t: "📸 Có chụp ảnh", bg: "#f0fdf4", c: "#16a34a" },
+          ],
+          price: "380.000₫",
+          priceColor: "var(--ink)",
+          btnBg: "linear-gradient(135deg,#16a34a,#15803d)",
+          btnColor: "#fff",
+          bookName: "Tour Food Bún Chả & Phở",
+          hot: true,
+        },
+        {
+          tier: "standard",
+          tierLabel: "🔵 STANDARD",
+          tierColor: "#0284c7",
+          duration: "Cả ngày",
+          img: "https://sovhtt.hanoi.gov.vn/wp-content/uploads/2016/06/20150608210539-di-tich-nha-tu-hoa-lo-ha-noi1-600x399.jpg",
+          cat: "Lịch sử & Văn hóa",
+          catColor: "#0284c7",
+          name: "Hà Nội Di Sản – Văn Miếu · Hỏa Lò · Hoàng Thành",
+          desc: "Hành trình khám phá 3 di tích lịch sử quan trọng nhất Thủ đô với hướng dẫn viên chuyên nghiệp, nghe câu chuyện 1000 năm Thăng Long.",
+          tags: [
+            { t: "🏛️ 3 di tích lớn", bg: "#e0f2fe", c: "#0284c7" },
+            { t: "🎧 Audio guide", bg: "#e0f2fe", c: "#0284c7" },
+            { t: "🍱 Bữa trưa", bg: "#e0f2fe", c: "#0284c7" },
+          ],
+          price: "950.000₫",
+          priceColor: "var(--ink)",
+          btnBg: "linear-gradient(135deg,#0284c7,#0369a1)",
+          btnColor: "#fff",
+          bookName: "Tour Di Sản Hà Nội",
+          hot: true,
+        },
+        {
+          tier: "standard",
+          tierLabel: "🔵 STANDARD",
+          tierColor: "#0284c7",
+          duration: "3 ngày 2 đêm",
+          img: "https://media-cdn.tripadvisor.com/media/photo-s/1e/18/dc/d6/c-nh-d-p-t-i-happy-land.jpg",
+          cat: "Núi & Cao nguyên",
+          catColor: "#0284c7",
+          name: "Mộc Châu – Cao Nguyên Hoa & Sương Mù",
+          desc: "Ngắm đồi chè xanh ngút ngàn, thác Dải Yếm, rừng thông Bản Áng và thưởng thức mật ong rừng Mộc Châu địa phương.",
+          tags: [
+            { t: "🌿 Thiên nhiên", bg: "#e0f2fe", c: "#0284c7" },
+            { t: "🚌 Xe limousine", bg: "#e0f2fe", c: "#0284c7" },
+            { t: "🏡 Resort 3⭐", bg: "#e0f2fe", c: "#0284c7" },
+          ],
+          price: "1.850.000₫",
+          priceColor: "var(--ink)",
+          btnBg: "linear-gradient(135deg,#0284c7,#0369a1)",
+          btnColor: "#fff",
+          bookName: "Tour Mộc Châu 3N2Đ",
+        },
+        {
+          tier: "premium",
+          tierLabel: "⭐ PREMIUM",
+          tierColor: "var(--gold)",
+          topBar: "linear-gradient(90deg,var(--gold),var(--gold-dark))",
+          duration: "4 ngày 3 đêm",
+          img: "https://www.decathlon.vn/blog/wp-content/uploads/2025/10/dong-do-camping-2-4-cheo-sup-cheo-kayak-tren-ho-dong-do-06.jpg",
+          cat: "Wellness & Spa Retreat",
+          catColor: "var(--gold-dark)",
+          name: "Tam Đảo – Retreat Detox & Spa Núi",
+          desc: "Rút khỏi nhịp sống đô thị — yoga buổi sáng trong mây, spa đá nóng núi lửa, ẩm thực thuần chay và massage truyền thống người Dao.",
+          tags: [
+            { t: "🧘 Yoga & Thiền", bg: "#fef9c3", c: "#a16207" },
+            { t: "💆 Spa núi lửa", bg: "#fef9c3", c: "#a16207" },
+            { t: "🌿 Full-board", bg: "#fef9c3", c: "#a16207" },
+          ],
+          price: "5.800.000₫",
+          priceColor: "var(--gold-dark)",
+          btnBg: "linear-gradient(135deg,var(--gold),var(--gold-dark))",
+          btnColor: "var(--ink)",
+          bookName: "Tour Tam Đảo Wellness Retreat",
+          hot: true,
+        },
+        {
+          tier: "premium",
+          tierLabel: "⭐ PREMIUM",
+          tierColor: "var(--gold)",
+          topBar: "linear-gradient(90deg,var(--gold),var(--gold-dark))",
+          duration: "2 ngày 1 đêm",
+          img: "https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=600&q=80",
+          cat: "Hồ Tây Glamping",
+          catColor: "var(--gold-dark)",
+          name: "Hồ Tây Sunset Glamping & Kayak",
+          desc: "Cắm trại sang trọng ven hồ với lều glamping view hoàng hôn, kayak buổi sáng, BBQ hải sản và tiệc rượu vang trên mặt nước.",
+          tags: [
+            { t: "🌅 Sunset view", bg: "#fef9c3", c: "#a16207" },
+            { t: "🛶 Kayak", bg: "#fef9c3", c: "#a16207" },
+            { t: "🍷 BBQ & Wine", bg: "#fef9c3", c: "#a16207" },
+          ],
+          price: "3.200.000₫",
+          priceColor: "var(--gold-dark)",
+          btnBg: "linear-gradient(135deg,var(--gold),var(--gold-dark))",
+          btnColor: "var(--ink)",
+          bookName: "Tour Hồ Tây Glamping",
+        },
+        {
+          tier: "super",
+          tierLabel: "💎 SUPER",
+          tierColor: "#e879f9",
+          topBar: "linear-gradient(90deg,#e879f9,#a855f7,#e879f9)",
+          duration: "3 ngày 2 đêm",
+          img: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80",
+          cat: "Helicopter & Luxury",
+          catColor: "#e879f9",
+          name: "Hạ Long – Tour Trực Thăng & Du Thuyền",
+          desc: "Bay trực thăng ngắm Vịnh Hạ Long từ trên cao, hạ cánh xuống du thuyền 5 sao độc quyền, lặn biển với huấn luyện viên riêng và tiệc mặt trời lặn trên boong.",
+          tags: [
+            { t: "🚁 Trực thăng", bg: "rgba(232,121,249,.12)", c: "#e879f9" },
+            { t: "🤿 Lặn biển", bg: "rgba(232,121,249,.12)", c: "#e879f9" },
+            {
+              t: "🛳️ Du thuyền 5⭐",
+              bg: "rgba(232,121,249,.12)",
+              c: "#e879f9",
+            },
+          ],
+          price: "48.000.000₫",
+          priceColor: "#e879f9",
+          btnBg: "linear-gradient(135deg,#e879f9,#a855f7)",
+          btnColor: "#fff",
+          bookName: "Tour Hạ Long Trực Thăng VIP",
+          isSuper: true,
+          hot: true,
+        },
+      ];
+
+      let _filter = "all";
+
+      function renderFeatured() {
+        const hot = tours.filter((t) => t.hot);
+        document.getElementById("featuredStrip").innerHTML = hot
+          .map(
+            (t) => `
+    <div style="border-radius:18px;overflow:hidden;background:rgba(255,255,255,.04);border:1px solid rgba(200,169,110,.18);display:flex;flex-direction:column;transition:transform .25s,border-color .25s" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(200,169,110,.45)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(200,169,110,.18)'">
+      <div style="position:relative;height:160px;overflow:hidden">
+        <img src="${t.img}" alt="${t.name}" style="width:100%;height:100%;object-fit:cover;opacity:.85;transition:transform .4s" loading="lazy" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform=''"/>
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,22,20,.85),transparent 55%)"></div>
+        <div style="position:absolute;top:.75rem;left:.75rem;display:flex;gap:.35rem">
+          <span style="background:${t.tierColor};color:${t.isSuper || t.tier === "standard" || t.tier === "basic" ? "#fff" : "var(--ink)"};font-size:.58rem;font-weight:700;padding:.2rem .65rem;border-radius:2rem">${t.tierLabel}</span>
+          <span style="background:#e24b4a;color:#fff;font-size:.58rem;font-weight:700;padding:.2rem .65rem;border-radius:2rem">🔥 HOT</span>
+        </div>
+        <div style="position:absolute;bottom:.75rem;left:.75rem;right:.75rem">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:#fff;line-height:1.2">${t.name}</div>
+        </div>
+      </div>
+      <div style="padding:1rem 1.1rem;flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:.75rem">
+        <div style="font-size:.78rem;color:rgba(255,255,255,.5);line-height:1.55">${t.desc.slice(0, 90)}${t.desc.length > 90 ? "…" : ""}</div>
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div><div style="font-size:.62rem;color:rgba(255,255,255,.35)">Từ</div><div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:${t.priceColor === "var(--ink)" ? "var(--gold)" : t.priceColor}">${t.price}<span style="font-size:.72rem;font-weight:400;color:rgba(255,255,255,.35)">/người</span></div></div>
+          <button style="background:${t.btnBg};color:${t.btnColor};border:none;border-radius:10px;padding:.5rem 1.1rem;font-weight:700;font-size:.78rem;cursor:pointer" onclick="bookTour('${t.bookName}')">Đặt ngay</button>
+        </div>
+      </div>
+    </div>
+  `,
+          )
+          .join("");
+      }
+
+      function renderTours() {
+        const list =
+          _filter === "all" ? tours : tours.filter((t) => t.tier === _filter);
+        const grid = document.getElementById("tourGrid");
+        grid.innerHTML = list
+          .map((t) => {
+            const tags = t.tags
+              .map(
+                (tg) =>
+                  `<span class="tour-tag" style="background:${tg.bg};color:${tg.c}">${tg.t}</span>`,
+              )
+              .join("");
+            return `<div class="tour-card${t.isSuper ? " super" : ""}">
+      ${t.topBar ? `<div class="tour-top-bar" style="background:${t.topBar}"></div>` : ""}
+      <div class="tour-card-img">
+        <img src="${t.img}" alt="${t.name}" loading="lazy"/>
+        <div class="tour-badges">
+          <span class="tour-badge" style="background:${t.tierColor};color:${t.isSuper || t.tier === "standard" ? "#fff" : t.tier === "basic" ? "#fff" : "var(--ink)"}">${t.tierLabel}</span>
+          <span class="tour-badge" style="background:rgba(0,0,0,.5);color:#fff;backdrop-filter:blur(6px)">${t.duration}</span>
+          ${t.hot ? '<span class="tour-badge" style="background:#e24b4a;color:#fff">🔥 HOT</span>' : ""}
+        </div>
+        <button class="tour-fav" onclick="this.textContent=this.textContent==='🤍'?'❤️':'🤍'">🤍</button>
+      </div>
+      <div class="tour-body">
+        <div class="tour-cat" style="color:${t.catColor}">${t.cat}</div>
+        <div class="tour-name">${t.name}</div>
+        <p class="tour-desc">${t.desc}</p>
+        <div class="tour-tags">${tags}</div>
+        <div class="tour-footer">
+          <div><div class="tour-price-label">Từ</div><div class="tour-price" style="color:${t.priceColor}">${t.price}<span>/người</span></div></div>
+          <button class="tour-btn" style="background:${t.btnBg};color:${t.btnColor}" onclick="bookTour('${t.bookName}')">Đặt tour</button>
+        </div>
+      </div>
+    </div>`;
+          })
+          .join("");
+      }
+
+      function filterTours(btn, tier) {
+        document
+          .querySelectorAll(".filter-pill")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        _filter = tier;
+        renderTours();
+      }
+
+      function bookTour(name) {
+        const stored = sessionStorage.getItem("currentUser");
+        if (!stored) {
+          showToast("🔐 Vui lòng đăng nhập tại trang chủ để đặt tour");
+          return;
+        }
+        showToast("✅ Đang đặt: " + name + "...");
+      }
+
+      let _toastTimer;
+      function showToast(msg) {
+        const t = document.getElementById("toast");
+        document.getElementById("toastMsg").textContent = msg;
+        t.classList.add("show");
+        clearTimeout(_toastTimer);
+        _toastTimer = setTimeout(() => t.classList.remove("show"), 3000);
+      }
+
+      renderFeatured();
+      renderTours();
+
+      // Parallax hero bg
+      document.addEventListener("scroll", () => {
+        const bg = document.getElementById("heroBg");
+        if (bg) bg.style.transform = `translateY(${window.scrollY * 0.3}px)`;
+      });
+    </script>
+  </body>
+</html>

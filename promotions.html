@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Khuyến Mãi – StayEassy Hà Nội</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --ink:#1a1614; --ink-soft:#3d3530; --mist:#8a7d74;
+      --white:#faf9f7; --parchment:#f0ebe3; --gold:#c8a96e;
+      --gold-dark:#a8823a; --jade:#2d7a5f;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--ink)}
+
+    /* ── NAV ── */
+    nav{
+      position:sticky;top:0;z-index:100;
+      background:rgba(26,22,20,.96);backdrop-filter:blur(16px);
+      display:flex;align-items:center;justify-content:space-between;
+      padding:.9rem 2.5rem;border-bottom:1px solid rgba(200,169,110,.15);
+    }
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:700;color:#fff}
+    .nav-logo span{color:var(--gold)}
+    .nav-back{display:flex;align-items:center;gap:.5rem;color:rgba(255,255,255,.65);font-size:.85rem;text-decoration:none;padding:.45rem .9rem;border-radius:2rem;border:1px solid rgba(200,169,110,.25);transition:all .2s}
+    .nav-back:hover{color:var(--gold);border-color:var(--gold);background:rgba(200,169,110,.08)}
+
+    /* ── HERO ── */
+    .page-hero{
+      background:linear-gradient(135deg,#1a0a0a 0%,#2d0e0e 40%,#1a1614 100%);
+      padding:4.5rem 2.5rem 3.5rem;position:relative;overflow:hidden;
+    }
+    .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 90% 70% at 70% 50%,rgba(200,169,110,.1) 0%,transparent 70%)}
+    .page-hero::after{content:'🎁';position:absolute;right:6%;top:50%;transform:translateY(-50%);font-size:clamp(4rem,12vw,9rem);opacity:.08;pointer-events:none}
+    .page-hero-inner{max-width:1280px;margin:0 auto;position:relative}
+    .page-eyebrow{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.75rem}
+    .page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:700;color:#fff;line-height:1.15;margin-bottom:.75rem}
+    .page-title em{font-style:italic;color:var(--gold)}
+    .page-sub{color:rgba(255,255,255,.55);font-size:.95rem;max-width:560px;line-height:1.75;margin-bottom:1.75rem}
+
+    /* Countdown */
+    .countdown-strip{display:inline-flex;align-items:center;gap:.75rem;background:rgba(200,169,110,.1);border:1px solid rgba(200,169,110,.25);border-radius:14px;padding:.7rem 1.25rem}
+    .countdown-label{font-size:.75rem;color:rgba(255,255,255,.5);letter-spacing:.06em}
+    .countdown-boxes{display:flex;gap:.5rem;align-items:center}
+    .cd-box{background:rgba(200,169,110,.15);border:1px solid rgba(200,169,110,.2);border-radius:8px;padding:.35rem .65rem;text-align:center}
+    .cd-num{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--gold);line-height:1;display:block}
+    .cd-unit{font-size:.6rem;color:rgba(255,255,255,.4);letter-spacing:.08em;text-transform:uppercase}
+    .cd-sep{color:var(--gold);font-size:1.2rem;font-weight:700;opacity:.6}
+
+    /* ── FILTER TABS ── */
+    .filter-tabs{background:#fff;border-bottom:1px solid var(--parchment);padding:.85rem 2.5rem;display:flex;gap:.5rem;flex-wrap:wrap;position:sticky;top:65px;z-index:80;box-shadow:0 2px 12px rgba(0,0,0,.05)}
+    .tab-btn{padding:.38rem 1rem;border-radius:2rem;border:1.5px solid var(--parchment);background:#fff;font-size:.8rem;color:var(--ink-soft);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+    .tab-btn:hover{border-color:var(--gold);color:var(--gold)}
+    .tab-btn.active{background:var(--ink);color:var(--gold);border-color:var(--ink)}
+
+    /* ── CONTENT ── */
+    .promo-wrapper{max-width:1280px;margin:0 auto;padding:3rem 2.5rem 5rem}
+
+    /* ── HERO VOUCHERS (top 3 featured) ── */
+    .featured-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem;margin-bottom:3rem}
+    .voucher-card{position:relative;border-radius:20px;overflow:hidden;padding:1.75rem 1.75rem 1.5rem;border:1px solid rgba(255,255,255,.08)}
+    .voucher-card .bg-glow{position:absolute;top:0;right:0;width:130px;height:130px;border-radius:50%;pointer-events:none}
+    .voucher-head{display:flex;align-items:flex-start;gap:.75rem;margin-bottom:1.1rem}
+    .voucher-emoji{font-size:2.2rem;line-height:1;flex-shrink:0}
+    .voucher-meta-label{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.2rem}
+    .voucher-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#fff;line-height:1.2}
+    .voucher-desc{font-size:.8rem;line-height:1.65;margin-bottom:1.25rem}
+    .voucher-code-row{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+    .voucher-code{flex:1;border-radius:10px;border:1.5px dashed;padding:.6rem 1rem;font-family:monospace;font-size:1rem;font-weight:700;cursor:pointer;text-align:center;letter-spacing:.08em;transition:background .2s}
+    .use-btn{padding:.6rem 1.2rem;border:none;border-radius:10px;font-weight:700;font-size:.82rem;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;transition:opacity .2s}
+    .use-btn:hover{opacity:.85}
+    .voucher-tags{display:flex;gap:.45rem;flex-wrap:wrap}
+    .vtag{font-size:.68rem;padding:.2rem .7rem;border-radius:2rem}
+
+    /* ── CONDITIONS TABLE ── */
+    .conditions-box{background:var(--parchment);border-radius:20px;overflow:hidden;margin-top:3rem}
+    .conditions-head{padding:1.25rem 1.75rem;border-bottom:1px solid rgba(0,0,0,.06);display:flex;align-items:center;gap:.75rem}
+    .conditions-head h3{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:var(--ink)}
+    .conditions-table{width:100%;border-collapse:collapse}
+    .conditions-table th{padding:.8rem 1.5rem;text-align:left;font-size:.72rem;font-weight:700;color:var(--mist);letter-spacing:.08em;text-transform:uppercase;background:rgba(0,0,0,.03);border-bottom:1px solid rgba(0,0,0,.06)}
+    .conditions-table td{padding:.85rem 1.5rem;font-size:.83rem;color:var(--ink);border-bottom:1px solid rgba(0,0,0,.04);vertical-align:top;line-height:1.6}
+    .conditions-table tr:last-child td{border-bottom:none}
+    .conditions-table tr:hover td{background:rgba(0,0,0,.02)}
+    .badge-chip{display:inline-block;padding:.18rem .65rem;border-radius:2rem;font-size:.68rem;font-weight:600}
+
+    /* ── SEASONAL OFFERS ── */
+    .section-title-row{display:flex;align-items:center;gap:1rem;margin:3.5rem 0 1.75rem}
+    .section-title-row h2{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;white-space:nowrap}
+    .section-title-row h2 em{font-style:italic;color:var(--gold)}
+    .divider-line{flex:1;height:1px;background:var(--parchment)}
+    .seasonal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.25rem}
+    .seasonal-card{border-radius:18px;overflow:hidden;border:1px solid var(--parchment);background:#fff;transition:transform .25s,box-shadow .25s;cursor:pointer}
+    .seasonal-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.1)}
+    .seasonal-img{height:160px;overflow:hidden;position:relative}
+    .seasonal-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+    .seasonal-card:hover .seasonal-img img{transform:scale(1.07)}
+    .seasonal-img-badge{position:absolute;top:.7rem;left:.7rem;font-size:.65rem;font-weight:700;padding:.2rem .75rem;border-radius:2rem}
+    .seasonal-body{padding:1.1rem}
+    .seasonal-discount{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;line-height:1;margin-bottom:.3rem}
+    .seasonal-name{font-weight:600;font-size:.9rem;color:var(--ink);margin-bottom:.2rem}
+    .seasonal-desc{font-size:.75rem;color:var(--mist);line-height:1.6;margin-bottom:.9rem}
+    .seasonal-footer{display:flex;align-items:center;justify-content:space-between}
+    .get-btn{padding:.4rem .9rem;border:none;border-radius:10px;font-size:.75rem;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:opacity .2s}
+    .get-btn:hover{opacity:.85}
+
+    /* ── FAQ ── */
+    .faq-list{display:flex;flex-direction:column;gap:.75rem;margin-top:2rem}
+    .faq-item{border:1px solid var(--parchment);border-radius:14px;overflow:hidden}
+    .faq-q{width:100%;text-align:left;padding:1rem 1.25rem;background:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:600;color:var(--ink);transition:background .2s}
+    .faq-q:hover{background:var(--parchment)}
+    .faq-a{display:none;padding:0 1.25rem 1rem;font-size:.83rem;color:var(--mist);line-height:1.75;background:#fff}
+    .faq-a.open{display:block}
+    .faq-arrow{transition:transform .25s;font-size:.7rem;color:var(--mist)}
+    .faq-arrow.open{transform:rotate(180deg)}
+
+    /* ── TOAST ── */
+    #toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(1rem);background:var(--ink);color:#fff;padding:.75rem 1.5rem;border-radius:2rem;font-size:.875rem;font-weight:500;z-index:9999;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;border:1px solid rgba(200,169,110,.3);white-space:nowrap}
+    #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+    @media(max-width:640px){
+      nav{padding:.75rem 1.25rem}
+      .page-hero{padding:3rem 1.25rem 2.5rem}
+      .filter-tabs{padding:.75rem 1.25rem;top:58px}
+      .promo-wrapper{padding:2rem 1.25rem 4rem}
+      .featured-grid{grid-template-columns:1fr}
+      .seasonal-grid{grid-template-columns:1fr 1fr}
+      .conditions-table th,.conditions-table td{padding:.65rem 1rem}
+    }
+    @media(max-width:480px){
+      .seasonal-grid{grid-template-columns:1fr}
+      .countdown-strip{flex-wrap:wrap;gap:.5rem;padding:.6rem 1rem}
+      .voucher-code-row{flex-wrap:wrap}
+      .use-btn{width:100%}
+      .voucher-card{padding:1.4rem 1.25rem 1.25rem}
+      .filter-tabs{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
+      .tab-btn{flex-shrink:0}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Stay<span>Eassy</span></div>
+  <a href="index.html" class="nav-back">← Về trang chủ</a>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">🎁 Ưu đãi độc quyền · Cập nhật hằng ngày</div>
+    <h1 class="page-title">Tất cả <em>khuyến mãi</em><br/>& ưu đãi hôm nay</h1>
+    <p class="page-sub">Hàng chục mã giảm giá, flash sale và combo đặc biệt dành riêng cho khách hàng StayEassy. Sao chép mã — nhận ưu đãi ngay!</p>
+    <div class="countdown-strip">
+      <span class="countdown-label">⚡ Flash sale kết thúc sau</span>
+      <div class="countdown-boxes">
+        <div class="cd-box"><span class="cd-num" id="cdH">00</span><span class="cd-unit">giờ</span></div>
+        <span class="cd-sep">:</span>
+        <div class="cd-box"><span class="cd-num" id="cdM">00</span><span class="cd-unit">phút</span></div>
+        <span class="cd-sep">:</span>
+        <div class="cd-box"><span class="cd-num" id="cdS">00</span><span class="cd-unit">giây</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FILTER TABS -->
+<div class="filter-tabs" id="filterTabs">
+  <button class="tab-btn active" onclick="filterPromo(this,'all')">🏷️ Tất cả</button>
+  <button class="tab-btn" onclick="filterPromo(this,'flash')">⚡ Flash Sale</button>
+  <button class="tab-btn" onclick="filterPromo(this,'weekend')">🌅 Cuối tuần</button>
+  <button class="tab-btn" onclick="filterPromo(this,'newuser')">🎉 Người dùng mới</button>
+  <button class="tab-btn" onclick="filterPromo(this,'loyalty')">👑 Khách thân thiết</button>
+  <button class="tab-btn" onclick="filterPromo(this,'group')">👥 Nhóm & Gia đình</button>
+  <button class="tab-btn" onclick="filterPromo(this,'seasonal')">🌸 Theo mùa</button>
+  <button class="tab-btn" onclick="filterPromo(this,'longstay')">🗓️ Lưu trú dài</button>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="promo-wrapper">
+
+  <!-- Featured Vouchers -->
+  <div class="section-title-row">
+    <h2>⚡ Voucher <em>nổi bật</em></h2>
+    <div class="divider-line"></div>
+    <span style="font-size:.78rem;color:var(--mist);white-space:nowrap" id="promoCount">12 ưu đãi</span>
+  </div>
+
+  <div class="featured-grid" id="voucherGrid">
+    <!-- Rendered by JS -->
+  </div>
+
+  <!-- Seasonal Offers -->
+  <div class="section-title-row" id="seasonalRow">
+    <h2>🌸 Ưu đãi <em>theo mùa</em></h2>
+    <div class="divider-line"></div>
+  </div>
+  <div class="seasonal-grid" id="seasonalGrid">
+    <!-- Rendered by JS -->
+  </div>
+
+  <!-- Conditions Table -->
+  <div class="conditions-box" style="margin-top:4rem">
+    <div class="conditions-head">
+      <span style="font-size:1.3rem">📋</span>
+      <h3>Điều kiện & Điều khoản áp dụng</h3>
+    </div>
+    <div style="overflow-x:auto">
+      <table class="conditions-table">
+        <thead>
+          <tr>
+            <th>Mã voucher</th>
+            <th>Loại ưu đãi</th>
+            <th>Điều kiện</th>
+            <th>Hạn sử dụng</th>
+            <th>Trạng thái</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>FLASH30HN</strong></td><td>Giảm 30%</td><td>Khách sạn 4–5 sao · Tối thiểu 2 đêm</td><td>Hôm nay 23:59</td><td><span class="badge-chip" style="background:rgba(45,122,95,.12);color:var(--jade)">✅ Còn hạn</span></td></tr>
+          <tr><td><strong>WEEKEND3N2P</strong></td><td>Mua 2 tặng 1 đêm</td><td>Khách sạn 3–4 sao · Cuối tuần</td><td>Chủ nhật 23:59</td><td><span class="badge-chip" style="background:rgba(45,122,95,.12);color:var(--jade)">✅ Còn hạn</span></td></tr>
+          <tr><td><strong>FIRST150K</strong></td><td>Giảm 150.000₫</td><td>Lần đặt đầu tiên · Tối thiểu 500K</td><td>30/12/2025</td><td><span class="badge-chip" style="background:rgba(45,122,95,.12);color:var(--jade)">✅ Còn hạn</span></td></tr>
+          <tr><td><strong>HANOISUMMER</strong></td><td>Giảm 20% + bữa sáng</td><td>Đặt trước 7 ngày · Mùa hè</td><td>31/08/2025</td><td><span class="badge-chip" style="background:rgba(45,122,95,.12);color:var(--jade)">✅ Còn hạn</span></td></tr>
+          <tr><td><strong>VIP15</strong></td><td>Giảm thêm 15%</td><td>Thành viên VIP · Tất cả hạng</td><td>Vô thời hạn</td><td><span class="badge-chip" style="background:rgba(45,122,95,.12);color:var(--jade)">✅ Còn hạn</span></td></tr>
+          <tr><td><strong>GROUP10</strong></td><td>Giảm 10% nhóm</td><td>Từ 5 phòng trở lên</td><td>31/12/2025</td><td><span class="badge-chip" style="background:rgba(45,122,95,.12);color:var(--jade)">✅ Còn hạn</span></td></tr>
+          <tr><td><strong>STAY7GET1</strong></td><td>Lưu 7 đêm miễn 1 đêm</td><td>Tất cả khách sạn · Không kết hợp</td><td>31/12/2025</td><td><span class="badge-chip" style="background:rgba(45,122,95,.12);color:var(--jade)">✅ Còn hạn</span></td></tr>
+          <tr><td><strong>AUTUMN25</strong></td><td>Giảm 25% mùa thu</td><td>Khách sạn 4–5 sao · T9–T11</td><td>30/11/2025</td><td><span class="badge-chip" style="background:rgba(239,159,39,.12);color:#ef9f27">⏳ Sắp ra mắt</span></td></tr>
+          <tr><td><strong>FIRSTHANOI</strong></td><td>Giảm 30% lần đầu</td><td>Khách sạn 4–5 sao · 1 lần/tài khoản</td><td>31/12/2025</td><td><span class="badge-chip" style="background:rgba(45,122,95,.12);color:var(--jade)">✅ Còn hạn</span></td></tr>
+          <tr><td><strong>MIDWEEK20</strong></td><td>Giảm 20% ngày thường</td><td>Thứ 2–5 · Mọi khách sạn</td><td>Vô thời hạn</td><td><span class="badge-chip" style="background:rgba(45,122,95,.12);color:var(--jade)">✅ Còn hạn</span></td></tr>
+          <tr><td><strong>FAMILY25</strong></td><td>Giảm 25% gia đình</td><td>Từ 3 người · Phòng Deluxe+</td><td>31/12/2025</td><td><span class="badge-chip" style="background:rgba(45,122,95,.12);color:var(--jade)">✅ Còn hạn</span></td></tr>
+          <tr><td><strong>EARLYBIRD</strong></td><td>Giảm 18% đặt sớm</td><td>Đặt trước 30 ngày</td><td>Vô thời hạn</td><td><span class="badge-chip" style="background:rgba(45,122,95,.12);color:var(--jade)">✅ Còn hạn</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section-title-row" style="margin-top:4rem">
+    <h2>❓ Câu hỏi <em>thường gặp</em></h2>
+    <div class="divider-line"></div>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>Tôi dùng mã voucher ở đâu?</span>
+        <span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a">Sau khi chọn phòng và điền thông tin đặt phòng, bạn sẽ thấy ô nhập mã voucher ở bước thanh toán. Nhập mã và nhấn "Áp dụng" để nhận ưu đãi ngay.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>Có thể dùng nhiều mã cùng lúc không?</span>
+        <span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a">Thông thường mỗi đơn đặt phòng chỉ áp dụng được 1 mã voucher. Tuy nhiên các ưu đãi thành viên VIP có thể kết hợp với một số mã nhất định — chi tiết ghi rõ trong điều kiện của mỗi voucher.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>Mã FIRST150K áp dụng cho tài khoản mới hay email mới?</span>
+        <span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a">Mã FIRST150K áp dụng cho lần đặt phòng đầu tiên của mỗi tài khoản. Mỗi địa chỉ email chỉ được dùng 1 lần. Điều kiện: giá trị đặt phòng tối thiểu 500.000₫.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>Flash sale có áp dụng khi hủy phòng không?</span>
+        <span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a">Các voucher flash sale đã đánh dấu "✓ Miễn phí hủy" cho phép hủy trước 24h mà không mất phí. Các voucher khác theo chính sách hủy phòng của từng khách sạn.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>Voucher cuối tuần áp dụng ngày nào?</span>
+        <span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a">Voucher cuối tuần (WEEKEND3N2P) áp dụng cho nhận phòng Thứ 6 hoặc Thứ 7. Đêm tặng miễn phí là Thứ 2 kế tiếp. Không áp dụng trong các dịp lễ tết.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>Làm sao nhận thêm ưu đãi độc quyền?</span>
+        <span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a">Đăng ký thành viên StayEassy và bật nhận thông báo email để nhận flash sale sớm nhất. Thành viên VIP (đặt ≥5 lần) được thêm 15% off vĩnh viễn trên mọi đặt phòng.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- TOAST -->
+<div id="toast"><span id="toastMsg"></span></div>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────
+const vouchers = [
+  {
+    id:'flash30', category:'flash',
+    emoji:'⚡', labelColor:'var(--gold)', label:'Flash Sale · Kết thúc hôm nay',
+    title:'Giảm 30% Khách Sạn 5⭐',
+    desc:'Áp dụng cho tất cả khách sạn 5 sao tại Hà Nội. Tối thiểu 2 đêm. Không giới hạn lần dùng trong tháng này.',
+    code:'FLASH30HN', codeColor:'var(--gold)', codeBg:'rgba(200,169,110,.12)', codeBorder:'rgba(200,169,110,.5)',
+    btnBg:'linear-gradient(135deg,var(--gold),var(--gold-dark))', btnColor:'var(--ink)',
+    bg:'linear-gradient(135deg,#1a1614 60%,#2d1f0e)', border:'rgba(200,169,110,.25)',
+    glowColor:'rgba(200,169,110,.18)',
+    tags:[{t:'✓ Áp dụng 4–5 sao',bg:'rgba(255,255,255,.07)',c:'rgba(255,255,255,.5)'},{t:'✓ Tối thiểu 2 đêm',bg:'rgba(255,255,255,.07)',c:'rgba(255,255,255,.5)'},{t:'✓ Miễn phí hủy',bg:'rgba(45,122,95,.3)',c:'#4caf8a'}]
+  },
+  {
+    id:'weekend', category:'weekend',
+    emoji:'🌅', labelColor:'#4caf8a', label:'Weekend Deal · Cuối tuần này',
+    title:'Mua 2 đêm tặng miễn phí 1 đêm',
+    desc:'Đặt 2 đêm cuối tuần tại bất kỳ khách sạn 3–4 sao nào, tặng miễn phí đêm thứ 3 (Thứ Hai). Kết hợp lý tưởng!',
+    code:'WEEKEND3N2P', codeColor:'#4caf8a', codeBg:'rgba(45,122,95,.15)', codeBorder:'rgba(45,122,95,.5)',
+    btnBg:'linear-gradient(135deg,#2d7a5f,#1a5c43)', btnColor:'#fff',
+    bg:'linear-gradient(135deg,#0d1f2d 60%,#0a2a1a)', border:'rgba(45,122,95,.3)',
+    glowColor:'rgba(45,122,95,.2)',
+    tags:[{t:'✓ Áp dụng 3–4 sao',bg:'rgba(255,255,255,.07)',c:'rgba(255,255,255,.5)'},{t:'✓ Cuối tuần',bg:'rgba(255,255,255,.07)',c:'rgba(255,255,255,.5)'},{t:'✓ Tặng bữa sáng',bg:'rgba(200,169,110,.25)',c:'var(--gold)'}]
+  },
+  {
+    id:'newuser', category:'newuser',
+    emoji:'🎉', labelColor:'#c084fc', label:'Người dùng mới · Ưu đãi chào mừng',
+    title:'Giảm 150.000₫ lần đặt đầu',
+    desc:'Dành cho tài khoản đặt phòng lần đầu trên StayEassy. Áp dụng mọi khách sạn, không cần điều kiện hạng sao.',
+    code:'FIRST150K', codeColor:'#c084fc', codeBg:'rgba(168,85,247,.15)', codeBorder:'rgba(168,85,247,.5)',
+    btnBg:'linear-gradient(135deg,#a855f7,#7c3aed)', btnColor:'#fff',
+    bg:'linear-gradient(135deg,#1e0a2e 60%,#2a1040)', border:'rgba(168,85,247,.25)',
+    glowColor:'rgba(168,85,247,.18)',
+    tags:[{t:'✓ Mọi khách sạn',bg:'rgba(255,255,255,.07)',c:'rgba(255,255,255,.5)'},{t:'✓ Tối thiểu 500K',bg:'rgba(255,255,255,.07)',c:'rgba(255,255,255,.5)'},{t:'✓ 1 lần/tài khoản',bg:'rgba(168,85,247,.2)',c:'#c084fc'}]
+  },
+  {
+    id:'loyalty', category:'loyalty',
+    emoji:'👑', labelColor:'#fbbf24', label:'Thành viên VIP · Ưu đãi vĩnh viễn',
+    title:'Giảm thêm 15% mọi đặt phòng',
+    desc:'Dành riêng cho thành viên VIP đã đặt từ 5 lần trở lên. Kết hợp được với hầu hết các chương trình ưu đãi khác.',
+    code:'VIP15', codeColor:'#fbbf24', codeBg:'rgba(251,191,36,.15)', codeBorder:'rgba(251,191,36,.5)',
+    btnBg:'linear-gradient(135deg,#fbbf24,#d97706)', btnColor:'#1a1614',
+    bg:'linear-gradient(135deg,#1c1500 60%,#2a1e00)', border:'rgba(251,191,36,.25)',
+    glowColor:'rgba(251,191,36,.18)',
+    tags:[{t:'✓ Thành viên VIP',bg:'rgba(255,255,255,.07)',c:'rgba(255,255,255,.5)'},{t:'✓ Kết hợp được',bg:'rgba(251,191,36,.2)',c:'#fbbf24'},{t:'✓ Vô thời hạn',bg:'rgba(45,122,95,.25)',c:'#4caf8a'}]
+  },
+  {
+    id:'group', category:'group',
+    emoji:'👥', labelColor:'#38bdf8', label:'Nhóm & Gia đình · Từ 5 phòng',
+    title:'Giảm 10% đặt phòng nhóm',
+    desc:'Tổ chức sự kiện, du lịch công ty hoặc đi đám cưới? Đặt từ 5 phòng trở lên để hưởng giá nhóm đặc biệt.',
+    code:'GROUP10', codeColor:'#38bdf8', codeBg:'rgba(56,189,248,.15)', codeBorder:'rgba(56,189,248,.5)',
+    btnBg:'linear-gradient(135deg,#0284c7,#0369a1)', btnColor:'#fff',
+    bg:'linear-gradient(135deg,#0a1628 60%,#001e38)', border:'rgba(56,189,248,.25)',
+    glowColor:'rgba(56,189,248,.18)',
+    tags:[{t:'✓ Từ 5 phòng',bg:'rgba(255,255,255,.07)',c:'rgba(255,255,255,.5)'},{t:'✓ Mọi hạng sao',bg:'rgba(255,255,255,.07)',c:'rgba(255,255,255,.5)'},{t:'✓ Hỗ trợ tư vấn',bg:'rgba(56,189,248,.2)',c:'#38bdf8'}]
+  },
+  {
+    id:'family', category:'group',
+    emoji:'👨‍👩‍👧‍👦', labelColor:'#fb923c', label:'Gia đình · Từ 3 người',
+    title:'Giảm 25% gói gia đình',
+    desc:'Trẻ em dưới 12 tuổi miễn phí giường phụ. Áp dụng phòng Deluxe trở lên. Tặng thêm welcome drink.',
+    code:'FAMILY25', codeColor:'#fb923c', codeBg:'rgba(251,146,60,.15)', codeBorder:'rgba(251,146,60,.5)',
+    btnBg:'linear-gradient(135deg,#fb923c,#ea580c)', btnColor:'#fff',
+    bg:'linear-gradient(135deg,#1c0e00 60%,#2a1500)', border:'rgba(251,146,60,.25)',
+    glowColor:'rgba(251,146,60,.18)',
+    tags:[{t:'✓ Trẻ em miễn phí',bg:'rgba(255,255,255,.07)',c:'rgba(255,255,255,.5)'},{t:'✓ Từ Deluxe',bg:'rgba(255,255,255,.07)',c:'rgba(255,255,255,.5)'},{t:'✓ Tặng welcome drink',bg:'rgba(251,146,60,.2)',c:'#fb923c'}]
+  },
+  {
+    id:'summer', category:'seasonal',
+    emoji:'☀️', labelColor:'#facc15', label:'Mùa hè · T6–T8/2025',
+    title:'Giảm 20% + Miễn phí bữa sáng',
+    desc:'Kỳ nghỉ hè trọn vẹn hơn với ưu đãi đặt sớm. Book trước 7 ngày, nhận ngay bữa sáng buffet miễn phí cho 2 người.',
+    code:'HANOISUMMER', codeColor:'#facc15', codeBg:'rgba(250,204,21,.15)', codeBorder:'rgba(250,204,21,.5)',
+    btnBg:'linear-gradient(135deg,#facc15,#ca8a04)', btnColor:'#1a1614',
+    bg:'linear-gradient(135deg,#1c1500 60%,#2a1f00)', border:'rgba(250,204,21,.25)',
+    glowColor:'rgba(250,204,21,.18)',
+    tags:[{t:'✓ Đặt trước 7 ngày',bg:'rgba(255,255,255,.07)',c:'rgba(255,255,255,.5)'},{t:'✓ 4–5 sao',bg:'rgba(255,255,255,.07)',c:'rgba(255,255,255,.5)'},{t:'✓ Miễn phí bữa sáng',bg:'rgba(250,204,21,.2)',c:'#facc15'}]
+  },
+  {
+    id:'longstay', category:'longstay',
+    emoji:'🗓️', labelColor:'#6ee7b7', label:'Lưu trú dài · 7 đêm trở lên',
+    title:'Lưu 7 đêm miễn phí 1 đêm',
+    desc:'Công tác dài ngày hoặc kỳ nghỉ dài? Lưu trú 7 đêm liên tiếp tại bất kỳ khách sạn nào, đêm thứ 8 hoàn toàn miễn phí.',
+    code:'STAY7GET1', codeColor:'#6ee7b7', codeBg:'rgba(110,231,183,.12)', codeBorder:'rgba(110,231,183,.4)',
+    btnBg:'linear-gradient(135deg,#059669,#047857)', btnColor:'#fff',
+    bg:'linear-gradient(135deg,#0a1f18 60%,#0d2a1e)', border:'rgba(110,231,183,.2)',
+    glowColor:'rgba(110,231,183,.15)',
+    tags:[{t:'✓ Tất cả khách sạn',bg:'rgba(255,255,255,.07)',c:'rgba(255,255,255,.5)'},{t:'✓ 7 đêm+',bg:'rgba(255,255,255,.07)',c:'rgba(255,255,255,.5)'},{t:'✓ Không kết hợp',bg:'rgba(110,231,183,.15)',c:'#6ee7b7'}]
+  },
+  {
+    id:'midweek', category:'weekday',
+    emoji:'📅', labelColor:'#a78bfa', label:'Ngày thường · Thứ 2–5',
+    title:'Giảm 20% đêm giữa tuần',
+    desc:'Linh hoạt lịch trình? Đặt phòng từ Thứ 2 đến Thứ 5 để tiết kiệm 20% so với giá cuối tuần. Áp dụng mọi hạng sao.',
+    code:'MIDWEEK20', codeColor:'#a78bfa', codeBg:'rgba(167,139,250,.15)', codeBorder:'rgba(167,139,250,.4)',
+    btnBg:'linear-gradient(135deg,#7c3aed,#6d28d9)', btnColor:'#fff',
+    bg:'linear-gradient(135deg,#100a2e 60%,#1a1040)', border:'rgba(167,139,250,.2)',
+    glowColor:'rgba(167,139,250,.15)',
+    tags:[{t:'✓ Thứ 2–5',bg:'rgba(255,255,255,.07)',c:'rgba(255,255,255,.5)'},{t:'✓ Mọi khách sạn',bg:'rgba(255,255,255,.07)',c:'rgba(255,255,255,.5)'},{t:'✓ Vô thời hạn',bg:'rgba(167,139,250,.2)',c:'#a78bfa'}]
+  },
+  {
+    id:'earlybird', category:'longstay',
+    emoji:'🐦', labelColor:'#67e8f9', label:'Đặt sớm · Trước 30 ngày',
+    title:'Giảm 18% khi đặt trước 30 ngày',
+    desc:'Lên kế hoạch sớm, tiết kiệm nhiều hơn. Đặt phòng trước ngày nhận phòng ít nhất 30 ngày để hưởng giá ưu đãi đặc biệt.',
+    code:'EARLYBIRD', codeColor:'#67e8f9', codeBg:'rgba(103,232,249,.12)', codeBorder:'rgba(103,232,249,.4)',
+    btnBg:'linear-gradient(135deg,#0891b2,#0e7490)', btnColor:'#fff',
+    bg:'linear-gradient(135deg,#0a1e28 60%,#0d2535)', border:'rgba(103,232,249,.2)',
+    glowColor:'rgba(103,232,249,.15)',
+    tags:[{t:'✓ Đặt trước 30 ngày',bg:'rgba(255,255,255,.07)',c:'rgba(255,255,255,.5)'},{t:'✓ Mọi hạng sao',bg:'rgba(255,255,255,.07)',c:'rgba(255,255,255,.5)'},{t:'✓ Không kết hợp',bg:'rgba(103,232,249,.15)',c:'#67e8f9'}]
+  },
+  {
+    id:'firsthanoi', category:'newuser',
+    emoji:'🏯', labelColor:'#f9a8d4', label:'Lần đầu tại Hà Nội · Ưu đãi đặc biệt',
+    title:'Giảm 30% khách sạn 4–5 sao',
+    desc:'Lần đầu tiên khám phá Hà Nội? Chào mừng bạn! Mã FIRSTHANOI áp dụng cho tất cả khách sạn 4–5 sao, không giới hạn giá trị đặt.',
+    code:'FIRSTHANOI', codeColor:'#f9a8d4', codeBg:'rgba(249,168,212,.12)', codeBorder:'rgba(249,168,212,.4)',
+    btnBg:'linear-gradient(135deg,#ec4899,#db2777)', btnColor:'#fff',
+    bg:'linear-gradient(135deg,#1c0a18 60%,#2a1028)', border:'rgba(249,168,212,.2)',
+    glowColor:'rgba(249,168,212,.15)',
+    tags:[{t:'✓ 4–5 sao',bg:'rgba(255,255,255,.07)',c:'rgba(255,255,255,.5)'},{t:'✓ 1 lần/tài khoản',bg:'rgba(255,255,255,.07)',c:'rgba(255,255,255,.5)'},{t:'✓ Miễn phí hủy',bg:'rgba(45,122,95,.25)',c:'#4caf8a'}]
+  },
+  {
+    id:'autumn', category:'seasonal',
+    emoji:'🍂', labelColor:'#fb923c', label:'Mùa thu · T9–T11/2025',
+    title:'Giảm 25% mùa thu Hà Nội',
+    desc:'Mùa thu Hà Nội đẹp nhất năm — những tán cây vàng, gió se lạnh và ẩm thực đặc sắc. Ưu đãi sắp ra mắt, đăng ký nhận thông báo!',
+    code:'AUTUMN25', codeColor:'#fb923c', codeBg:'rgba(251,146,60,.12)', codeBorder:'rgba(251,146,60,.4)',
+    btnBg:'linear-gradient(135deg,#ea580c,#c2410c)', btnColor:'#fff',
+    bg:'linear-gradient(135deg,#1c0e00 60%,#2a1500)', border:'rgba(251,146,60,.2)',
+    glowColor:'rgba(251,146,60,.15)',
+    tags:[{t:'✓ T9–T11/2025',bg:'rgba(255,255,255,.07)',c:'rgba(255,255,255,.5)'},{t:'✓ Khách sạn 4–5 sao',bg:'rgba(255,255,255,.07)',c:'rgba(255,255,255,.5)'},{t:'⏳ Sắp ra mắt',bg:'rgba(251,146,60,.2)',c:'#fb923c'}]
+  },
+];
+
+const seasonalOffers = [
+  { emoji:'🏖️', title:'Hè Rực Rỡ', discount:'-20%', discountColor:'#facc15', desc:'Kỳ nghỉ hè trọn vẹn tại các resort ven hồ Tây', img:'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80', badge:'T6–T8', badgeBg:'rgba(250,204,21,.9)', badgeColor:'#1a1614', btnBg:'linear-gradient(135deg,#facc15,#ca8a04)', btnColor:'#1a1614', code:'HANOISUMMER' },
+  { emoji:'🍂', title:'Thu Vàng Hà Nội', discount:'-25%', discountColor:'#fb923c', desc:'Ngắm lá vàng rơi, thưởng thức cốm Làng Vòng', img:'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=600&q=80', badge:'T9–T11', badgeBg:'rgba(251,146,60,.9)', badgeColor:'#fff', btnBg:'linear-gradient(135deg,#ea580c,#c2410c)', btnColor:'#fff', code:'AUTUMN25' },
+  { emoji:'❄️', title:'Đông Ấm Áp', discount:'-15%', discountColor:'#67e8f9', desc:'Chill cùng bạn bè tại khách sạn boutique phố cổ', img:'https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80', badge:'T12–T2', badgeBg:'rgba(103,232,249,.9)', badgeColor:'#1a1614', btnBg:'linear-gradient(135deg,#0891b2,#0e7490)', btnColor:'#fff', code:'MIDWEEK20' },
+  { emoji:'🌸', title:'Xuân Hà Nội', discount:'-22%', discountColor:'#f9a8d4', desc:'Du xuân đầu năm, thăm hoa đào nở khắp phố', img:'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80', badge:'T1–T3', badgeBg:'rgba(249,168,212,.9)', badgeColor:'#1a1614', btnBg:'linear-gradient(135deg,#ec4899,#db2777)', btnColor:'#fff', code:'FIRSTHANOI' },
+];
+
+let currentCat = 'all';
+
+function renderVouchers() {
+  const list = currentCat === 'all' ? vouchers : vouchers.filter(v=>v.category===currentCat);
+  document.getElementById('promoCount').textContent = list.length + ' ưu đãi';
+  document.getElementById('voucherGrid').innerHTML = list.map(v=>`
+    <div style="position:relative;border-radius:20px;overflow:hidden;background:${v.bg};border:1px solid ${v.border};padding:1.75rem 1.75rem 1.5rem" class="voucher-card">
+      <div class="bg-glow" style="background:radial-gradient(circle,${v.glowColor} 0%,transparent 70%)"></div>
+      <div class="voucher-head">
+        <span class="voucher-emoji">${v.emoji}</span>
+        <div>
+          <div class="voucher-meta-label" style="color:${v.labelColor}">${v.label}</div>
+          <div class="voucher-title">${v.title}</div>
+        </div>
+      </div>
+      <p class="voucher-desc" style="color:rgba(255,255,255,.6)">${v.desc}</p>
+      <div class="voucher-code-row">
+        <div class="voucher-code" onclick="copyCode('${v.code}')" style="color:${v.codeColor};background:${v.codeBg};border-color:${v.codeBorder}">${v.code}</div>
+        <button class="use-btn" onclick="useCode('${v.code}')" style="background:${v.btnBg};color:${v.btnColor}">Dùng ngay</button>
+      </div>
+      <div class="voucher-tags">${v.tags.map(t=>`<span class="vtag" style="background:${t.bg};color:${t.c}">${t.t}</span>`).join('')}</div>
+    </div>
+  `).join('');
+
+  // show/hide seasonal section based on filter
+  const showSeasonal = currentCat === 'all' || currentCat === 'seasonal';
+  document.getElementById('seasonalRow').style.display = showSeasonal ? '' : 'none';
+  document.getElementById('seasonalGrid').style.display = showSeasonal ? '' : 'none';
+}
+
+function renderSeasonal() {
+  document.getElementById('seasonalGrid').innerHTML = seasonalOffers.map(s=>`
+    <div class="seasonal-card">
+      <div class="seasonal-img">
+        <img src="${s.img}" alt="${s.title}" loading="lazy"/>
+        <div class="seasonal-img-badge" style="background:${s.badgeBg};color:${s.badgeColor}">${s.badge}</div>
+      </div>
+      <div class="seasonal-body">
+        <div class="seasonal-discount" style="color:${s.discountColor}">${s.emoji} ${s.discount}</div>
+        <div class="seasonal-name">${s.title}</div>
+        <div class="seasonal-desc">${s.desc}</div>
+        <div class="seasonal-footer">
+          <span style="font-family:monospace;font-size:.78rem;font-weight:700;color:${s.discountColor};background:rgba(255,255,255,.06);padding:.2rem .6rem;border-radius:6px;border:1px dashed rgba(255,255,255,.15)">${s.code}</span>
+          <button class="get-btn" onclick="copyCode('${s.code}')" style="background:${s.btnBg};color:${s.btnColor}">Sao chép</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterPromo(btn, cat) {
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  currentCat = cat;
+  renderVouchers();
+}
+
+function copyCode(code) {
+  if (navigator.clipboard) navigator.clipboard.writeText(code);
+  showToast('✅ Đã sao chép mã ' + code + '!');
+}
+function useCode(code) {
+  copyCode(code);
+  setTimeout(()=>window.location.href='index.html#hotels', 1200);
+}
+
+renderVouchers();
+renderSeasonal();
+
+// ── COUNTDOWN ─────────────────────────────────────────────────────────────
+(function(){
+  const end=new Date(); end.setHours(23,59,0,0);
+  function tick(){
+    const diff=Math.max(0,end-new Date());
+    document.getElementById('cdH').textContent=String(Math.floor(diff/3600000)).padStart(2,'0');
+    document.getElementById('cdM').textContent=String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+    document.getElementById('cdS').textContent=String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+  }
+  tick(); setInterval(tick,1000);
+})();
+
+// ── FAQ ───────────────────────────────────────────────────────────────────
+function toggleFaq(btn) {
+  const a=btn.nextElementSibling, arr=btn.querySelector('.faq-arrow');
+  const open=a.classList.toggle('open');
+  arr.classList.toggle('open',open);
+}
+
+// ── TOAST ─────────────────────────────────────────────────────────────────
+let _tt;
+function showToast(msg){
+  const t=document.getElementById('toast'); document.getElementById('toastMsg').textContent=msg;
+  t.classList.add('show'); clearTimeout(_tt); _tt=setTimeout(()=>t.classList.remove('show'),3000);
+}
+</script>
+</body>
+</html>
